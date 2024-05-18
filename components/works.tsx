@@ -15,7 +15,7 @@ export default function Works({ works, dict }: WorksProps) {
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
       <h2>{dict.title}</h2>
-      <ul>
+      <ul className="first-of-type:-mt-3">
         {(works || []).map(({ title, job, link, icon, tags, duration }) => {
           return (
             <li key={title} className="leading-5">
