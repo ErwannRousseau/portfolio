@@ -14,7 +14,7 @@ export default function Projects({ projects, title }: ProjectsProps) {
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
       <h2>{title}</h2>
-      <ul>
+      <ul className="first-of-type:-mt-3">
         {(projects ?? []).map(({ title, description, link, icon }) => (
           <li key={title} className="leading-5">
             <Link
