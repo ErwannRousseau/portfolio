@@ -8,8 +8,8 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
       subtitle[$defaultLocale]
     ),
     "overview" : coalesce(
-      overview["fr"], 
-      overview["en"]
+      overview[$lang], 
+      overview[$defaultLocale]
     ),
     profilePicture,
     projects[]{

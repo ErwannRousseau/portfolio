@@ -15,7 +15,7 @@ export function CustomPortableText({
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <p className="leading-9">{children}</p>;
+        return <p className="leading-7">{children}</p>;
       },
     },
     marks: {
