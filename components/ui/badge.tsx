@@ -15,7 +15,7 @@ const BadgeLink = ({ href, alt, src, children, ...props }: BadgeLinkProps) => {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="rounded-sm border border-accent bg-accent/50 p-1 font-mono text-sm leading-3 no-underline"
+      className="whitespace-nowrap rounded-sm border border-accent bg-accent/50 p-1 font-mono text-sm leading-3 no-underline"
     >
       <Image
         width={16}
