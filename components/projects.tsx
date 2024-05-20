@@ -13,14 +13,14 @@ type ProjectsProps = {
 export default function Projects({ projects, title }: ProjectsProps) {
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
-      <h2>{title}</h2>
+      <h2 className="px-3">{title}</h2>
       <ul className="first-of-type:-mt-3">
         {(projects ?? []).map(({ title, description, link, icon }) => (
           <li key={title} className="leading-5">
             <Link
               target="_blank"
               href={{ pathname: link }}
-              className="-ml-3 inline-flex w-full items-center gap-4 rounded-md p-3 transition-colors hover:bg-accent/50"
+              className="inline-flex w-full items-center gap-4 rounded-md p-3 transition-colors hover:bg-accent/50"
             >
               <i className="rounded-md bg-accent p-2 text-accent-foreground">
                 <InlineSVG value={icon} />
