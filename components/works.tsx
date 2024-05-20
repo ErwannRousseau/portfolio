@@ -1,6 +1,6 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
 import { rgbColorToString } from "@/lib/utils";
-import type { Works as TWorks } from "@/sanity.types";
+import type { Works as TWorks } from "@/sanity";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { DateFormat } from "./utils/date-format";

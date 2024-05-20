@@ -1,6 +1,6 @@
 "use client";
 
-import type { Projects as TProjects } from "@/sanity.types";
+import type { Projects as TProjects } from "@/sanity";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { InlineSVG } from "./utils/inline-svg";

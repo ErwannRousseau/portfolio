@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Skills as TSkills } from "@/sanity.types";
+
 import { InlineSVG } from "./utils/inline-svg";
 
 type SkillsProps = {
@@ -18,12 +19,12 @@ export default function Skills({ skills, title }: SkillsProps) {
             <li className="block" key={skill.name}>
               <span
                 className={cn(
-                  "flex h-9 cursor-default items-center gap-2 rounded-md border bg-accent py-1.5 pr-3.5 pl-3 font-medium transition-colors hover:border-badge-border hover:bg-badge",
+                  "flex h-8 cursor-default items-center gap-2 rounded-md border bg-accent px-3 py-1.5 font-medium transition-colors hover:border-badge-border hover:bg-badge",
                 )}
                 style={{ "--badge": skill.color } as React.CSSProperties}
               >
                 <InlineSVG value={skill.icon} />
-                <span>{skill.name}</span>
+                <p>{skill.name}</p>
               </span>
             </li>
           );

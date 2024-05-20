@@ -1,7 +1,7 @@
 "use client";
 
 import type { Locale } from "@/i18n.config";
-import type { Duration } from "@/sanity.types";
+import type { Duration } from "@/sanity";
 import { useParams } from "next/navigation";
 
 type DateFormatProps = {
