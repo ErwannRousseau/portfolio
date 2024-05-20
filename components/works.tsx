@@ -1,6 +1,6 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
 import { rgbColorToString } from "@/lib/utils";
-import type { Works as TWorks } from "@/sanity";
+import type { Works as TWorks } from "@/sanity.types";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { DateFormat } from "./utils/date-format";
@@ -16,7 +16,7 @@ export default function Works({ works, dict }: WorksProps) {
     <div className="flex flex-col gap-4 md:w-1/2">
       <h2 className="px-3">{dict.title}</h2>
       <ul className="first-of-type:-mt-3">
-        {(works || []).map(({ title, job, link, icon, tags, duration }) => (
+        {(works ?? []).map(({ title, job, link, icon, tags, duration }) => (
           <li key={title} className="leading-5">
             <Link
               href={{ pathname: link }}

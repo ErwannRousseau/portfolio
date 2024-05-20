@@ -7,7 +7,7 @@ import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import { Section, Spacing } from "@/components/ui";
 import Works from "@/components/works";
-import type { HOME_QUERYResult } from "@/sanity";
+import type { HOME_QUERYResult } from "@/sanity.types";
 import type { EncodeDataAttributeCallback } from "@sanity/react-loader";
 
 type HomeProps = {

@@ -11,8 +11,10 @@
  * https://www.sanity.io/docs/sanity-typegen
  * ---------------------------------------------------------------------------------
  */
+
 import { PortableTextBlock } from "next-sanity";
-import { Image } from "sanity";// Source: schema.json
+import { Image } from "sanity";
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;

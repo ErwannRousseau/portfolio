@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/section";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
-import type { HOME_QUERYResult } from "@/sanity";
+import type { HOME_QUERYResult } from "@/sanity.types";
+
 import { urlForImage } from "@/sanity/lib/image";
 import type { PortableTextBlock } from "next-sanity";
 
