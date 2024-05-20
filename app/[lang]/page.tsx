@@ -7,10 +7,10 @@ import { draftMode } from "next/headers";
 import { getDictionary } from "./dictionaries";
 
 const HomePagePreview = dynamic(
-  () => import("@/components/preview/home-preview"),
+  () => import("@/sanity/preview/homepage-preview"),
 );
 
-export default async function IndexPage({
+export default async function Home({
   params: { lang },
 }: { params: { lang: Locale } }) {
   const initial = await loadHomePage(lang);

@@ -10,11 +10,11 @@ import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
 import "./globals.css";
-import { ThemeProvider } from "@/components/utils/theme-provider";
+import { ThemeProvider } from "@/components/provider/theme-provider";
 import { draftMode } from "next/headers";
 
 const LiveVisualEditing = dynamic(
-  () => import("@/components/utils/live-visual-editing"),
+  () => import("@/sanity/preview/live-visual-editing"),
 );
 
 export async function generateMetadata({
