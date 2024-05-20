@@ -18,12 +18,12 @@ type HomeProps = {
 
 export default function HomePage({ data, dict }: HomeProps) {
   return (
-    <main className="m-auto max-w-4xl px-4">
+    <main className="m-auto max-w-4xl">
       <Header />
       <Spacing />
       <Hero data={data} />
       <Spacing />
-      <Section className="max-md:gap-0">
+      <Section className="gap-0 px-1">
         <Projects projects={data?.projects} title={dict.Projects} />
         <Spacing />
         <Works works={data?.works} dict={dict.Works} />

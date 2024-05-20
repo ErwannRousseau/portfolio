@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex items-baseline py-4">
+    <header className="flex items-baseline p-4">
       <h2 className="max-[415px]:text-lg">erwannrousseau.dev</h2>
       <div className="flex-1" />
       <ul className="flex gap-2">
