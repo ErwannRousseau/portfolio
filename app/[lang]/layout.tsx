@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadHomePage } from "@/sanity/lib/store";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -80,9 +81,10 @@ export default function RootLayout({
         >
           {children}
           {draftMode().isEnabled && <LiveVisualEditing />}
+          <SpeedInsights />
+          <Analytics />
         </ThemeProvider>
         <TailwindIndicator />
-        <SpeedInsights />
       </body>
     </html>
   );
