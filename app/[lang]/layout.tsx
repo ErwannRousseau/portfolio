@@ -1,17 +1,18 @@
+import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
 import { type Locale, i18n } from "@/i18n.config";
 import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadHomePage } from "@/sanity/lib/store";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
-import "./globals.css";
-import { ThemeProvider } from "@/components/provider/theme-provider";
 import { draftMode } from "next/headers";
+import "./globals.css";
 
 const LiveVisualEditing = dynamic(
   () => import("@/sanity/preview/live-visual-editing"),
@@ -81,6 +82,7 @@ export default function RootLayout({
           {draftMode().isEnabled && <LiveVisualEditing />}
         </ThemeProvider>
         <TailwindIndicator />
+        <SpeedInsights />
       </body>
     </html>
   );
