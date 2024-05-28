@@ -14,6 +14,8 @@ import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 import "./globals.css";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const LiveVisualEditing = dynamic(
   () => import("@/sanity/preview/live-visual-editing"),
@@ -67,7 +69,7 @@ export default function RootLayout({
     <html lang={params.lang} suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-dvh bg-background font-sans text-foreground antialiased",
+          "m-auto min-h-dvh max-w-4xl bg-background font-sans text-foreground antialiased",
           GeistSans.variable,
           SubjectivitySerif.variable,
           GeistMono.variable,
@@ -79,7 +81,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Footer />
           {draftMode().isEnabled && <LiveVisualEditing />}
           <SpeedInsights />
           <Analytics />
