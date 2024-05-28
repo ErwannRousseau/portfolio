@@ -1,7 +1,5 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
 import Connect from "@/components/connect";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
@@ -18,8 +16,7 @@ type HomeProps = {
 
 export default function HomePage({ data, dict }: HomeProps) {
   return (
-    <main className="m-auto max-w-4xl">
-      <Header />
+    <main>
       <Spacing />
       <Hero data={data} />
       <Spacing />
@@ -32,8 +29,6 @@ export default function HomePage({ data, dict }: HomeProps) {
       <Skills skills={data?.skills} title={dict.Skills} />
       <Spacing />
       <Connect title={dict.Connect} />
-      <Spacing size="md" />
-      <Footer />
     </main>
   );
 }
