@@ -63,5 +63,13 @@ export default defineType({
         },
       ],
     }),
+    defineArrayMember({
+      type: "code",
+      name: "code",
+      title: "Code example",
+      options: {
+        withFilename: true,
+      },
+    }),
   ],
 });

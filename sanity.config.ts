@@ -7,6 +7,7 @@ import { apiVersion, dataset, projectId } from "@/sanity/env";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import { schema } from "@/sanity/schema";
 import home from "@/sanity/schemas/singletons/home";
+import { codeInput } from "@sanity/code-input";
 import { colorInput } from "@sanity/color-input";
 import { languageFilter } from "@sanity/language-filter";
 import { visionTool } from "@sanity/vision";
@@ -39,5 +40,6 @@ export default defineConfig({
       apiVersion,
     }),
     colorInput(),
+    codeInput(),
   ],
 });

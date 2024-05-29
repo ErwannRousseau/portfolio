@@ -5,6 +5,7 @@ import duration from "./schemas/objects/duration";
 import localizedBlockContent from "./schemas/objects/localizedBlockContent";
 import localizedString from "./schemas/objects/localizedString";
 import tags from "./schemas/objects/tags";
+import post from "./schemas/post";
 import projects from "./schemas/projects";
 import home from "./schemas/singletons/home";
 import skills from "./schemas/skills";
@@ -16,6 +17,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projects,
     works,
     skills,
+    post,
     // Objects
     localizedString,
     localizedBlockContent,

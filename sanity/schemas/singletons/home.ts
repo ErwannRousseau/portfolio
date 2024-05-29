@@ -6,18 +6,38 @@ export default defineType({
   title: "Home",
   type: "document",
   icon: Home,
+  groups: [
+    {
+      name: "hero",
+      title: "Hero",
+    },
+    {
+      name: "projects",
+      title: "Projects",
+    },
+    {
+      name: "works",
+      title: "Works",
+    },
+    {
+      name: "skills",
+      title: "Skills",
+    },
+  ],
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
+      group: "hero",
     }),
     defineField({
       name: "subtitle",
       title: "Subtitle",
       type: "localizedString",
       validation: (rule) => rule.required(),
+      group: "hero",
     }),
     defineField({
       name: "profilePicture",
@@ -27,6 +47,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      group: "hero",
     }),
     defineField({
       name: "overview",
@@ -35,6 +56,7 @@ export default defineType({
       title: "Overview",
       type: "localizedBlockContent",
       validation: (rule) => rule.required(),
+      group: "hero",
     }),
     defineField({
       name: "projects",
@@ -42,6 +64,7 @@ export default defineType({
       type: "array",
       of: [defineArrayMember({ type: "projects" })],
       validation: (rule) => rule.required(),
+      group: "projects",
     }),
     defineField({
       name: "works",
@@ -49,6 +72,7 @@ export default defineType({
       type: "array",
       of: [defineArrayMember({ type: "works" })],
       validation: (rule) => rule.required(),
+      group: "works",
     }),
     defineField({
       name: "skills",
@@ -56,6 +80,7 @@ export default defineType({
       type: "array",
       of: [defineArrayMember({ type: "skills" })],
       validation: (rule) => rule.required(),
+      group: "skills",
     }),
   ],
   preview: {

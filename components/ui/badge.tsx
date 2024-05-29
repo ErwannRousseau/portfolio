@@ -35,7 +35,7 @@ function Badge({ className, ...props }: BadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold text-xs focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        "inline-flex h-fit items-center rounded-full border px-2.5 py-0.5 font-semibold text-xs focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
         className,
       )}
       {...props}
