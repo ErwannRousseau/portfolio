@@ -35,3 +35,16 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
     },
     skills
   }`;
+
+export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)]{
+  "title" : coalesce(
+    title[$lang], 
+    title[$defaultLocale]
+  ),
+  "subtitle": coalesce(
+    subtitle[$lang],
+    subtitle[$defaultLocale]
+  ),
+  mainImage,
+  slug,
+}`;

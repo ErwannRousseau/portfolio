@@ -70,12 +70,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type Tags = {
   _id: string;
   _type: "tags";
@@ -126,7 +120,40 @@ export type BlockContent = Array<{
   alt?: string;
   _type: "image";
   _key: string;
-}>;
+} | ({
+  _key: string;
+} & Code)>;
+
+export type Post = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  slug?: Slug;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  publishedAt?: string;
+  body?: LocalizedBlockContent;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
 
 export type Skills = {
   _type: "skills";
@@ -159,7 +186,6 @@ export type Projects = {
   link?: string;
   icon?: string;
 };
-
 
 export type Home = {
   _id: string;
@@ -251,6 +277,14 @@ export type LocalizedString = {
   fr?: string;
 };
 
+export type Code = {
+  _type: "code";
+  language?: string;
+  filename?: string;
+  code?: string;
+  highlightedLines?: Array<number>;
+};
+
 export type Color = {
   _type: "color";
   hex?: string;
@@ -287,7 +321,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: sanity/lib/queries.ts
 // Variable: HOME_QUERY
-// Query: *[_type == "home"][0]{    _id,    title,    "subtitle" : coalesce(      subtitle[$lang],       subtitle[$defaultLocale]    ),    "overview" : coalesce(      overview["fr"],       overview["en"]    ),    profilePicture,    projects[]{      ...,       "description" : coalesce(        description[$lang],         description[$defaultLocale]      ),    },    works[]{      ...,      'tags': tags[]->{        "name" : coalesce(          name[$lang],           name[$defaultLocale]        ),        "color" : color.rgb      }    },    skills  }
+// Query: *[_type == "home"][0]{    _id,    title,    "subtitle" : coalesce(      subtitle[$lang],       subtitle[$defaultLocale]    ),    "overview" : coalesce(      overview[$lang],       overview[$defaultLocale]    ),    profilePicture,    projects[]{      ...,       "description" : coalesce(        description[$lang],         description[$defaultLocale]      ),    },    works[]{      ...,      "tags": tags[]->{        "name" : coalesce(          name[$lang],           name[$defaultLocale]        ),        "color" : color.rgb      },      "job" : coalesce(        job[$lang],         job[$defaultLocale]      ),    },    skills  }
 export type HOME_QUERYResult = {
   _id: string;
   title: string | null;
@@ -298,4 +332,12 @@ export type HOME_QUERYResult = {
   works: Array<Works> | null;
   skills: Array<Skills> | null;
 } | null;
+
+// Variable: BLOG_QUERY
+// Query: *[_type == "post" && defined(slug)]{  "title" : coalesce(    title[$lang],     title[$defaultLocale]  ),  "subtitle": coalesce(    subtitle[$lang],    subtitle[$defaultLocale]  ),  mainImage}
+export type BLOG_QUERYResult = Array<{
+  title: string | null;
+  subtitle: string | null;
+  mainImage: Image | null;
+}>;
 

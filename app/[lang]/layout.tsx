@@ -29,8 +29,11 @@ export async function generateMetadata({
   const { data } = await loadHomePage(params.lang);
   const ogImage = urlForOpenGraphImage(data?.profilePicture);
 
+  // it's not clean but it works
+  const where = params.lang === "fr" ? "à Nantes" : "in Nantes";
+
   return {
-    title: `${data?.title} | ${data?.subtitle} in Nantes`,
+    title: `${data?.title} | ${data?.subtitle} ${where}`,
     description: data?.overview && toPlainText(data.overview),
     icons: {
       icon: [
