@@ -5,7 +5,6 @@ import { i18n } from "@/i18n.config";
 import type { BLOG_QUERYResult, HOME_QUERYResult } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import { token } from "@/sanity/lib/token";
-import type { SanityDocument } from "next-sanity";
 import { BLOG_QUERY, HOME_QUERY } from "./queries";
 
 queryStore.setServerClient(client.withConfig({ token }));

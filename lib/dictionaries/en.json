@@ -1,6 +1,10 @@
 {
+  "Nav": {
+    "Home": "Home"
+  },
   "Projects": "Projects",
   "Works": { "title": "Works", "current": "Now" },
   "Skills": "Skills",
-  "Connect": "Connect"
+  "Connect": "Connect",
+  "Blog": "My blog"
 }

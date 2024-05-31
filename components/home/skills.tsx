@@ -2,7 +2,7 @@ import { Section } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Skills as TSkills } from "@/sanity.types";
 
-import { InlineSVG } from "./utils/inline-svg";
+import { InlineSVG } from "@/components/utils/inline-svg";
 
 type SkillsProps = {
   skills?: TSkills[] | null;

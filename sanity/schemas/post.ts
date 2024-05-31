@@ -55,7 +55,8 @@ export default defineType({
 
   preview: {
     select: {
-      title: "title",
+      title: "title.en",
+      subtitle: "subtitle.en",
       media: "mainImage",
     },
     prepare(selection) {

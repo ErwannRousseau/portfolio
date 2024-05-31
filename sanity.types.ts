@@ -132,7 +132,7 @@ export type Post = {
   _rev: string;
   title?: LocalizedString;
   subtitle?: LocalizedString;
-  slug?: Slug;
+  slug: Slug;
   mainImage?: {
     asset?: {
       _ref: string;
@@ -151,7 +151,7 @@ export type Post = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -169,7 +169,7 @@ export type Works = {
   job: string;
   link?: string;
   tags?: Array<Tags>;
-  duration?: Duration;
+  duration: Duration;
 };
 
 export type Duration = {
@@ -339,5 +339,7 @@ export type BLOG_QUERYResult = Array<{
   title: string | null;
   subtitle: string | null;
   mainImage: Image | null;
+  publishedAt: string | null;
+  slug: Slug;
 }>;
 

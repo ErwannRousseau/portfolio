@@ -1,10 +1,10 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
+import { Badge } from "@/components/ui/badge";
+import { DateFormat } from "@/components/utils/date-format";
+import { InlineSVG } from "@/components/utils/inline-svg";
 import { rgbColorToString } from "@/lib/utils";
 import type { Works as TWorks } from "@/sanity.types";
 import Link from "next/link";
-import { Badge } from "./ui/badge";
-import { DateFormat } from "./utils/date-format";
-import { InlineSVG } from "./utils/inline-svg";
 
 type WorksProps = {
   works?: TWorks[] | null;
@@ -45,7 +45,7 @@ export default function Works({ works, dict }: WorksProps) {
                 </div>
                 <div className="flex justify-between text-muted-foreground text-sm">
                   <p className="mr-2">{job}</p>
-                  <DateFormat date={duration} current={dict.current} />
+                  <DateFormat date={duration} dict={dict.current} isDuration />
                 </div>
               </div>
             </Link>
