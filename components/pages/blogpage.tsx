@@ -1,29 +1,43 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
+import { Section, Spacing } from "@/components/ui";
+import { DateFormat } from "@/components/utils/date-format";
 import type { BLOG_QUERYResult } from "@/sanity.types";
 import type { EncodeDataAttributeCallback } from "@sanity/react-loader";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export type BlogPageProps = {
-  data: BLOG_QUERYResult;
+  posts: BLOG_QUERYResult;
   encodeDataAttribute?: EncodeDataAttributeCallback;
-  dict: Awaited<ReturnType<typeof getDictionary>>;
+  title: Awaited<ReturnType<typeof getDictionary>>["Blog"];
 };
 
-export default function BlogPage({ data, dict }: BlogPageProps) {
-  console.log(data);
-
+export default function BlogPage({ posts, title }: BlogPageProps) {
   return (
-    <main className="container mx-auto grid grid-cols-1 divide-y divide-blue-100">
-      {data.length ? (
-        data.map((post, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <div key={index}>
-            <h3>{post.title}</h3>
-            <p>{post.subtitle}</p>
-          </div>
-        ))
-      ) : (
-        <div className="p-4 text-red-500">No posts found</div>
-      )}
+    <main>
+      <Spacing />
+      <h2 className="pl-4">{title}</h2>
+      <Spacing size="xs" />
+      <Section className="flex-col gap-0 px-0">
+        {posts ? (
+          posts.map(({ title, subtitle, publishedAt, slug }) => (
+            <Link
+              href={{ pathname: `/blog/${slug.current}` }}
+              className="flex justify-between rounded-md p-4 transition-colors hover:bg-accent/50"
+              key={title}
+            >
+              <div>
+                <DateFormat date={publishedAt} />
+                <p className="font-semibold text-lg">{title}</p>
+                <p className="text-muted-foreground leading-3">{subtitle}</p>
+              </div>
+              <ArrowUpRight className="self-center" />
+            </Link>
+          ))
+        ) : (
+          <p>No posts found</p>
+        )}
+      </Section>
     </main>
   );
 }

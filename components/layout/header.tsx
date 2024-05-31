@@ -1,9 +1,14 @@
+import { getDictionary } from "@/app/[lang]/dictionaries";
 import { Icons, Spacing, buttonVariants } from "@/components/ui";
 import { ThemeToggle } from "@/components/utils/theme-toggle";
+import type { Locale } from "@/i18n.config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Nav from "./nav";
 
-export default function Header() {
+export default async function Header({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang);
+
   return (
     <header className="p-4">
       <div className="flex items-baseline">
@@ -34,16 +39,7 @@ export default function Header() {
         </ul>
       </div>
       <Spacing size="xs" />
-      <nav>
-        <ul className="flex gap-4">
-          <li>
-            <Link href={{ pathname: "/" }}>Home</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-        </ul>
-      </nav>
+      <Nav dict={dict.Nav} />
     </header>
   );
 }

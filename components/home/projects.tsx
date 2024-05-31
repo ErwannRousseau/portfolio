@@ -1,9 +1,7 @@
-"use client";
-
+import { InlineSVG } from "@/components/utils/inline-svg";
 import type { Projects as TProjects } from "@/sanity.types";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { InlineSVG } from "./utils/inline-svg";
 
 type ProjectsProps = {
   projects?: TProjects[] | null;

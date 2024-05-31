@@ -1,6 +1,10 @@
 {
+  "Nav": {
+    "Home": "Accueil"
+  },
   "Projects": "Projets",
   "Works": { "title": "Expériences", "current": "Actuel" },
   "Skills": "Compétences",
-  "Connect": "Contact"
+  "Connect": "Contact",
+  "Blog": "Mon blog"
 }
