@@ -1,10 +1,10 @@
 import type { getDictionary } from "@/app/[lang]/dictionaries";
-import Connect from "@/components/connect";
-import Hero from "@/components/hero";
-import Projects from "@/components/projects";
-import Skills from "@/components/skills";
+import Connect from "@/components/home/connect";
+import Hero from "@/components/home/hero";
+import Projects from "@/components/home/projects";
+import Skills from "@/components/home/skills";
+import Works from "@/components/home/works";
 import { Section, Spacing } from "@/components/ui";
-import Works from "@/components/works";
 import type { HOME_QUERYResult } from "@/sanity.types";
 import type { EncodeDataAttributeCallback } from "@sanity/react-loader";
 

@@ -36,7 +36,7 @@ export const HOME_QUERY = groq`*[_type == "home"][0]{
     skills
   }`;
 
-export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)]{
+export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)] | order(publishedAt desc){
   "title" : coalesce(
     title[$lang], 
     title[$defaultLocale]
@@ -45,6 +45,7 @@ export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)]{
     subtitle[$lang],
     subtitle[$defaultLocale]
   ),
+  publishedAt,
   mainImage,
   slug,
 }`;

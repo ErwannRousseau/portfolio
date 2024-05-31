@@ -10,7 +10,7 @@ import { type QueryResponseInitial, useQuery } from "@sanity/react-loader";
 type BlogPagePreviewProps = {
   initial: QueryResponseInitial<BLOG_QUERYResult>;
   lang: Locale;
-  dict: Awaited<ReturnType<typeof getDictionary>>;
+  dict: Awaited<ReturnType<typeof getDictionary>>["Blog"];
 };
 
 export default function BlogPagePreview({
@@ -26,9 +26,9 @@ export default function BlogPagePreview({
 
   return (
     <BlogPage
-      data={data}
+      posts={data}
       encodeDataAttribute={encodeDataAttribute}
-      dict={dict}
+      title={dict}
     />
   );
 }

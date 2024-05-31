@@ -16,8 +16,8 @@ export default async function Blog({
   const dict = await getDictionary(lang);
 
   if (draftMode().isEnabled) {
-    return <BlogPagePreview initial={initial} lang={lang} dict={dict} />;
+    return <BlogPagePreview initial={initial} lang={lang} dict={dict.Blog} />;
   }
 
-  return <BlogPage data={initial.data} dict={dict} />;
+  return <BlogPage posts={initial.data} title={dict.Blog} />;
 }
