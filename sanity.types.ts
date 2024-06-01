@@ -338,8 +338,24 @@ export type HOME_QUERYResult = {
 export type BLOG_QUERYResult = Array<{
   title: string | null;
   subtitle: string | null;
-  mainImage: Image | null;
+  mainImage: Image;
   publishedAt: string | null;
   slug: Slug;
 }>;
+
+// Variable: POST_QUERY
+// Query: *[_type == "post" && slug.current == $slug][0]
+export type POST_QUERYResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  slug?: Slug;
+  mainImage: Image;
+  publishedAt?: string;
+  body?: LocalizedBlockContent;
+} | null;
 

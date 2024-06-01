@@ -19,5 +19,5 @@ export default async function Blog({
     return <BlogPagePreview initial={initial} lang={lang} dict={dict.Blog} />;
   }
 
-  return <BlogPage posts={initial.data} title={dict.Blog} />;
+  return <BlogPage posts={initial.data} title={dict.Blog} lang={lang} />;
 }
