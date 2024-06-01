@@ -13,7 +13,7 @@ export const urlForImage = (source: Image | undefined) => {
     return undefined;
   }
 
-  return imageBuilder?.image(source).auto("format").fit("max");
+  return imageBuilder.image(source).auto("format").fit("max");
 };
 
 export function urlForOpenGraphImage(image: Image | undefined) {
