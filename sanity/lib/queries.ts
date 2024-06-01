@@ -49,3 +49,19 @@ export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)] | order(publi
   mainImage,
   slug,
 }`;
+
+export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
+  ...,
+  "title" : coalesce(
+    title[$lang], 
+    title[$defaultLocale]
+  ),
+  "subtitle": coalesce(
+    subtitle[$lang],
+    subtitle[$defaultLocale]
+  ),
+  "body" : coalesce(
+    body[$lang], 
+    body[$defaultLocale]
+  ),
+}`;
