@@ -37,7 +37,6 @@ export default function BlogPage({ posts, title, lang }: BlogPageProps) {
                   width={100}
                   height={100}
                   className="rounded max-md:hidden"
-                  loading="lazy"
                 />
                 <div>
                   <DateFormat date={publishedAt} />

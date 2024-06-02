@@ -29,6 +29,7 @@ export default function BlogPagePreview({
       posts={data}
       encodeDataAttribute={encodeDataAttribute}
       title={dict}
+      lang={lang}
     />
   );
 }

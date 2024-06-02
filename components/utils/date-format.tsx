@@ -5,7 +5,7 @@ import type { Duration } from "@/sanity.types";
 import { useParams } from "next/navigation";
 
 type DateFormatProps = {
-  date: Duration | string | null;
+  date: Duration | string | undefined;
   dict?: string;
   isDuration?: boolean;
 };
@@ -54,7 +54,7 @@ export const DateFormat = ({
 
   const dateString = date as string;
   return (
-    <div className="text-sm">
+    <div className="text-muted-foreground text-xs">
       <time dateTime={dateString}>{formatDate(dateString)}</time>
     </div>
   );

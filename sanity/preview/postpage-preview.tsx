@@ -9,17 +9,17 @@ import { type QueryResponseInitial, useQuery } from "@sanity/react-loader";
 
 type BlogPagePreviewProps = {
   initial: QueryResponseInitial<POST_QUERYResult>;
-  lang: Locale;
+  params: { slug: string; lang: Locale };
   dict: Awaited<ReturnType<typeof getDictionary>>["Blog"];
 };
 
 export default function PostPagePreview({
   initial,
-  lang,
+  params: { lang, slug },
 }: BlogPagePreviewProps) {
   const { data, encodeDataAttribute } = useQuery(
     POST_QUERY,
-    { lang, defaultLocale: i18n.defaultLocale },
+    { lang, slug, defaultLocale: i18n.defaultLocale },
     { initial },
   );
 
