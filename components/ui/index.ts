@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "./button";
+import { Button, type ButtonProps, buttonVariants } from "./button";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
 import { Icons } from "./icons";
 import { Section } from "./section";
@@ -15,3 +15,5 @@ export {
   CardHeader,
   CardTitle,
 };
+
+export type { ButtonProps };
