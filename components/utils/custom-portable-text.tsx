@@ -5,7 +5,8 @@ import {
   type PortableTextBlock,
   type PortableTextComponents,
 } from "next-sanity";
-import { Highlighter } from "./highlighter";
+import CodeBlockWrapper from "./code-block-wrapper";
+// import { Highlighter } from "./highlighter";
 
 export function CustomPortableText({
   value,
@@ -48,7 +49,7 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }) => (
-        <Highlighter codeInput={value.code} language={value.language} />
+        <CodeBlockWrapper code={value.code} language={value.language} />
       ),
     },
   };
