@@ -48,7 +48,7 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }) => (
-        <Highlighter codeInput={value.codeInput} language={value.language} />
+        <Highlighter codeInput={value.code} language={value.language} />
       ),
     },
   };
