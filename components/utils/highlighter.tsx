@@ -23,5 +23,5 @@ export const Highlighter = async ({
     lang: language,
   });
 
-  return <>{code}</>;
+  return <div>{code}</div>;
 };

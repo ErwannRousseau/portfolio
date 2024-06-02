@@ -9,14 +9,18 @@ const PostPagePreview = dynamic(
   () => import("@/sanity/preview/postpage-preview"),
 );
 
-export default async function Post({
-  params: { slug, lang },
-}: { params: { slug: string; lang: Locale } }) {
+export default async function Post(props: {
+  params: { slug: string; lang: Locale };
+}) {
+  const { params } = props;
+  const { slug, lang } = params;
   const initial = await loadPostPage(slug, lang);
   const dict = await getDictionary(lang);
 
   if (draftMode().isEnabled) {
-    return <PostPagePreview initial={initial} lang={lang} dict={dict.Blog} />;
+    return (
+      <PostPagePreview initial={initial} params={params} dict={dict.Blog} />
+    );
   }
 
   return <PostPage post={initial.data} />;

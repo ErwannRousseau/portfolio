@@ -339,7 +339,7 @@ export type BLOG_QUERYResult = Array<{
   title: string | null;
   subtitle: string | null;
   mainImage: Image;
-  publishedAt: string | null;
+  publishedAt?: string ;
   slug: Slug;
 }>;
 
@@ -351,11 +351,11 @@ export type POST_QUERYResult = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: LocalizedString;
-  subtitle?: LocalizedString;
+  title?: string;
+  subtitle?: string;
   slug?: Slug;
   mainImage: Image;
   publishedAt?: string;
-  body?: LocalizedBlockContent;
+  body?: BlockContent;
 } | null;
 
