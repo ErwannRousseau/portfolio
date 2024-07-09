@@ -5,8 +5,9 @@ import {
   type PortableTextBlock,
   type PortableTextComponents,
 } from "next-sanity";
+import Image from "next/image";
+import { Suspense } from "react";
 import CodeBlockWrapper from "./code-block-wrapper";
-// import { Highlighter } from "./highlighter";
 
 export function CustomPortableText({
   value,
@@ -49,7 +50,19 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }) => (
-        <CodeBlockWrapper code={value.code} language={value.language} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <CodeBlockWrapper code={value.code} language={value.language} />
+        </Suspense>
+      ),
+      image: ({ value }) => (
+        <Image
+          src={urlForImage(value)?.url() || ""}
+          alt={value.alt}
+          className="rounded"
+          width={500}
+          height={500}
+          loading="lazy"
+        />
       ),
     },
   };

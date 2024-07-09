@@ -13,20 +13,23 @@ export type PostPageProps = {
 };
 
 export default function PostPage({ post }: PostPageProps) {
+  const imageUrl = (quality: number) =>
+    `${urlForImage(post?.mainImage)?.url()}&q=${quality}`;
   return (
     <main>
       <Section className="flex-col">
         <article>
-          <div className="relative mb-2 aspect-video">
-            <Image
-              alt={`post image ${post?.title}`}
-              src={urlForImage(post?.mainImage)?.url() || ""}
-              className="rounded"
-              fill
-            />
-          </div>
+          <Image
+            alt={`post image ${post?.title}`}
+            src={imageUrl(100) || ""}
+            className="mb-2 aspect-video rounded object-cover"
+            width={896}
+            height={304}
+            placeholder="blur"
+            blurDataURL={imageUrl(50)}
+          />
           <DateFormat date={post?.publishedAt} />
-          <h2 className="pb-4 text-center">{post?.title}</h2>
+          <h1 className="pb-4 text-center">{post?.title}</h1>
           <CustomPortableText value={post?.body as PortableTextBlock[]} />
         </article>
       </Section>
