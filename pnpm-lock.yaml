@@ -90,8 +90,8 @@ importers:
         specifier: ^3.38.0
         version: 3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       sanity-plugin-simpler-color-input:
-        specifier: ^2.2.1
-        version: 2.2.1(@babel/runtime@7.24.4)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))
+        specifier: ^2.2.2
+        version: 2.2.2(@babel/runtime@7.24.4)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))
       styled-components:
         specifier: ^6.1.11
         version: 6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -4111,8 +4111,8 @@ packages:
       sanity: ^3.36.4
       styled-components: ^6.1
 
-  sanity-plugin-simpler-color-input@2.2.1:
-    resolution: {integrity: sha512-Gk+ksPzEzhUVTqB4K73+r8Bm6NMq072YOioQwLItvJXnyqC7gpW2ZGrehk+Ojsj4NrUTlmlRgMIPngZZ5dpVPQ==}
+  sanity-plugin-simpler-color-input@2.2.2:
+    resolution: {integrity: sha512-LJwcFB/x4bNQicBPkeOGMfBtp8//sZHdXEQg0HHeO+S+bfQ47ZoMqm7gQikXVIajWK0/DaNlvTrP64JP+qVAJA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@sanity/ui': ^1.0 || ^2.0.0-beta
@@ -9057,7 +9057,7 @@ snapshots:
     transitivePeerDependencies:
       - '@sanity/util'
 
-  sanity-plugin-simpler-color-input@2.2.1(@babel/runtime@7.24.4)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0))):
+  sanity-plugin-simpler-color-input@2.2.2(@babel/runtime@7.24.4)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0))):
     dependencies:
       '@sanity/icons': 2.11.8(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
