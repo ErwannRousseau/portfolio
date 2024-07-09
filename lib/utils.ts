@@ -15,3 +15,7 @@ export function rgbColorToString(color: { r: number; g: number; b: number }) {
 export function formatDate(date: string) {
   return new Intl.DateTimeFormat().format(new Date(date));
 }
+
+export async function copyToClipboard(value: string) {
+  navigator.clipboard.writeText(value);
+}
