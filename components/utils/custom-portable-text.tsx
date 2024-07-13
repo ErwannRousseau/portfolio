@@ -7,7 +7,8 @@ import {
 } from "next-sanity";
 import Image from "next/image";
 import { Suspense } from "react";
-import CodeBlockWrapper from "./code-block-wrapper";
+import CodeBlock from "./code-block";
+import { CodeBlockWrapper } from "./code-block-wrapper";
 
 export function CustomPortableText({
   value,
@@ -36,7 +37,7 @@ export function CustomPortableText({
               </BadgeLink>
             ) : (
               <a
-                className="underline transition hover:opacity-50"
+                className="cursor-pointer text-pink-400 underline transition hover:opacity-70"
                 href={value?.href}
                 rel="noreferrer noopener"
                 target="_blank"
@@ -50,8 +51,11 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }) => (
+        // Suspense is required for the code block to work as possible in the sanity studio live preview
         <Suspense fallback={<div>Loading...</div>}>
-          <CodeBlockWrapper code={value.code} language={value.language} />
+          <CodeBlockWrapper code={value.code}>
+            <CodeBlock code={value.code} language={value.language} />
+          </CodeBlockWrapper>
         </Suspense>
       ),
       image: ({ value }) => (
