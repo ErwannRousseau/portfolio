@@ -71,12 +71,12 @@ importers:
       lucide-react:
         specifier: ^0.372.0
         version: 0.372.0(react@18.2.0)
-      negotiator:
-        specifier: ^0.6.3
-        version: 0.6.3
       next:
         specifier: 14.2.4
         version: 14.2.4(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next-international:
+        specifier: ^1.2.4
+        version: 1.2.4
       next-sanity:
         specifier: 9.0.7
         version: 9.0.7(@sanity/client@6.15.19)(@sanity/icons@3.3.0(react@18.2.0))(@sanity/types@3.39.1)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(next@14.2.4(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
@@ -3224,6 +3224,9 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  international-types@0.8.1:
+    resolution: {integrity: sha512-tajBCAHo4I0LIFlmQ9ZWfjMWVyRffzuvfbXCd6ssFt5u1Zw15DN0UBpVTItXdNa1ls+cpQt3Yw8+TxsfGF8JcA==}
+
   into-stream@6.0.0:
     resolution: {integrity: sha512-XHbaOAvP+uFKUFsOgoNPRjLkwB+I22JFPFe5OjTkQ0nwgj6+pSjb4NmB6VMxaPshLiOf+zcpOCBQuLwC1KHhZA==}
     engines: {node: '>=10'}
@@ -3615,9 +3618,8 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
-  negotiator@0.6.3:
-    resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
-    engines: {node: '>= 0.6'}
+  next-international@1.2.4:
+    resolution: {integrity: sha512-JQvp+h2iSgA/t8hu5S/Lwow1ZErJutQRdpnplxjv4VTlCiND8T95fYih8BjkHcVhQbtM+Wu9Mb1CM32wD9hlWQ==}
 
   next-sanity@9.0.7:
     resolution: {integrity: sha512-2q42UFAEL9SZva74DLn0FZ8OaqULVFQbjYuw/hGq2KtKbCRqNOZJaXqvOfPUfdRE2FRDIn7WZ11Pvyf0knHbVA==}
@@ -8414,6 +8416,8 @@ snapshots:
 
   inherits@2.0.4: {}
 
+  international-types@0.8.1: {}
+
   into-stream@6.0.0:
     dependencies:
       from2: 2.3.0
@@ -8753,7 +8757,11 @@ snapshots:
 
   nanoid@5.0.7: {}
 
-  negotiator@0.6.3: {}
+  next-international@1.2.4:
+    dependencies:
+      client-only: 0.0.1
+      international-types: 0.8.1
+      server-only: 0.0.1
 
   next-sanity@9.0.7(@sanity/client@6.15.19)(@sanity/icons@3.3.0(react@18.2.0))(@sanity/types@3.39.1)(@sanity/ui@2.1.7(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(next@14.2.4(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.38.0(@types/node@20.14.10)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:

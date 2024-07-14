@@ -1,18 +1,21 @@
+"use server";
+
 import { Section } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Skills as TSkills } from "@/sanity.types";
 
 import { InlineSVG } from "@/components/utils/inline-svg";
+import { getI18n } from "@/lib/locales/server";
 
 type SkillsProps = {
   skills?: TSkills[] | null;
-  title: string;
 };
 
-export default function Skills({ skills, title }: SkillsProps) {
+export default async function Skills({ skills }: SkillsProps) {
+  const t = await getI18n();
   return (
     <Section className="flex-col">
-      <h2>{title}</h2>
+      <h2>{t("Skills")}</h2>
       <ul className="flex flex-wrap items-center gap-2.5">
         {(skills ?? []).map((skill) => {
           return (

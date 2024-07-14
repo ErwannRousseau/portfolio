@@ -1,14 +1,10 @@
-import { getDictionary } from "@/app/[lang]/dictionaries";
 import { Icons, Spacing, buttonVariants } from "@/components/ui";
 import { ThemeToggle } from "@/components/utils/theme-toggle";
-import type { Locale } from "@/i18n.config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Nav from "./nav";
 
-export default async function Header({ lang }: { lang: Locale }) {
-  const dict = await getDictionary(lang);
-
+export default async function Header() {
   return (
     <header className="p-4">
       <div className="flex items-baseline">
@@ -39,7 +35,7 @@ export default async function Header({ lang }: { lang: Locale }) {
         </ul>
       </div>
       <Spacing size="xs" />
-      <Nav dict={dict.Nav} />
+      <Nav />
     </header>
   );
 }
