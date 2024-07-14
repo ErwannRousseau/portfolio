@@ -1,10 +1,14 @@
+"use server";
+
 import { Section } from "@/components/ui/section";
+import { getI18n } from "@/lib/locales/server";
 import Link from "next/link";
 
-export default function Connect({ title }: { title: string }) {
+export default async function Connect() {
+  const t = await getI18n();
   return (
     <Section className="flex-col">
-      <h2>{title}</h2>
+      <h2>{t("Connect")}</h2>
       <ul className="contact-list flex w-fit gap-6 font-medium">
         <li className="transition-opacit">
           <Link href="mailto:erwann.rousseau@icloud.com?subject=Prise de contact">

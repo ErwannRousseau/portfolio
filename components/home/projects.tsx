@@ -1,17 +1,20 @@
+"use server";
+
 import { InlineSVG } from "@/components/utils/inline-svg";
+import { getI18n } from "@/lib/locales/server";
 import type { Projects as TProjects } from "@/sanity.types";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 type ProjectsProps = {
   projects?: TProjects[] | null;
-  title: string;
 };
 
-export default function Projects({ projects, title }: ProjectsProps) {
+export default async function Projects({ projects }: ProjectsProps) {
+  const t = await getI18n();
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
-      <h2 className="px-3">{title}</h2>
+      <h2 className="px-3">{t("Projects")}</h2>
       <ul className="first-of-type:-mt-3">
         {(projects ?? []).map(({ title, description, link, icon }) => (
           <li key={title} className="leading-5">

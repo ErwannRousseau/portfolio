@@ -1,6 +1,9 @@
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
 import { type Locale, i18n } from "@/i18n.config";
+import { I18nProviderClient } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
@@ -14,8 +17,7 @@ import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 import "./globals.css";
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
+import { getI18n } from "@/lib/locales/server";
 
 const LiveVisualEditing = dynamic(
   () => import("@/sanity/preview/live-visual-editing"),
@@ -26,14 +28,12 @@ export async function generateMetadata({
 }: Readonly<{
   params: { lang: Locale };
 }>): Promise<Metadata> {
+  const t = await getI18n();
   const { data } = await loadHomePage(params.lang);
   const ogImage = urlForOpenGraphImage(data?.profilePicture);
 
-  // it's not clean but it works
-  const where = params.lang === "fr" ? "à Nantes" : "in Nantes";
-
   return {
-    title: `${data?.title} | ${data?.subtitle} ${where}`,
+    title: `${data?.title} | ${data?.subtitle} ${t("Metadata.where")}`,
     description: data?.overview && toPlainText(data.overview),
     icons: {
       icon: [
@@ -47,7 +47,7 @@ export async function generateMetadata({
       ],
     },
     openGraph: {
-      title: `${data?.title} | ${data?.subtitle} in Nantes`,
+      title: `${data?.title} | ${data?.subtitle} ${t("Metadata.where")}`,
       description: data?.overview ? toPlainText(data.overview) : undefined,
       url: "https://erwannrousseau.com",
       siteName: `${data?.title} | ${data?.subtitle}`,
@@ -84,10 +84,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header lang={params.lang} />
-          {children}
-          <Footer />
-          {draftMode().isEnabled && <LiveVisualEditing />}
+          <I18nProviderClient locale={params.lang}>
+            <Header />
+            {children}
+            <Footer />
+            {draftMode().isEnabled && <LiveVisualEditing />}
+          </I18nProviderClient>
           <SpeedInsights />
           <Analytics />
         </ThemeProvider>

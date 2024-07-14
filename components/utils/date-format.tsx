@@ -1,21 +1,19 @@
-"use client";
+"use server";
 
-import type { Locale } from "@/i18n.config";
+import { getCurrentLocale, getI18n } from "@/lib/locales/server";
 import type { Duration } from "@/sanity.types";
-import { useParams } from "next/navigation";
 
 type DateFormatProps = {
   date: Duration | string | undefined;
-  dict?: string;
   isDuration?: boolean;
 };
 
-export const DateFormat = ({
+export const DateFormat = async ({
   date,
-  dict,
   isDuration = false,
 }: DateFormatProps) => {
-  const { lang } = useParams<{ lang: Locale }>();
+  const t = await getI18n();
+  const lang = getCurrentLocale();
 
   const options: Intl.DateTimeFormatOptions = isDuration
     ? {
@@ -41,7 +39,7 @@ export const DateFormat = ({
         </time>
         {duration.current || (duration.end ? " - " : null)}
         {duration.current && (
-          <span className="whitespace-nowrap"> - {dict}</span>
+          <span className="whitespace-nowrap"> - {t("Works.current")}</span>
         )}
         {duration.end && (
           <time dateTime={duration.end} className="whitespace-nowrap">

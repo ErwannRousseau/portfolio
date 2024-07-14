@@ -1,14 +1,14 @@
 "use client";
 
-import type { getDictionary } from "@/app/[lang]/dictionaries";
+import type { Locale } from "@/i18n.config";
+import { useI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
-export default function Nav({
-  dict,
-}: { dict: Awaited<ReturnType<typeof getDictionary>>["Nav"] }) {
-  const { lang } = useParams();
+export default function Nav() {
+  const t = useI18n();
+  const { lang } = useParams<{ lang: Locale }>();
   const pathname = usePathname();
 
   return (
@@ -21,7 +21,7 @@ export default function Nav({
               "font-semibold": pathname === `/${lang}`,
             })}
           >
-            {dict.Home}
+            {t("Nav.Home")}
           </Link>
         </li>
         <li>
