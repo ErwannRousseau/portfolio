@@ -1,6 +1,7 @@
 export default {
   Nav: {
     Home: "Accueil",
+    Back: "Retour",
   },
   Projects: "Projets",
   Works: { title: "Expériences", current: "Actuel" },
