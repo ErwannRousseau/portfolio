@@ -8,4 +8,9 @@ export default {
   Connect: "Connect",
   Blog: "My blog",
   Metadata: { where: "in Nantes" },
+  CodeBlock: {
+    copy: "Copy to clipboard",
+    expand: "Expand",
+    collapse: "Collapse",
+  },
 } as const;

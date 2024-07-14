@@ -1,5 +1,6 @@
 "use client";
 
+import { useScopedI18n } from "@/lib/locales/client";
 import { cn, copyToClipboard } from "@/lib/utils";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import * as React from "react";
@@ -16,6 +17,7 @@ interface CopyButtonProps extends ButtonProps {
 }
 
 export function CopyButton({ value, className, ...props }: CopyButtonProps) {
+  const t = useScopedI18n("CodeBlock");
   const [hasCopied, setHasCopied] = React.useState(false);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: This effect should run every time `hasCopied` changes
@@ -43,12 +45,12 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
             }}
             {...props}
           >
-            <span className="sr-only">Copy</span>
+            <span className="sr-only">{t("copy")}</span>
             {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Copy to clipboard</p>
+          <p>{t("copy")}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
