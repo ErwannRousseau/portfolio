@@ -30,6 +30,7 @@ export default function Nav({
             className={cn({
               "font-semibold": pathname.includes(`/${lang}/blog`),
             })}
+            prefetch={true}
           >
             Blog
           </Link>

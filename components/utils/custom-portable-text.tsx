@@ -55,7 +55,11 @@ export function CustomPortableText({
         <CodeBlockWrapper code={value.code} filename={value.filename}>
           {/* // Suspense is required for the code block to work as possible in the
           Sanity studio live preview */}
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="h-28 pt-6 text-center opacity-70">Loading...</div>
+            }
+          >
             <CodeBlock code={value.code} language={value.language} />
           </Suspense>
         </CodeBlockWrapper>
