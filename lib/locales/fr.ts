@@ -8,4 +8,9 @@ export default {
   Connect: "Contact",
   Blog: "Mon blog",
   Metadata: { where: "à Nantes" },
+  CodeBlock: {
+    copy: "Copier dans le presse-papiers",
+    expand: "Agrandir",
+    collapse: "Réduire",
+  },
 } as const;
