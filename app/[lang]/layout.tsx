@@ -17,7 +17,7 @@ import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 import "./globals.css";
-import { getI18n, getStaticParams } from "@/lib/locales/server";
+import { getI18n } from "@/lib/locales/server";
 
 const LiveVisualEditing = dynamic(
   () => import("@/sanity/preview/live-visual-editing"),
@@ -55,10 +55,6 @@ export async function generateMetadata({
       type: "website",
     },
   };
-}
-
-export async function generateStaticParams() {
-  return getStaticParams();
 }
 
 export default function RootLayout({
