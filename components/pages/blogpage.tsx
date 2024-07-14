@@ -29,6 +29,7 @@ export default function BlogPage({ posts, title, lang }: BlogPageProps) {
               href={{ pathname: `/${lang}/blog/${slug.current}` }}
               className="flex justify-between rounded-md p-4 transition-colors hover:bg-accent/50"
               key={title}
+              prefetch={true}
             >
               <div className="flex gap-3">
                 <Image
