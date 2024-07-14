@@ -1,20 +1,22 @@
-import type { getDictionary } from "@/app/[lang]/dictionaries";
+"use server";
+
 import { Badge } from "@/components/ui/badge";
 import { DateFormat } from "@/components/utils/date-format";
 import { InlineSVG } from "@/components/utils/inline-svg";
+import { getI18n } from "@/lib/locales/server";
 import { rgbColorToString } from "@/lib/utils";
 import type { Works as TWorks } from "@/sanity.types";
 import Link from "next/link";
 
 type WorksProps = {
   works?: TWorks[] | null;
-  dict: Awaited<ReturnType<typeof getDictionary>>["Works"];
 };
 
-export default function Works({ works, dict }: WorksProps) {
+export default async function Works({ works }: WorksProps) {
+  const t = await getI18n();
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
-      <h2 className="px-3">{dict.title}</h2>
+      <h2 className="px-3">{t("Works.title")}</h2>
       <ul className="first-of-type:-mt-3">
         {(works ?? []).map(({ title, job, link, icon, tags, duration }) => (
           <li key={title} className="leading-5">
@@ -45,7 +47,7 @@ export default function Works({ works, dict }: WorksProps) {
                 </div>
                 <div className="flex justify-between text-muted-foreground text-sm">
                   <p className="mr-2">{job}</p>
-                  <DateFormat date={duration} dict={dict.current} isDuration />
+                  <DateFormat date={duration} isDuration />
                 </div>
               </div>
             </Link>

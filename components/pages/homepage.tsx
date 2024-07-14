@@ -1,4 +1,3 @@
-import type { getDictionary } from "@/app/[lang]/dictionaries";
 import Connect from "@/components/home/connect";
 import Hero from "@/components/home/hero";
 import Projects from "@/components/home/projects";
@@ -11,24 +10,23 @@ import type { EncodeDataAttributeCallback } from "@sanity/react-loader";
 type HomeProps = {
   data: HOME_QUERYResult;
   encodeDataAttribute?: EncodeDataAttributeCallback;
-  dict: Awaited<ReturnType<typeof getDictionary>>;
 };
 
-export default function HomePage({ data, dict }: HomeProps) {
+export default function HomePage({ data }: HomeProps) {
   return (
     <main>
       <Spacing />
       <Hero data={data} />
       <Spacing />
       <Section className="gap-0 px-1">
-        <Projects projects={data?.projects} title={dict.Projects} />
+        <Projects projects={data?.projects} />
         <Spacing />
-        <Works works={data?.works} dict={dict.Works} />
+        <Works works={data?.works} />
       </Section>
       <Spacing />
-      <Skills skills={data?.skills} title={dict.Skills} />
+      <Skills skills={data?.skills} />
       <Spacing />
-      <Connect title={dict.Connect} />
+      <Connect />
     </main>
   );
 }

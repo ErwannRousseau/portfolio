@@ -1,7 +1,8 @@
-import type { getDictionary } from "@/app/[lang]/dictionaries";
+"use server";
+
 import { Section, Spacing } from "@/components/ui";
 import { DateFormat } from "@/components/utils/date-format";
-import type { Locale } from "@/i18n.config";
+import { getCurrentLocale, getI18n } from "@/lib/locales/server";
 import type { BLOG_QUERYResult } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import type { EncodeDataAttributeCallback } from "@sanity/react-loader";
@@ -12,15 +13,15 @@ import Link from "next/link";
 export type BlogPageProps = {
   posts: BLOG_QUERYResult;
   encodeDataAttribute?: EncodeDataAttributeCallback;
-  title: Awaited<ReturnType<typeof getDictionary>>["Blog"];
-  lang: Locale;
 };
 
-export default function BlogPage({ posts, title, lang }: BlogPageProps) {
+export default async function BlogPage({ posts }: BlogPageProps) {
+  const t = await getI18n();
+  const lang = getCurrentLocale();
   return (
     <main>
       <Spacing />
-      <h2 className="pl-4">{title}</h2>
+      <h2 className="pl-4">{t("Blog")}</h2>
       <Spacing size="xs" />
       <Section className="flex-col gap-0 px-0">
         {posts ? (

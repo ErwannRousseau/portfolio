@@ -1,6 +1,5 @@
 "use client";
 
-import type { getDictionary } from "@/app/[lang]/dictionaries";
 import PostPage from "@/components/pages/postpage";
 import { type Locale, i18n } from "@/i18n.config";
 import type { POST_QUERYResult } from "@/sanity.types";
@@ -10,7 +9,6 @@ import { type QueryResponseInitial, useQuery } from "@sanity/react-loader";
 type BlogPagePreviewProps = {
   initial: QueryResponseInitial<POST_QUERYResult>;
   params: { slug: string; lang: Locale };
-  dict: Awaited<ReturnType<typeof getDictionary>>["Blog"];
 };
 
 export default function PostPagePreview({

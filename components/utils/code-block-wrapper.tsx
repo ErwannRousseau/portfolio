@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, CopyButton } from "@/components/ui";
+import { useScopedI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
@@ -15,6 +16,7 @@ export function CodeBlockWrapper({
   filename,
   ...props
 }: CodeBlockProps) {
+  const t = useScopedI18n("CodeBlock");
   const [isOpened, setIsOpened] = React.useState(false);
 
   return (
@@ -37,7 +39,7 @@ export function CodeBlockWrapper({
               className="h-8 text-xs"
               onClick={() => setIsOpened(!isOpened)}
             >
-              {isOpened ? "Collapse" : "Expand"}
+              {isOpened ? t("collapse") : t("expand")}
             </Button>
           </div>
         </div>
