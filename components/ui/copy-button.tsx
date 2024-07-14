@@ -15,20 +15,16 @@ interface CopyButtonProps extends ButtonProps {
   value: string;
 }
 
-export function CopyButton({
-  value,
-  className,
-  variant = "ghost",
-  ...props
-}: CopyButtonProps) {
+export function CopyButton({ value, className, ...props }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: This effect should run every time `hasCopied` changes
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       setHasCopied(false);
     }, 2000);
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [hasCopied]);
 
   return (
     <TooltipProvider>
@@ -36,7 +32,7 @@ export function CopyButton({
         <TooltipTrigger asChild>
           <Button
             size="icon"
-            variant={variant}
+            variant="ghost"
             className={cn(
               "relative z-10 size-6 text-foreground [&_svg]:size-4 hover:bg-foreground/30 hover:text-background",
               className,
