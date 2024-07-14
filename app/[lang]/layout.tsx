@@ -2,7 +2,7 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
-import { type Locale, i18n } from "@/i18n.config";
+import type { Locale } from "@/i18n.config";
 import { I18nProviderClient } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
@@ -17,7 +17,7 @@ import { toPlainText } from "next-sanity";
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 import "./globals.css";
-import { getI18n } from "@/lib/locales/server";
+import { getI18n, getStaticParams } from "@/lib/locales/server";
 
 const LiveVisualEditing = dynamic(
   () => import("@/sanity/preview/live-visual-editing"),
@@ -58,7 +58,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+  return getStaticParams();
 }
 
 export default function RootLayout({
