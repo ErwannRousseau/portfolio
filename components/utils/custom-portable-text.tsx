@@ -1,4 +1,5 @@
 import { BadgeLink } from "@/components/ui/badge";
+import type { Code } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import {
   PortableText,
@@ -50,13 +51,14 @@ export function CustomPortableText({
       },
     },
     types: {
-      code: ({ value }) => (
-        // Suspense is required for the code block to work as possible in the sanity studio live preview
-        <Suspense fallback={<div>Loading...</div>}>
-          <CodeBlockWrapper code={value.code}>
+      code: ({ value }: { value: Code }) => (
+        <CodeBlockWrapper code={value.code} filename={value.filename}>
+          {/* // Suspense is required for the code block to work as possible in the
+          Sanity studio live preview */}
+          <Suspense fallback={<div>Loading...</div>}>
             <CodeBlock code={value.code} language={value.language} />
-          </CodeBlockWrapper>
-        </Suspense>
+          </Suspense>
+        </CodeBlockWrapper>
       ),
       image: ({ value }) => (
         <Image

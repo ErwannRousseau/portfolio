@@ -137,10 +137,6 @@
 
 
 /* SHIKI */
-.shiki {
-  padding-bottom: 3rem !important;
-}
-
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
