@@ -279,9 +279,9 @@ export type LocalizedString = {
 
 export type Code = {
   _type: "code";
-  language?: string;
+  language: string;
   filename?: string;
-  code?: string;
+  code: string;
   highlightedLines?: Array<number>;
 };
 
