@@ -55,7 +55,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "shiki": "^1.6.1",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
   }
 }
