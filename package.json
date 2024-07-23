@@ -42,7 +42,7 @@
     "react-twc": "^1.4.1",
     "sanity": "^3.50.0",
     "sanity-plugin-simpler-color-input": "^2.2.2",
-    "styled-components": "^6.1.11",
+    "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
