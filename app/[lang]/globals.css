@@ -66,6 +66,10 @@
   }
 }
 
+body {
+  scrollbar-gutter: stable both-edges;
+}
+
 @layer base {
   * {
     @apply border-border;
