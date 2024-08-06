@@ -65,3 +65,5 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
     body[$defaultLocale]
   ),
 }`;
+
+export const SLUGS_QUERY = groq`*[_type == "post" && defined(slug)].slug.current`;

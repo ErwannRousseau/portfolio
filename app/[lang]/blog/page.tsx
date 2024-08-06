@@ -33,7 +33,7 @@ export default async function Blog({
                   src={urlForImage(mainImage)?.url() || ""}
                   alt={`main image for ${title}`}
                   width={100}
-                  height={100}
+                  height={70}
                   className="rounded max-md:hidden"
                 />
                 <div>

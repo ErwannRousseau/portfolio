@@ -9,7 +9,7 @@ import type {
 } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import { token } from "@/sanity/lib/token";
-import { BLOG_QUERY, HOME_QUERY, POST_QUERY } from "./queries";
+import { BLOG_QUERY, HOME_QUERY, POST_QUERY, SLUGS_QUERY } from "./queries";
 
 queryStore.setServerClient(client.withConfig({ token }));
 
@@ -35,4 +35,8 @@ export function loadPostPage(slug: string, lang: Locale) {
     lang,
     defaultLocale: i18n.defaultLocale,
   });
+}
+
+export function loadPostSlugs() {
+  return loadQuery<string[]>(SLUGS_QUERY);
 }
