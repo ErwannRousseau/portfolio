@@ -1,20 +1,31 @@
-import HomePage from "@/components/pages/homepage";
+import Connect from "@/components/home/connect";
+import Hero from "@/components/home/hero";
+import Projects from "@/components/home/projects";
+import Skills from "@/components/home/skills";
+import Works from "@/components/home/works";
+import { Section, Spacing } from "@/components/ui";
 import type { Locale } from "@/i18n.config";
 import { loadHomePage } from "@/sanity/lib/store";
-import dynamic from "next/dynamic";
-import { draftMode } from "next/headers";
-
-const HomePagePreview = dynamic(
-  () => import("@/sanity/preview/homepage-preview"),
-);
 
 export default async function Home({
   params: { lang },
 }: { params: { lang: Locale } }) {
-  const initial = await loadHomePage(lang);
-  if (draftMode().isEnabled) {
-    return <HomePagePreview initial={initial} lang={lang} />;
-  }
+  const { data } = await loadHomePage(lang);
 
-  return <HomePage data={initial.data} />;
+  return (
+    <main>
+      <Spacing />
+      <Hero data={data} />
+      <Spacing />
+      <Section className="gap-0 px-1">
+        <Projects projects={data?.projects} />
+        <Spacing />
+        <Works works={data?.works} />
+      </Section>
+      <Spacing />
+      <Skills skills={data?.skills} />
+      <Spacing />
+      <Connect />
+    </main>
+  );
 }
