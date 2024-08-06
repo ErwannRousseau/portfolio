@@ -7,7 +7,6 @@ import {
   type PortableTextComponents,
 } from "next-sanity";
 import Image from "next/image";
-import { Suspense } from "react";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
 
@@ -53,26 +52,20 @@ export function CustomPortableText({
     types: {
       code: ({ value }: { value: Code }) => (
         <CodeBlockWrapper code={value.code} filename={value.filename}>
-          {/* // Suspense is required for the code block to work as possible in the
-          Sanity studio live preview */}
-          <Suspense
-            fallback={
-              <div className="h-28 pt-6 text-center opacity-70">Loading...</div>
-            }
-          >
-            <CodeBlock code={value.code} language={value.language} />
-          </Suspense>
+          <CodeBlock code={value.code} language={value.language} />
         </CodeBlockWrapper>
       ),
       image: ({ value }) => (
-        <Image
-          src={urlForImage(value)?.url() || ""}
-          alt={value.alt}
-          className="rounded"
-          width={500}
-          height={500}
-          loading="lazy"
-        />
+        <div className="my-4 grid w-full place-items-center">
+          <Image
+            src={urlForImage(value)?.url() || ""}
+            alt={value.alt}
+            className="rounded"
+            width={500}
+            height={500}
+            loading="lazy"
+          />
+        </div>
       ),
     },
   };

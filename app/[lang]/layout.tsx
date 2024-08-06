@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
 import type { Locale } from "@/i18n.config";
 import { I18nProviderClient } from "@/lib/locales/client";
+import { getI18n } from "@/lib/locales/server";
 import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
@@ -14,14 +15,7 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
-import dynamic from "next/dynamic";
-import { draftMode } from "next/headers";
-import "./globals.css";
-import { getI18n } from "@/lib/locales/server";
-
-const LiveVisualEditing = dynamic(
-  () => import("@/sanity/preview/live-visual-editing"),
-);
+import "../globals.css";
 
 export async function generateMetadata({
   params,
@@ -84,7 +78,6 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
-            {draftMode().isEnabled && <LiveVisualEditing />}
           </I18nProviderClient>
           <SpeedInsights />
           <Analytics />
