@@ -7,6 +7,7 @@ import {
   type PortableTextComponents,
 } from "next-sanity";
 import Image from "next/image";
+import { Snippet } from "../ui/snippet";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
 
@@ -20,6 +21,9 @@ export function CustomPortableText({
     block: {
       normal: ({ children }) => {
         return <p className="leading-7">{children}</p>;
+      },
+      code: ({ children }) => {
+        return <Snippet>{children}</Snippet>;
       },
     },
     marks: {
