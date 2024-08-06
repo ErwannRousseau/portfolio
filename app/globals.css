@@ -93,6 +93,7 @@
   }
 }
 
+/* Hero picture */
 .hero-img {
   -webkit-animation: morph 8s ease-in-out infinite;
   animation: morph 8s ease-in-out infinite;
@@ -106,7 +107,6 @@
   margin: auto;
 }
 
-/* Hero picture */
 @-webkit-keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
