@@ -36,7 +36,7 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
             size="icon"
             variant="ghost"
             className={cn(
-              "relative z-10 size-6 text-foreground [&_svg]:size-4 hover:bg-foreground/30 hover:text-background",
+              "relative z-10 size-6 text-foreground hover:bg-foreground/30 hover:text-background [&_svg]:size-4",
               className,
             )}
             onClick={() => {
