@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check --apply .",
+    "lint": "biome lint --fix",
     "schema": "sanity schema extract",
     "typegen": "sanity typegen generate"
   },
@@ -23,7 +23,6 @@
     "@sanity/document-internationalization": "^3.0.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/language-filter": "^4.0.2",
-    "@sanity/preview-url-secret": "^1.6.18",
     "@sanity/react-loader": "^1.10.4",
     "@sanity/ui": "^2.6.8",
     "@sanity/vision": "^3.49.0",
@@ -32,7 +31,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "geist": "^1.3.1",
-    "lucide-react": "^0.408.0",
+    "lucide-react": "^0.424.0",
     "next": "14.2.5",
     "next-international": "^1.2.4",
     "next-sanity": "9.4.2",
@@ -40,8 +39,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-twc": "^1.4.1",
-    "sanity": "^3.52.1",
-    "sanity-plugin-simpler-color-input": "^2.2.2",
+    "sanity": "^3.53.0",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
@@ -53,9 +51,9 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.39",
-    "shiki": "^1.11.1",
+    "postcss": "^8.4.41",
+    "shiki": "^1.12.1",
     "tailwindcss": "^3.4.6",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }

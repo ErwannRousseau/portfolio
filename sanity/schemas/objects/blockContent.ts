@@ -30,6 +30,7 @@ export default defineType({
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          { title: "Snippet", value: "code" },
         ],
         annotations: [
           {

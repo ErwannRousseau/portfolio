@@ -12,7 +12,6 @@ import { colorInput } from "@sanity/color-input";
 import { languageFilter } from "@sanity/language-filter";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { languages } from "./i18n.config";
 
@@ -27,13 +26,6 @@ export default defineConfig({
     }),
     singletonPlugin([home.name]),
     visionTool({ defaultApiVersion: apiVersion }),
-    presentationTool({
-      previewUrl: {
-        draftMode: {
-          enable: "/api/draft",
-        },
-      },
-    }),
     languageFilter({
       supportedLanguages: languages.locales,
       defaultLanguages: [languages.defaultLocale],
