@@ -41,7 +41,7 @@
     "react-twc": "^1.4.1",
     "sanity": "^3.53.0",
     "styled-components": "^6.1.12",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.5.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
