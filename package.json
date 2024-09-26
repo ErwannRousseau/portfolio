@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome lint --fix",
+    "format": "biome format --fix",
+    "check": "biome check --fix",
     "schema": "sanity schema extract",
     "typegen": "sanity typegen generate"
   },
@@ -45,7 +47,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "^1.9.2",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^22.2.0",
     "@types/react": "^18.3.8",
