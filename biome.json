@@ -36,29 +36,19 @@
         "useSortedClasses": {
           "level": "warn",
           "options": {
-            "attributes": [
-              "className"
-            ],
-            "functions": [
-              "cn",
-              "cva"
-            ]
+            "attributes": ["className"],
+            "functions": ["cn", "cva"]
           },
           "fix": "safe"
         }
       }
-    }
+    },
+    "ignore": ["sanity.types.ts"]
   },
   "javascript": {
-    "globals": [
-      "React"
-    ]
+    "globals": ["React"]
   },
   "files": {
-    "ignore": [
-      "node_modules",
-      "public",
-      ".next"
-    ]
+    "ignore": ["node_modules", "public", ".next"]
   }
 }
