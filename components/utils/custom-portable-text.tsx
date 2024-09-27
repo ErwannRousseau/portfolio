@@ -1,4 +1,4 @@
-import { BadgeLink } from "@/components/ui/badge";
+import { BadgeLink, Snippet } from "@/components/ui";
 import type { Code } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import {
@@ -7,9 +7,10 @@ import {
   type PortableTextComponents,
 } from "next-sanity";
 import Image from "next/image";
-import { Snippet } from "../ui/snippet";
+import { Suspense } from "react";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
+import { CodeSkeleton } from "./code-skeleton";
 
 export function CustomPortableText({
   value,
@@ -55,8 +56,14 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }: { value: Code }) => (
-        <CodeBlockWrapper code={value.code} filename={value.filename}>
-          <CodeBlock code={value.code} language={value.language} />
+        <CodeBlockWrapper
+          code={value.code}
+          filename={value.filename}
+          language={value.language}
+        >
+          <Suspense fallback={<CodeSkeleton />}>
+            <CodeBlock code={value.code} language={value.language} />
+          </Suspense>
         </CodeBlockWrapper>
       ),
       image: ({ value }) => (
@@ -64,7 +71,7 @@ export function CustomPortableText({
           <Image
             src={urlForImage(value)?.url() || ""}
             alt={value.alt}
-            className="rounded"
+            className="rounded-md"
             width={500}
             height={500}
             loading="lazy"

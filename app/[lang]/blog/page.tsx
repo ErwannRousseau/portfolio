@@ -34,7 +34,7 @@ export default async function Blog({
                   alt={`main image for ${title}`}
                   width={100}
                   height={70}
-                  className="rounded max-md:hidden"
+                  className="rounded-md max-md:hidden"
                 />
                 <div>
                   <DateFormat date={publishedAt} />

@@ -24,14 +24,14 @@ export default async function Post(props: {
           <Image
             alt={`post image ${data?.title}`}
             src={imageUrl(100) || ""}
-            className="mb-2 aspect-video rounded object-cover"
+            className="mb-2 aspect-video rounded-md object-cover"
             width={896}
             height={304}
             placeholder="blur"
             blurDataURL={imageUrl(50)}
           />
           <DateFormat date={data?.publishedAt} />
-          <h1 className="pb-4 text-center">{data?.title}</h1>
+          <h1 className="py-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
       </Section>

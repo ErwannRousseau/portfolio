@@ -68,6 +68,14 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
     },
+    keyframes: {
+      "fade-out": {
+        to: { opacity: "0" },
+      },
+    },
+    animation: {
+      "fade-out": "fade-out 300ms ease",
+    },
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

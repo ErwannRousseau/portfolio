@@ -18,7 +18,7 @@ export default async function CodeBlock({
       // biome-ignore lint/security/noDangerouslySetInnerHtml: This is a code block and we need to render the HTML.
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
       className={cn(
-        "w-full overflow-hidden rounded-md [&_pre]:my-0 [&_pre]:overflow-auto [&_pre]:whitespace-break-spaces [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
+        "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
       )}
     />
   );

@@ -7,7 +7,8 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
-  perspective: "published",
+  perspective:
+    process.env.NODE_ENV === "production" ? "published" : "previewDrafts",
   stega: {
     enabled: false,
     studioUrl: "/studio",

@@ -2,7 +2,7 @@
 
 import { useScopedI18n } from "@/lib/locales/client";
 import { cn, copyToClipboard } from "@/lib/utils";
-import { CheckIcon, ClipboardIcon } from "lucide-react";
+import { CheckIcon, Copy } from "lucide-react";
 import * as React from "react";
 import { Button, type ButtonProps } from "./button";
 import {
@@ -36,7 +36,7 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
             size="icon"
             variant="ghost"
             className={cn(
-              "relative z-10 size-6 text-foreground hover:bg-foreground/30 hover:text-background [&_svg]:size-4",
+              "relative z-10 size-6 text-foreground opacity-0 group-hover:opacity-100 [&_svg]:size-4",
               className,
             )}
             onClick={() => {
@@ -46,7 +46,7 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
             {...props}
           >
             <span className="sr-only">{t("copy")}</span>
-            {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+            {hasCopied ? <CheckIcon /> : <Copy />}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
