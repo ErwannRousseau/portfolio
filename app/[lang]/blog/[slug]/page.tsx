@@ -31,7 +31,7 @@ export default async function Post(props: {
             blurDataURL={imageUrl(50)}
           />
           <DateFormat date={data?.publishedAt} />
-          <h1 className="py-4 text-center">{data?.title}</h1>
+          <h1 className="mb-2 py-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
       </Section>
