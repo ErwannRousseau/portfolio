@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      lineHeight: {
+        4: "0.9rem",
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
@@ -67,6 +70,14 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+    },
+    keyframes: {
+      "fade-out": {
+        to: { opacity: "0" },
+      },
+    },
+    animation: {
+      "fade-out": "fade-out 300ms ease",
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -34,15 +34,15 @@ export default async function Blog({
                   alt={`main image for ${title}`}
                   width={100}
                   height={70}
-                  className="rounded max-md:hidden"
+                  className="rounded-md max-md:hidden"
                 />
                 <div>
                   <DateFormat date={publishedAt} />
-                  <p className="font-semibold text-lg">{title}</p>
-                  <p className="text-muted-foreground leading-3">{subtitle}</p>
+                  <p className="mb-2 font-semibold text-lg/5">{title}</p>
+                  <p className="text-muted-foreground leading-4">{subtitle}</p>
                 </div>
               </div>
-              <ArrowUpRight className="self-center" />
+              <ArrowUpRight className="ml-2 flex-shrink-0 self-center" />
             </Link>
           ))
         ) : (

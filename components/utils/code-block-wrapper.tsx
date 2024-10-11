@@ -1,40 +1,70 @@
 "use client";
 
-import { Button, CopyButton } from "@/components/ui";
+import {
+  Button,
+  CopyButton,
+  Icons,
+  ScrollArea,
+  ScrollBar,
+} from "@/components/ui";
+import { MAX_NUMBER_OF_LINES } from "@/lib/constants";
 import { useScopedI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
+type IconKeys = keyof typeof Icons;
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   code: string;
   filename?: string;
+  language: string;
+  numberOfLines: number;
 }
 
 export function CodeBlockWrapper({
   children,
   code,
   filename,
+  language,
+  numberOfLines,
   ...props
 }: CodeBlockProps) {
   const t = useScopedI18n("CodeBlock");
   const [isOpened, setIsOpened] = React.useState(false);
 
   return (
-    <>
-      {filename && (
-        <span className="mt-5 block pb-1 pl-2 text-xs opacity-80">
-          {filename}
-        </span>
+    <figure
+      className={cn(
+        "group relative my-4 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        numberOfLines === 1 && "my-2",
       )}
-      <div
-        className="relative mb-4 rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-        {...props}
-      >
-        <div className="flex flex-col space-y-4">
-          <div className={cn("relative", !isOpened && "[&_pre]:max-h-[350px]")}>
-            <CopyButton value={code} className="absolute top-4 right-4" />
-            {children}
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center rounded-b-md bg-gradient-to-b from-muted/30 to-primary/60 p-2">
+      {...props}
+    >
+      {filename && (
+        <div className="flex flex-row items-center justify-between gap-2 border-b px-4 py-1.5">
+          <div className="flex items-center gap-2">
+            {Icons[language as IconKeys]({})}
+            <figcaption>{filename}</figcaption>
+          </div>
+          <CopyButton value={code} />
+        </div>
+      )}
+      <ScrollArea>
+        {!filename && (
+          <CopyButton value={code} className="absolute top-2 right-4" />
+        )}
+        <div
+          className={cn(
+            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
+            !isOpened && "max-h-[350px]",
+            numberOfLines === 1 && "[&_pre]:p-2",
+            numberOfLines <= MAX_NUMBER_OF_LINES &&
+              numberOfLines !== 1 &&
+              "[&_pre]:pb-6",
+          )}
+        >
+          {children}
+          {numberOfLines > MAX_NUMBER_OF_LINES && (
+            <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center rounded-b-md bg-gradient-to-b from-muted/30 to-primary/60 p-2">
               <Button
                 variant="secondary"
                 className="h-8 text-xs"
@@ -43,9 +73,10 @@ export function CodeBlockWrapper({
                 {isOpened ? t("collapse") : t("expand")}
               </Button>
             </div>
-          </div>
+          )}
         </div>
-      </div>
-    </>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+    </figure>
   );
 }

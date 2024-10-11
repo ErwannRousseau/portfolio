@@ -12,8 +12,8 @@
  * ---------------------------------------------------------------------------------
  */
 
-import { PortableTextBlock } from "next-sanity";
-import { Image } from "sanity";
+import type { PortableTextBlock } from "next-sanity";
+import type { Image } from "sanity";
 
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
@@ -80,18 +80,37 @@ export type Tags = {
   color: RgbaColor;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
-  markDefs?: Array<{
-    href?: string;
-    icon?: {
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
       asset?: {
         _ref: string;
         _type: "reference";
@@ -100,29 +119,14 @@ export type BlockContent = Array<{
       };
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
+      alt?: string;
       _type: "image";
-    };
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
-  _key: string;
-} | ({
-  _key: string;
-} & Code)>;
+      _key: string;
+    }
+  | ({
+      _key: string;
+    } & Code)
+>;
 
 export type Post = {
   _id: string;
@@ -197,15 +201,21 @@ export type Home = {
   subtitle?: string;
   profilePicture?: Image;
   overview?: BlockContent | PortableTextBlock;
-  projects?: Array<{
-    _key: string;
-  } & Projects>;
-  works?: Array<{
-    _key: string;
-  } & Works>; 
-  skills?: Array<{
-    _key: string;
-  } & Skills>;
+  projects?: Array<
+    {
+      _key: string;
+    } & Projects
+  >;
+  works?: Array<
+    {
+      _key: string;
+    } & Works
+  >;
+  skills?: Array<
+    {
+      _key: string;
+    } & Skills
+  >;
 };
 
 export type LocalizedBlockContent = {
@@ -339,7 +349,7 @@ export type BLOG_QUERYResult = Array<{
   title: string | null;
   subtitle: string | null;
   mainImage: Image;
-  publishedAt?: string ;
+  publishedAt?: string;
   slug: Slug;
 }>;
 
@@ -358,4 +368,3 @@ export type POST_QUERYResult = {
   publishedAt?: string;
   body?: BlockContent;
 } | null;
-

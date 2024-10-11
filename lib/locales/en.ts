@@ -14,4 +14,7 @@ export default {
     expand: "Expand",
     collapse: "Collapse",
   },
+  Snippet: {
+    copied: "Copied!",
+  },
 } as const;
