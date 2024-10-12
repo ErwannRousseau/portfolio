@@ -5,8 +5,24 @@ import { getI18n } from "@/lib/locales/server";
 import { urlForImage } from "@/sanity/lib/image";
 import { loadBlogPage } from "@/sanity/lib/store";
 import { ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export async function generateMetadata({
+  params: { lang },
+}: Readonly<{
+  params: { lang: Locale; slug: string };
+}>): Promise<Metadata> {
+  return {
+    title: "Blog | Erwann Rousseau",
+    description: "",
+    openGraph: {
+      url: `https://erwannrousseau.com/${lang}/blog`,
+      type: "website",
+    },
+  };
+}
 
 export default async function Blog({
   params: { lang },
