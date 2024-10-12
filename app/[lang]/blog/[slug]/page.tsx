@@ -2,10 +2,32 @@ import { Section } from "@/components/ui";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
-import { urlForImage } from "@/sanity/lib/image";
+import { urlForImage, urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
+import type { Metadata } from "next";
 import type { PortableTextBlock } from "next-sanity";
 import Image from "next/image";
+
+export async function generateMetadata({
+  params: { slug, lang },
+}: Readonly<{
+  params: { lang: Locale; slug: string };
+}>): Promise<Metadata> {
+  const { data } = await loadPostPage(slug, lang);
+  const ogImage = urlForOpenGraphImage(data?.mainImage);
+
+  return {
+    title: data?.title,
+    description: data?.subtitle,
+    openGraph: {
+      title: data?.title,
+      description: data?.subtitle,
+      url: `https://erwannrousseau.com/${lang}/blog/${slug}`,
+      images: ogImage,
+      type: "article",
+    },
+  };
+}
 
 export default async function Post(props: {
   params: { slug: string; lang: Locale };
