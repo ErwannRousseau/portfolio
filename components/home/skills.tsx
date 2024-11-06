@@ -1,5 +1,3 @@
-"use server";
-
 import { Section } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Skills as TSkills } from "@/sanity.types";

@@ -1,5 +1,3 @@
-"use server";
-
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { createHighlighter } from "shiki";
@@ -16,12 +14,9 @@ export async function highlightCode(code: string, language: string) {
   );
 
   const highlighter = await createHighlighter({
-    themes: [],
+    themes: [JSON.parse(darkTheme), JSON.parse(lightTheme)],
     langs: [language],
   });
-
-  await highlighter.loadTheme(JSON.parse(darkTheme));
-  await highlighter.loadTheme(JSON.parse(lightTheme));
 
   const html = highlighter.codeToHtml(code, {
     lang: language,

@@ -1,7 +1,6 @@
 import { highlightCode } from "@/lib/highlight-code";
-import type React from "react";
 
-interface CodeBlockWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CodeBlockWrapperProps {
   code: string;
   language: string;
 }

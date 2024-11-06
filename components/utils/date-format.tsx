@@ -1,5 +1,3 @@
-"use server";
-
 import { getCurrentLocale, getI18n } from "@/lib/locales/server";
 import type { Duration } from "@/sanity.types";
 

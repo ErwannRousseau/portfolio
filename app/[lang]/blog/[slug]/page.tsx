@@ -42,7 +42,7 @@ export default async function Post(props: {
   return (
     <main>
       <Section className="flex-col">
-        <article>
+        <article className="post">
           <Image
             alt={`post image ${data?.title}`}
             src={imageUrl(100) || ""}
