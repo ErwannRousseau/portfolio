@@ -1,5 +1,3 @@
-"use server";
-
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
 import type { Projects as TProjects } from "@/sanity.types";

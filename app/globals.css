@@ -85,6 +85,12 @@
   h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight font-serif;
   }
+
+  .post h2,
+  .post h3,
+  .post h4 {
+    @apply pt-6 pb-2;
+  }
 }
 
 @media (hover: hover) {

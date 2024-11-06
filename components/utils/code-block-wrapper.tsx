@@ -64,11 +64,12 @@ export function CodeBlockWrapper({
         >
           {children}
           {numberOfLines > MAX_NUMBER_OF_LINES && (
-            <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center rounded-b-md bg-gradient-to-b from-muted/30 to-primary/60 p-2">
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-100 p-2">
               <Button
-                variant="secondary"
-                className="h-8 text-xs"
+                variant="link"
+                type="button"
                 onClick={() => setIsOpened(!isOpened)}
+                className="text-pink-400 text-xs hover:no-underline"
               >
                 {isOpened ? t("collapse") : t("expand")}
               </Button>

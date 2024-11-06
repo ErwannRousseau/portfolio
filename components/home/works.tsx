@@ -1,5 +1,3 @@
-"use server";
-
 import { Badge } from "@/components/ui/badge";
 import { DateFormat } from "@/components/utils/date-format";
 import { InlineSVG } from "@/components/utils/inline-svg";
