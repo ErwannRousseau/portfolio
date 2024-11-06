@@ -7,6 +7,7 @@ import {
   type PortableTextComponents,
 } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
@@ -54,14 +55,14 @@ export function CustomPortableText({
                 {children}
               </BadgeLink>
             ) : (
-              <a
+              <Link
                 className="cursor-pointer text-pink-400 underline transition hover:opacity-70"
                 href={value?.href}
                 rel="noreferrer noopener"
                 target="_blank"
               >
                 {children}
-              </a>
+              </Link>
             )}
           </>
         );
@@ -74,17 +75,18 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }: { value: Code }) => {
+        const { code, filename, language } = value;
         const numberOfLines = value.code.split("\n").length;
 
         return (
           <CodeBlockWrapper
-            code={value.code}
-            filename={value.filename}
-            language={value.language}
+            code={code}
+            filename={filename}
+            language={language}
             numberOfLines={numberOfLines}
           >
             <Suspense fallback={<CodeSkeleton numberOfLines={numberOfLines} />}>
-              <CodeBlock code={value.code} language={value.language} />
+              <CodeBlock code={code} language={language} />
             </Suspense>
           </CodeBlockWrapper>
         );

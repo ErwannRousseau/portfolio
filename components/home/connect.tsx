@@ -1,5 +1,3 @@
-"use server";
-
 import type { UrlObject } from "node:url";
 import { Section } from "@/components/ui/section";
 import { getI18n } from "@/lib/locales/server";
