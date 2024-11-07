@@ -32,9 +32,11 @@ export function CustomPortableText({
       },
       blockquote: ({ children }) => {
         return (
-          <blockquote className="border-muted border-l-4 pl-4 text-muted-foreground italic">
-            {children}
-          </blockquote>
+          <div className="pb-3">
+            <blockquote className="border-muted border-l-4 pl-4 text-muted-foreground italic">
+              {children}
+            </blockquote>
+          </div>
         );
       },
     },
