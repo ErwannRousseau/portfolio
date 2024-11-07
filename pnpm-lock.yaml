@@ -39,8 +39,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@sanity/mutator@3.60.0)(@sanity/ui@2.8.9(react-dom@18.3.1(react@18.3.1))(react-is@18.2.0)(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(@sanity/util@3.60.0)(react-dom@18.3.1(react@18.3.1))(react-fast-compare@3.2.2)(react@18.3.1)(rxjs@7.8.1)(sanity@3.60.0(@types/node@22.8.4)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@sanity/image-url':
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.1.0
+        version: 1.1.0
       '@sanity/language-filter':
         specifier: ^4.0.2
         version: 4.0.2(@sanity/ui@2.8.9(react-dom@18.3.1(react@18.3.1))(react-is@18.2.0)(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(@sanity/util@3.60.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sanity@3.60.0(@types/node@22.8.4)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -1882,8 +1882,8 @@ packages:
     peerDependencies:
       react: ^18.3 || >=19.0.0-rc
 
-  '@sanity/image-url@1.0.2':
-    resolution: {integrity: sha512-C4+jb2ny3ZbMgEkLd7Z3C75DsxcTEoE+axXQJsQ75ou0AKWGdVsP351hqK6mJUUxn5HCSlu3vznoh7Yljye4cQ==}
+  '@sanity/image-url@1.1.0':
+    resolution: {integrity: sha512-JHumVRxzzaZAJyOimntdukA9TjjzsJiaiq/uUBdTknMLCNvtM6KQ5OCp6W5fIdY78uyFxtQjz+MPXwK8WBIxWg==}
     engines: {node: '>=10.0.0'}
 
   '@sanity/import@3.37.2':
@@ -6806,7 +6806,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@sanity/image-url@1.0.2': {}
+  '@sanity/image-url@1.1.0': {}
 
   '@sanity/import@3.37.2':
     dependencies:
@@ -9410,7 +9410,7 @@ snapshots:
       '@sanity/eventsource': 5.0.2
       '@sanity/export': 3.41.0
       '@sanity/icons': 3.4.0(react@18.3.1)
-      '@sanity/image-url': 1.0.2
+      '@sanity/image-url': 1.1.0
       '@sanity/import': 3.37.3
       '@sanity/insert-menu': 1.0.9(@sanity/types@3.60.0(debug@4.3.4))(react-dom@18.3.1(react@18.3.1))(react-is@18.2.0)(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@sanity/logos': 2.1.10(@sanity/color@3.0.6)(react@18.3.1)
