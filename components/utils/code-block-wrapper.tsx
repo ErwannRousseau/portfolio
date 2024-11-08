@@ -64,7 +64,7 @@ export function CodeBlockWrapper({
         >
           {children}
           {numberOfLines > MAX_NUMBER_OF_LINES && (
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-100 p-2">
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
               <Button
                 variant="link"
                 type="button"
