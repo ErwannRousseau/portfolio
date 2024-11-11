@@ -12,7 +12,7 @@ export default async function CodeBlock({
   const highlightedCode = await highlightCode(code, language);
 
   return (
-    <code
+    <div
       // biome-ignore lint/security/noDangerouslySetInnerHtml: This is a code block and we need to render the HTML.
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
