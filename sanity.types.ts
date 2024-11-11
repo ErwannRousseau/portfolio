@@ -151,6 +151,8 @@ export type Post = {
   };
   publishedAt?: string;
   body?: LocalizedBlockContent;
+  likeCount: number;
+  likedBy: Array<string> | null;
 };
 
 export type Slug = {
@@ -367,4 +369,17 @@ export type POST_QUERYResult = {
   mainImage: Image;
   publishedAt?: string;
   body?: BlockContent;
+  likeCount: number;
+  likedBy: Array<string> | null;
 } | null;
+
+// Variable: POST_BY_ID_QUERY
+// Query: *[_type == "post" && _id == $id]{  likeCount,  likedBy}
+export type POST_BY_ID_QUERYResult = {
+  likeCount: number;
+  likedBy: Array<string> | null;
+};
+
+// Variable: SLUGS_QUERY
+// Query: *[_type == "post" && defined(slug)].slug.current
+export type SLUGS_QUERYResult = Array<string | null>;

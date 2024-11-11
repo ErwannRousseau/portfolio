@@ -18,7 +18,7 @@ export async function generateMetadata({
     title: "Blog | Erwann Rousseau",
     description: "",
     openGraph: {
-      url: `https://erwannrousseau.com/${lang}/blog`,
+      url: `https://erwannrousseau.dev/${lang}/blog`,
       type: "website",
     },
   };

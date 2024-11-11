@@ -7,9 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint --fix",
+    "check": "biome check && tsc",
+    "check:fix": "biome check --fix",
     "format": "biome format --fix",
-    "check": "biome check --fix",
     "schema": "sanity schema extract",
     "typegen": "sanity typegen generate"
   },

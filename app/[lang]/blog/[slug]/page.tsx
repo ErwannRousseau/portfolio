@@ -1,8 +1,9 @@
 import { Section } from "@/components/ui";
-import { Like } from "@/components/ui/like";
+import { LikeButton } from "@/components/ui/like-button";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
+import { getClientIp } from "@/lib/client-ip";
 import { urlForImage, urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
 import type { Metadata } from "next";
@@ -23,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: data?.title,
       description: data?.subtitle,
-      url: `https://erwannrousseau.com/${lang}/blog/${slug}`,
+      url: `https://erwannrousseau.dev/${lang}/blog/${slug}`,
       images: ogImage,
       type: "article",
     },
@@ -40,6 +41,8 @@ export default async function Post(props: {
   const imageUrl = (quality: number) =>
     `${urlForImage(data?.mainImage)?.url()}&q=${quality}`;
 
+  const isLiked = data?.likedBy?.includes(getClientIp()) ?? false;
+
   return (
     <main>
       <Section className="flex-col">
@@ -54,7 +57,12 @@ export default async function Post(props: {
             blurDataURL={imageUrl(50)}
           />
           <DateFormat date={data?.publishedAt} />
-          <Like className="mt-4" likes={2} liked />
+          <LikeButton
+            className="mt-4"
+            likes={data?.likeCount ?? 0}
+            liked={isLiked}
+            postId={data?._id}
+          />
           <h1 className="mb-2 py-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
