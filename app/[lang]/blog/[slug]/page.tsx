@@ -56,14 +56,16 @@ export default async function Post(props: {
             placeholder="blur"
             blurDataURL={imageUrl(50)}
           />
-          <DateFormat date={data?.publishedAt} />
-          <LikeButton
-            className="mt-4"
-            likes={data?.likeCount ?? 0}
-            liked={isLiked}
-            postId={data?._id}
-          />
-          <h1 className="mb-2 py-4 text-center">{data?.title}</h1>
+          <div className="flex justify-between">
+            <DateFormat date={data?.publishedAt} />
+            <LikeButton
+              className="mr-2"
+              likes={data?.likeCount ?? 0}
+              liked={isLiked}
+              postId={data?._id}
+            />
+          </div>
+          <h1 className="py-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
       </Section>

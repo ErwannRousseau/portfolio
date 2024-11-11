@@ -74,7 +74,7 @@ export function LikeButton({
         <Heart
           absoluteStrokeWidth
           className={cn(
-            "group-active:spring-duration-[25] spring-bounce-[65] spring-duration-300 size-4 transition-transform group-active:scale-[80%]",
+            "group-active:spring-duration-[25] spring-bounce-[65] spring-duration-300 size-5 transition-transform group-active:scale-[80%]",
             isLiked && "fill-current",
           )}
         />
