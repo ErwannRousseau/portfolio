@@ -51,6 +51,21 @@ export default defineType({
       title: "Body",
       type: "localizedBlockContent",
     }),
+    defineField({
+      name: 'likeCount',
+      title: 'Like Count',
+      type: 'number',
+      initialValue: 0,
+    }),
+    defineField(
+      {
+        name: 'likedBy',
+        title: 'Liked By',
+        type: 'array',
+        of: [{ type: 'string' }],
+        description: 'List of users who liked this article',
+      },
+    ),
   ],
 
   preview: {

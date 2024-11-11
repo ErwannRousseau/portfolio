@@ -1,4 +1,5 @@
 import { Section } from "@/components/ui";
+import { Like } from "@/components/ui/like";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
@@ -53,6 +54,7 @@ export default async function Post(props: {
             blurDataURL={imageUrl(50)}
           />
           <DateFormat date={data?.publishedAt} />
+          <Like className="mt-4" likes={2} liked />
           <h1 className="mb-2 py-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
