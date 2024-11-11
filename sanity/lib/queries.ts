@@ -66,4 +66,9 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
   ),
 }`;
 
+export const POST_BY_ID_QUERY = groq`*[_type == "post" && _id == $id][0]{
+  likeCount,
+  likedBy
+}`;
+
 export const SLUGS_QUERY = groq`*[_type == "post" && defined(slug)].slug.current`;

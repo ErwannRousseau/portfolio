@@ -31,8 +31,8 @@ export async function generateMetadata({
     description: data?.overview && toPlainText(data.overview),
     icons: {
       icon: [
-        { url: "https://erwannrousseau.com/favicon.ico", type: "image/x-icon" },
-        new URL("/apple-touch-icon.png", "https://erwannrousseau.com"),
+        { url: "https://erwannrousseau.dev/favicon.ico", type: "image/x-icon" },
+        new URL("/apple-touch-icon.png", "https://erwannrousseau.dev"),
       ],
       shortcut: "/favicon.ico",
       apple: [
@@ -43,7 +43,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${data?.title} | ${data?.subtitle} ${t("Metadata.where")}`,
       description: data?.overview ? toPlainText(data.overview) : undefined,
-      url: "https://erwannrousseau.com",
+      url: "https://erwannrousseau.dev",
       siteName: `${data?.title} | ${data?.subtitle}`,
       images: ogImage,
       type: "website",

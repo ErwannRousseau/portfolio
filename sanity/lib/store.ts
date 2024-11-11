@@ -1,17 +1,23 @@
-import * as queryStore from "@sanity/react-loader";
-
 import type { Locale } from "@/i18n.config";
 import { i18n } from "@/i18n.config";
 import type {
   BLOG_QUERYResult,
   HOME_QUERYResult,
+  POST_BY_ID_QUERYResult,
   POST_QUERYResult,
+  SLUGS_QUERYResult,
 } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
-import { token } from "@/sanity/lib/token";
-import { BLOG_QUERY, HOME_QUERY, POST_QUERY, SLUGS_QUERY } from "./queries";
+import * as queryStore from "@sanity/react-loader";
+import {
+  BLOG_QUERY,
+  HOME_QUERY,
+  POST_BY_ID_QUERY,
+  POST_QUERY,
+  SLUGS_QUERY,
+} from "./queries";
 
-queryStore.setServerClient(client.withConfig({ token }));
+queryStore.setServerClient(client);
 
 export const { loadQuery } = queryStore;
 
@@ -37,6 +43,10 @@ export function loadPostPage(slug: string, lang: Locale) {
   });
 }
 
+export function loadPostLikes(id: string) {
+  return loadQuery<POST_BY_ID_QUERYResult>(POST_BY_ID_QUERY, { id });
+}
+
 export function loadPostSlugs() {
-  return loadQuery<string[]>(SLUGS_QUERY);
+  return loadQuery<SLUGS_QUERYResult>(SLUGS_QUERY);
 }
