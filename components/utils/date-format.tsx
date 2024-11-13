@@ -11,7 +11,7 @@ export const DateFormat = async ({
   isDuration = false,
 }: DateFormatProps) => {
   const t = await getI18n();
-  const lang = getCurrentLocale();
+  const lang = await getCurrentLocale();
 
   const options: Intl.DateTimeFormatOptions = isDuration
     ? {
