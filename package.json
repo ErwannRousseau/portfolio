@@ -23,7 +23,7 @@
     "@sanity/document-internationalization": "^3.1.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/language-filter": "^4.0.2",
-    "@sanity/react-loader": "^1.10.18",
+    "@sanity/react-loader": "^1.10.19",
     "@sanity/ui": "^2.8.23",
     "@sanity/vision": "^3.64.0",
     "@vercel/analytics": "^1.4.0",
