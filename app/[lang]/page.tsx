@@ -8,8 +8,12 @@ import type { Locale } from "@/i18n.config";
 import { loadHomePage } from "@/sanity/lib/store";
 
 export default async function Home({
-  params: { lang },
-}: { params: { lang: Locale } }) {
+  params,
+}: Readonly<{
+  params: Promise<{ lang: Locale }>;
+}>) {
+  const { lang } = await params;
+
   const { data } = await loadHomePage(lang);
 
   return (

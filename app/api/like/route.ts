@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Post ID requis" }, { status: 400 });
     }
 
-    const ip = getClientIp();
+    const ip = await getClientIp();
 
     if (ip === "unknown") {
       return NextResponse.json({ message: "IP unknown" }, { status: 400 });

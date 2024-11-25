@@ -11,10 +11,12 @@ import type { PortableTextBlock } from "next-sanity";
 import Image from "next/image";
 
 export async function generateMetadata({
-  params: { slug, lang },
+  params,
 }: Readonly<{
-  params: { lang: Locale; slug: string };
+  params: Promise<{ slug: string; lang: Locale }>;
 }>): Promise<Metadata> {
+  const { slug, lang } = await params;
+
   const { data } = await loadPostPage(slug, lang);
   const ogImage = urlForOpenGraphImage(data?.mainImage);
 
@@ -31,17 +33,19 @@ export async function generateMetadata({
   };
 }
 
-export default async function Post(props: {
-  params: { slug: string; lang: Locale };
-}) {
-  const { params } = props;
-  const { slug, lang } = params;
+export default async function Post({
+  params,
+}: Readonly<{
+  params: Promise<{ slug: string; lang: Locale }>;
+}>) {
+  const { slug, lang } = await params;
+
   const { data } = await loadPostPage(slug, lang);
 
   const imageUrl = (quality: number) =>
     `${urlForImage(data?.mainImage)?.url()}&q=${quality}`;
 
-  const isLiked = data?.likedBy?.includes(getClientIp()) ?? false;
+  const isLiked = data?.likedBy?.includes(await getClientIp()) ?? false;
 
   return (
     <main>

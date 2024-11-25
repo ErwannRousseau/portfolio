@@ -17,7 +17,7 @@ export default function Nav() {
       <ul className="flex gap-4">
         <li>
           <Link
-            href={{ pathname: `/${lang}` }}
+            href={`/${lang}`}
             className={cn(buttonVariants({ variant: "link", size: "link" }), {
               "font-semibold": pathname === `/${lang}`,
             })}
@@ -27,7 +27,7 @@ export default function Nav() {
         </li>
         <li>
           <Link
-            href={{ pathname: `/${lang}/blog` }}
+            href={`/${lang}/blog`}
             className={cn(buttonVariants({ variant: "link", size: "link" }), {
               "font-semibold": pathname.includes(`/${lang}/blog`),
             })}
