@@ -58,26 +58,15 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-  h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl font-serif;
-  }
-  h2 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight first:mt-0 font-serif;
-  }
-  h3 {
-    @apply scroll-m-20 text-3xl tracking-tight font-serif text-secondary-foreground;
-  }
-  h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight font-serif;
-  }
 
-  .post h2,
-  .post h3,
-  .post h4 {
-    @apply pt-6 pb-2;
+  h1,
+  h2,
+  h3 {
+    @apply font-serif tracking-tight scroll-m-20;
   }
 }
 

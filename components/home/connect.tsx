@@ -30,7 +30,7 @@ export default async function Connect() {
 
   return (
     <Section className="flex-col">
-      <h2>{t("Connect")}</h2>
+      <h2 className="font-semibold text-2xl">{t("Connect")}</h2>
       <ul className="contact-list flex w-fit gap-6 font-medium">
         {contacts.map((contact) => (
           <li key={contact.label} className="transition-opacity">

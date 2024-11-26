@@ -12,7 +12,7 @@ export default async function Projects({ projects }: ProjectsProps) {
   const t = await getI18n();
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
-      <h2 className="px-3">{t("Projects")}</h2>
+      <h2 className="px-3 font-semibold text-2xl">{t("Projects")}</h2>
       <ul className="first-of-type:-mt-3">
         {(projects ?? []).map(({ title, description, link, icon }) => (
           <li key={title} className="leading-5">
@@ -29,7 +29,7 @@ export default async function Projects({ projects }: ProjectsProps) {
                   <p className="font-semibold">{title}</p>
                   <p className="text-muted-foreground text-sm">{description}</p>
                 </div>
-                <ArrowUpRight className="self-center" />
+                <ArrowUpRight className="flex-shrink-0 self-center" />
               </div>
             </Link>
           </li>

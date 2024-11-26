@@ -18,7 +18,7 @@ export default function Nav() {
         <li>
           <Link
             href={`/${lang}`}
-            className={cn(buttonVariants({ variant: "link", size: "link" }), {
+            className={cn(buttonVariants({ variant: "link" }), "px-0", {
               "font-semibold": pathname === `/${lang}`,
             })}
           >
@@ -28,7 +28,7 @@ export default function Nav() {
         <li>
           <Link
             href={`/${lang}/blog`}
-            className={cn(buttonVariants({ variant: "link", size: "link" }), {
+            className={cn(buttonVariants({ variant: "link" }), "px-0", {
               "font-semibold": pathname.includes(`/${lang}/blog`),
             })}
             prefetch={true}

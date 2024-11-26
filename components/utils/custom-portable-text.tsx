@@ -20,26 +20,6 @@ export function CustomPortableText({
   value: PortableTextBlock[];
 }) {
   const components: PortableTextComponents = {
-    block: {
-      normal: ({ children }) => {
-        if (
-          !children ||
-          (Array.isArray(children) && children.join("").trim() === "")
-        ) {
-          return <br />;
-        }
-        return <p className="leading-7">{children}</p>;
-      },
-      blockquote: ({ children }) => {
-        return (
-          <div className="pb-3">
-            <blockquote className="border-muted border-l-4 pl-4 text-muted-foreground italic">
-              {children}
-            </blockquote>
-          </div>
-        );
-      },
-    },
     marks: {
       code: ({ children }) => {
         return <Snippet>{children}</Snippet>;
@@ -69,11 +49,6 @@ export function CustomPortableText({
           </>
         );
       },
-    },
-    list: {
-      bullet: ({ children }) => (
-        <ul className="list-inside list-disc space-y-1">{children}</ul>
-      ),
     },
     types: {
       code: ({ value }: { value: Code }) => {

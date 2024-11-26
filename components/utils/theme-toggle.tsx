@@ -1,8 +1,7 @@
 "use client";
 
-import { useTheme } from "next-themes";
-
 import { Button, Icons } from "@/components/ui";
+import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();

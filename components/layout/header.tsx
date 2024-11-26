@@ -8,31 +8,27 @@ export default async function Header() {
   return (
     <header className="p-4">
       <div className="flex items-baseline">
-        <h2 className="max-[415px]:text-lg">erwannrousseau.dev</h2>
+        <h2 className="font-semibold text-2xl max-[415px]:text-lg">
+          erwannrousseau.dev
+        </h2>
         <div className="flex-1" />
-        <ul className="flex gap-2">
+        <div className="flex gap-2">
           <Link
             target="_blank"
             href="https://github.com/ErwannRousseau"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "icon" }),
-              "p-0",
-            )}
+            className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
           >
             <Icons.Github size={20} />
           </Link>
           <Link
             target="_blank"
             href="https://www.linkedin.com/in/erwannrousseauwebdev/"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "icon" }),
-              "p-0",
-            )}
+            className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
           >
             <Icons.LinkedIn size={20} />
           </Link>
           <ThemeToggle />
-        </ul>
+        </div>
       </div>
       <Spacing size="xs" />
       <Nav />

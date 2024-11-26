@@ -50,7 +50,7 @@ export default async function Post({
   return (
     <main>
       <Section className="flex-col">
-        <article className="post">
+        <article className="prose max-w-none prose-blockquote:font-normal prose-headings:font-serif prose-blockquote:text-muted-foreground text-primary before:prose-code:hidden after:prose-code:hidden ">
           <Image
             alt={`post image ${data?.title}`}
             src={imageUrl(100) || ""}
@@ -69,7 +69,7 @@ export default async function Post({
               postId={data?._id}
             />
           </div>
-          <h1 className="py-4 text-center">{data?.title}</h1>
+          <h1 className="pt-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
       </Section>

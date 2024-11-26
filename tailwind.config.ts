@@ -1,4 +1,6 @@
+import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 const config = {
   darkMode: ["class"],
@@ -67,7 +69,7 @@ const config = {
       "fade-out": "fade-out 300ms ease",
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate, typography],
 } satisfies Config;
 
 export default config;
