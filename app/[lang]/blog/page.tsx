@@ -10,10 +10,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export async function generateMetadata({
-  params: { lang },
+  params,
 }: Readonly<{
-  params: { lang: Locale; slug: string };
+  params: Promise<{ lang: Locale }>;
 }>): Promise<Metadata> {
+  const { lang } = await params;
+
   return {
     title: "Blog | Erwann Rousseau",
     description: "",
@@ -25,8 +27,12 @@ export async function generateMetadata({
 }
 
 export default async function Blog({
-  params: { lang },
-}: { params: { lang: Locale } }) {
+  params,
+}: Readonly<{
+  params: Promise<{ lang: Locale }>;
+}>) {
+  const { lang } = await params;
+
   const { data } = await loadBlogPage(lang);
   const t = await getI18n();
 
@@ -39,7 +45,7 @@ export default async function Blog({
         {data ? (
           data.map(({ title, subtitle, publishedAt, slug, mainImage }) => (
             <Link
-              href={{ pathname: `/${lang}/blog/${slug.current}` }}
+              href={`/${lang}/blog/${slug.current}`}
               className="flex justify-between rounded-md p-4 transition-colors hover:bg-accent/50"
               key={title}
               prefetch={true}

@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
@@ -10,7 +11,6 @@ const nextConfig = {
     ],
   },
   experimental: {
-    typedRoutes: true,
     taint: true,
   },
 };

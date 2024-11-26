@@ -34,7 +34,7 @@ export function CodeBlockWrapper({
   return (
     <figure
       className={cn(
-        "group relative my-4 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
         numberOfLines === 1 && "my-2",
       )}
       {...props}

@@ -17,13 +17,14 @@ import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
 import "../globals.css";
 
-export async function generateMetadata({
-  params,
-}: Readonly<{
-  params: { lang: Locale };
-}>): Promise<Metadata> {
+export async function generateMetadata(
+  props: Readonly<{
+    params: Promise<{ lang: Locale }>;
+  }>,
+): Promise<Metadata> {
+  const { lang } = await props.params;
   const t = await getI18n();
-  const { data } = await loadHomePage(params.lang);
+  const { data } = await loadHomePage(lang);
   const ogImage = urlForOpenGraphImage(data?.profilePicture);
 
   return {
@@ -51,15 +52,17 @@ export async function generateMetadata({
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }>) {
+  const { lang } = await params;
+
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={cn(
           "m-auto min-h-dvh max-w-4xl bg-background font-sans text-foreground antialiased",
@@ -74,7 +77,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <I18nProviderClient locale={params.lang}>
+          <I18nProviderClient locale={lang}>
             <Header />
             {children}
             <Footer />

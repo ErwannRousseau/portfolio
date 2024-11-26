@@ -14,7 +14,7 @@ export default async function Works({ works }: WorksProps) {
   const t = await getI18n();
   return (
     <div className="flex flex-col gap-4 md:w-1/2">
-      <h2 className="px-3">{t("Works.title")}</h2>
+      <h2 className="px-3 font-semibold text-2xl">{t("Works.title")}</h2>
       <ul className="first-of-type:-mt-3">
         {(works ?? []).map(({ title, job, link, icon, tags, duration }) => (
           <li key={title} className="leading-5">

@@ -79,7 +79,7 @@ export function LikeButton({
           )}
         />
       </div>
-      <MotionNumber value={currentLikes} />
+      <MotionNumber value={currentLikes} inert />
     </button>
   );
 }
