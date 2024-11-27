@@ -59,6 +59,26 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      typography: (theme: (path: string) => string) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": theme("colors.primary"),
+            "--tw-prose-headings": theme("colors.primary"),
+            "--tw-prose-bold": theme("colors.primary"),
+            "--tw-prose-quote-borders": theme("colors.slate.300"),
+            "--tw-prose-quotes": theme("colors.muted.foreground"),
+            "--tw-prose-code": theme("colors.primary"),
+            code: {
+              "&::before, &::after": {
+                display: "none",
+              },
+            },
+            blockquote: {
+              fontWeight: 400,
+            },
+          },
+        },
+      }),
     },
     keyframes: {
       "fade-out": {
