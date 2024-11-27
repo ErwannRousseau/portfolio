@@ -50,7 +50,7 @@ export default async function Post({
   return (
     <main>
       <Section className="flex-col">
-        <article className="prose max-w-none prose-blockquote:font-normal prose-headings:font-serif prose-blockquote:text-muted-foreground text-primary before:prose-code:hidden after:prose-code:hidden ">
+        <article className="prose max-w-none">
           <Image
             alt={`post image ${data?.title}`}
             src={imageUrl(100) || ""}
