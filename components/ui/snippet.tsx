@@ -2,22 +2,22 @@
 
 import { useScopedI18n } from "@/lib/locales/client";
 import { copyToClipboard, twx } from "@/lib/utils";
-import React from "react";
+import * as React from "react";
 
 const SnippetComp = twx.code`relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm cursor-pointer active:text-pink-400`;
 
 export const Snippet = ({ children }: { children: React.ReactNode }) => {
-  const [hasCopied, setHasCopied] = React.useState(false);
+  const [hasCopied, setHasCopied] = React.useOptimistic(false);
   const t = useScopedI18n("Snippet");
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: This effect should run every time `hasCopied` changes
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
+  const handleCopy = () => {
+    React.startTransition(async () => {
+      copyToClipboard(children?.toString() || "");
+      setHasCopied(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setHasCopied(false);
-    }, 2000);
-    return () => clearTimeout(timeoutId);
-  }, [hasCopied]);
-
+    });
+  };
   return (
     <>
       {hasCopied && (
@@ -25,14 +25,7 @@ export const Snippet = ({ children }: { children: React.ReactNode }) => {
           {t("copied")}
         </span>
       )}
-      <SnippetComp
-        onClick={() => {
-          copyToClipboard(children?.toString() || "");
-          setHasCopied(true);
-        }}
-      >
-        {children}
-      </SnippetComp>
+      <SnippetComp onClick={handleCopy}>{children}</SnippetComp>
     </>
   );
 };
