@@ -18,15 +18,16 @@ interface CopyButtonProps extends ButtonProps {
 
 export function CopyButton({ value, className, ...props }: CopyButtonProps) {
   const t = useScopedI18n("CodeBlock");
-  const [hasCopied, setHasCopied] = React.useState(false);
+  const [hasCopied, setHasCopied] = React.useOptimistic(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: This effect should run every time `hasCopied` changes
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
+  const handleCopy = () => {
+    React.startTransition(async () => {
+      copyToClipboard(value);
+      setHasCopied(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setHasCopied(false);
-    }, 2000);
-    return () => clearTimeout(timeoutId);
-  }, [hasCopied]);
+    });
+  };
 
   return (
     <TooltipProvider>
@@ -35,14 +36,12 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
           <Button
             size="icon"
             variant="ghost"
+            type="button"
             className={cn(
               "relative z-10 size-6 text-foreground opacity-0 group-hover:opacity-100 [&_svg]:size-4",
               className,
             )}
-            onClick={() => {
-              copyToClipboard(value);
-              setHasCopied(true);
-            }}
+            onClick={handleCopy}
             {...props}
           >
             <span className="sr-only">{t("copy")}</span>
