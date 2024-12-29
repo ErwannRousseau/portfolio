@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import NumberFlow from "@number-flow/react";
 import { Heart } from "lucide-react";
-import MotionNumber from "motion-number";
-import React from "react";
+import * as React from "react";
 
 type Props = React.JSX.IntrinsicElements["button"] & {
   likes: number;
@@ -18,45 +18,36 @@ export function LikeButton({
   postId,
   ...props
 }: Props) {
+  const [isPending, startTransition] = React.useTransition();
   const [currentLikes, setCurrentLikes] = React.useState(likes);
   const [isLiked, setIsLiked] = React.useState(liked);
-  const [isLoading, setIsLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    setCurrentLikes(likes);
-    setIsLiked(liked);
-  }, [likes, liked]);
+  const handleLike = () => {
+    const newLikes = isLiked ? currentLikes - 1 : currentLikes + 1;
+    setCurrentLikes(newLikes);
+    setIsLiked(!isLiked);
 
-  const handleLike = async () => {
-    if (isLoading) return;
+    startTransition(async () => {
+      try {
+        const res = await fetch("/api/like", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ postId }),
+        });
 
-    setIsLoading(true);
+        const data = await res.json();
 
-    try {
-      const newLikes = isLiked ? currentLikes - 1 : currentLikes + 1;
-      setCurrentLikes(newLikes);
-      setIsLiked(!isLiked);
-
-      const res = await fetch("/api/like", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ postId }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setCurrentLikes(currentLikes);
-        setIsLiked(isLiked);
-        console.error(data.message);
+        if (!res.ok) {
+          setCurrentLikes(likes);
+          setIsLiked(liked);
+          console.error(data.message);
+        }
+      } catch (error) {
+        setCurrentLikes(likes);
+        setIsLiked(liked);
+        console.error("Error updating like:", error);
       }
-    } catch (error) {
-      setCurrentLikes(currentLikes);
-      setIsLiked(isLiked);
-      console.error("Error updating like:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    });
   };
 
   return (
@@ -65,10 +56,11 @@ export function LikeButton({
       type="button"
       className={cn(
         className,
-        "group flex items-center gap-1.5 transition-[color] hover:text-pink-500",
+        "group flex items-center gap-1.5 transition-colors hover:text-pink-500",
         isLiked && "text-pink-500",
       )}
       onClick={handleLike}
+      disabled={isPending}
     >
       <div className="before:-inset-2.5 relative before:absolute before:rounded-full before:transition-[background-color] before:group-hover:bg-pink-500/10">
         <Heart
@@ -79,7 +71,7 @@ export function LikeButton({
           )}
         />
       </div>
-      <MotionNumber value={currentLikes} inert />
+      <NumberFlow value={currentLikes} />
     </button>
   );
 }

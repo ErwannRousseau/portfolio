@@ -1,6 +1,7 @@
 import { getClientIp } from "@/lib/client-ip";
 import { client } from "@/sanity/lib/client";
 import { loadPostLikes } from "@/sanity/lib/store";
+import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -36,6 +37,8 @@ export async function POST(req: NextRequest) {
         .append("likedBy", [ip])
         .commit();
     }
+
+    revalidateTag(`post-${data.slug}`);
 
     return NextResponse.json(
       { message: "Like successfully updated" },
