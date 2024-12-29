@@ -30,17 +30,6 @@ export async function generateMetadata(
   return {
     title: `${data?.title} | ${data?.subtitle} ${t("Metadata.where")}`,
     description: data?.overview && toPlainText(data.overview),
-    icons: {
-      icon: [
-        { url: "https://erwannrousseau.dev/favicon.ico", type: "image/x-icon" },
-        new URL("/apple-touch-icon.png", "https://erwannrousseau.dev"),
-      ],
-      shortcut: "/favicon.ico",
-      apple: [
-        { url: "/apple-touch-icon.png" },
-        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-      ],
-    },
     openGraph: {
       title: `${data?.title} | ${data?.subtitle} ${t("Metadata.where")}`,
       description: data?.overview ? toPlainText(data.overview) : undefined,
