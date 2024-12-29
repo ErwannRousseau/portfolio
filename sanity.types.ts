@@ -378,6 +378,7 @@ export type POST_QUERYResult = {
 export type POST_BY_ID_QUERYResult = {
   likeCount: number;
   likedBy: Array<string> | null;
+  slug: Slug;
 };
 
 // Variable: SLUGS_QUERY
