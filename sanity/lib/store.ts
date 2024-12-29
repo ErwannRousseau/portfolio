@@ -36,11 +36,15 @@ export function loadBlogPage(lang: Locale) {
 }
 
 export function loadPostPage(slug: string, lang: Locale) {
-  return loadQuery<POST_QUERYResult>(POST_QUERY, {
-    slug,
-    lang,
-    defaultLocale: i18n.defaultLocale,
-  });
+  return loadQuery<POST_QUERYResult>(
+    POST_QUERY,
+    {
+      slug,
+      lang,
+      defaultLocale: i18n.defaultLocale,
+    },
+    { tag: `post-${slug}` },
+  );
 }
 
 export function loadPostLikes(id: string) {
