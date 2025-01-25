@@ -61,7 +61,9 @@ export default async function Blog({
                 <div>
                   <DateFormat date={publishedAt} />
                   <p className="mb-2 font-semibold text-lg/5">{title}</p>
-                  <p className="text-muted-foreground leading-4">{subtitle}</p>
+                  <p className="text-muted-foreground leading-[0.9rem]">
+                    {subtitle}
+                  </p>
                 </div>
               </div>
               <ArrowUpRight className="ml-2 shrink-0 self-center" />

@@ -8,8 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export const twx = createTwc({ compose: cn });
 
-export function rgbColorToString(color: { r: number; g: number; b: number }) {
-  return `${color.r} ${color.g} ${color.b}`;
+export function rgbColorToString(
+  color: { r: number; g: number; b: number },
+  alpha: number,
+) {
+  return `rgba(${color.r} ${color.g} ${color.b}/${alpha})`;
 }
 
 export function formatDate(date: string) {

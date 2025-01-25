@@ -54,7 +54,7 @@ export function CodeBlockWrapper({
         )}
         <div
           className={cn(
-            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
+            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-geist-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
             !isOpened && "max-h-[350px]",
             numberOfLines === 1 && "[&_pre]:p-2",
             numberOfLines <= MAX_NUMBER_OF_LINES &&
