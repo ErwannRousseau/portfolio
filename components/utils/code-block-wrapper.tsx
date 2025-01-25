@@ -34,7 +34,7 @@ export function CodeBlockWrapper({
   return (
     <figure
       className={cn(
-        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring",
         numberOfLines === 1 && "my-2",
       )}
       {...props}
@@ -64,7 +64,7 @@ export function CodeBlockWrapper({
         >
           {children}
           {numberOfLines > MAX_NUMBER_OF_LINES && (
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-linear-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
               <Button
                 variant="link"
                 type="button"

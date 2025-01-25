@@ -21,7 +21,7 @@ export const Snippet = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {hasCopied && (
-        <span className="-translate-x-1/2 fixed top-2 left-1/2 transform rounded bg-pink-300/80 px-2 font-mono text-secondary shadow">
+        <span className="-translate-x-1/2 fixed top-2 left-1/2 transform rounded bg-pink-300/80 px-2 font-mono text-secondary shadow-sm">
           {t("copied")}
         </span>
       )}

@@ -64,7 +64,7 @@ export default async function Blog({
                   <p className="text-muted-foreground leading-4">{subtitle}</p>
                 </div>
               </div>
-              <ArrowUpRight className="ml-2 flex-shrink-0 self-center" />
+              <ArrowUpRight className="ml-2 shrink-0 self-center" />
             </Link>
           ))
         ) : (

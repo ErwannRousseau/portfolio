@@ -56,13 +56,13 @@ export function LikeButton({
       type="button"
       className={cn(
         className,
-        "group flex items-center gap-1.5 transition-colors hover:text-pink-500",
+        "group flex cursor-pointer items-center gap-1.5 transition-colors hover:text-pink-500",
         isLiked && "text-pink-500",
       )}
       onClick={handleLike}
       disabled={isPending}
     >
-      <div className="before:-inset-2.5 relative before:absolute before:rounded-full before:transition-[background-color] before:group-hover:bg-pink-500/10">
+      <div className="before:-inset-2.5 relative before:absolute before:rounded-full before:transition-[background-color] group-hover:before:bg-pink-500/10">
         <Heart
           absoluteStrokeWidth
           className={cn(
