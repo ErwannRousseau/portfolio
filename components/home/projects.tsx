@@ -29,7 +29,7 @@ export default async function Projects({ projects }: ProjectsProps) {
                   <p className="font-semibold">{title}</p>
                   <p className="text-muted-foreground text-sm">{description}</p>
                 </div>
-                <ArrowUpRight className="flex-shrink-0 self-center" />
+                <ArrowUpRight className="shrink-0 self-center" />
               </div>
             </Link>
           </li>

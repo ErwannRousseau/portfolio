@@ -34,7 +34,7 @@ export function CodeBlockWrapper({
   return (
     <figure
       className={cn(
-        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring",
         numberOfLines === 1 && "my-2",
       )}
       {...props}
@@ -43,7 +43,7 @@ export function CodeBlockWrapper({
         <div className="flex flex-row items-center justify-between gap-2 border-b px-4 py-1.5">
           <div className="flex items-center gap-2">
             {Icons[language as IconKeys]({})}
-            <figcaption>{filename}</figcaption>
+            <figcaption className="mt-0">{filename}</figcaption>
           </div>
           <CopyButton value={code} />
         </div>
@@ -54,7 +54,7 @@ export function CodeBlockWrapper({
         )}
         <div
           className={cn(
-            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
+            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-geist-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
             !isOpened && "max-h-[350px]",
             numberOfLines === 1 && "[&_pre]:p-2",
             numberOfLines <= MAX_NUMBER_OF_LINES &&
@@ -64,7 +64,7 @@ export function CodeBlockWrapper({
         >
           {children}
           {numberOfLines > MAX_NUMBER_OF_LINES && (
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-linear-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
               <Button
                 variant="link"
                 type="button"
