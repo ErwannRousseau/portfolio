@@ -15,7 +15,7 @@ const BadgeLink = ({ href, alt, src, children, ...props }: BadgeLinkProps) => {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="whitespace-nowrap rounded-sm border border-accent bg-accent/50 p-1 font-mono text-sm leading-3 no-underline"
+      className="whitespace-nowrap rounded-sm border border-accent bg-accent/50 p-1 font-geist-mono text-sm leading-3 no-underline"
     >
       <Image
         width={16}
@@ -35,7 +35,7 @@ function Badge({ className, ...props }: BadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex h-fit items-center rounded-full border px-2.5 py-0.5 font-semibold text-xs focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        "inline-flex h-fit items-center rounded-full border px-2.5 py-0.5 font-semibold text-xs focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2",
         className,
       )}
       {...props}

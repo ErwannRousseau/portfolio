@@ -35,7 +35,8 @@ export default async function Works({ works }: WorksProps) {
                       className="w-fit border-badge-border bg-badge"
                       style={
                         {
-                          "--badge": rgbColorToString(color),
+                          "--color-badge": rgbColorToString(color, 0.12),
+                          "--color-badge-border": rgbColorToString(color, 0.24),
                         } as React.CSSProperties
                       }
                     >

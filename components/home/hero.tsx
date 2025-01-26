@@ -16,7 +16,7 @@ export default function Hero({ data }: { data: HOME_QUERYResult }) {
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       </div>
-      <div className="flex flex-[2] flex-col justify-center leading-7">
+      <div className="flex flex-2 flex-col justify-center leading-7">
         <h1 className="font-extrabold text-4xl lg:text-5xl">{data?.title}</h1>
         <h2 className="text-3xl text-secondary-foreground">{data?.subtitle}</h2>
         <CustomPortableText value={data?.overview as PortableTextBlock[]} />

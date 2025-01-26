@@ -54,7 +54,7 @@ export default async function RootLayout({
     <html lang={lang} suppressHydrationWarning>
       <body
         className={cn(
-          "m-auto min-h-dvh max-w-4xl bg-background font-sans text-foreground antialiased",
+          "container bg-background font-geist-sans text-foreground antialiased",
           GeistSans.variable,
           SubjectivitySerif.variable,
           GeistMono.variable,
