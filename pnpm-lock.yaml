@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@number-flow/react':
-        specifier: ^0.4.4
-        version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^0.5.5
+        version: 0.5.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@portabletext/react':
         specifier: ^3.2.0
         version: 3.2.0(react@19.0.0)
@@ -777,6 +777,9 @@ packages:
   '@codemirror/commands@6.7.1':
     resolution: {integrity: sha512-llTrboQYw5H4THfhN4U3qCnSZ1SOJ60ohhz+SzU0ADGtwlc533DtklQP0vSFaQuCPDn3BPpOd1GbbnUtwNjsrw==}
 
+  '@codemirror/commands@6.8.0':
+    resolution: {integrity: sha512-q8VPEFaEP4ikSlt6ZxjB3zW72+7osfAYW9i8Zu943uqbKuz6utc1+F170hyLUCUltXORjQXRyYQNfkckzA/bPQ==}
+
   '@codemirror/lang-css@6.3.1':
     resolution: {integrity: sha512-kr5fwBGiGtmz6l0LSJIbno9QrifNMUusivHbnA1H6Dmqy4HZFte3UAICix1VuKo0lMPKQr2rqB+0BkKi/S3Ejg==}
 
@@ -1426,8 +1429,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@number-flow/react@0.4.4':
-    resolution: {integrity: sha512-m2FW55jnWqiJzKNRETgyxgR7a8x0WYIZ1uyiIW8C5g6HyjIynryJJop1mEcmHG6OyNePkcb8OQIcjKlV5TfHAw==}
+  '@number-flow/react@0.5.5':
+    resolution: {integrity: sha512-Zdju5n0osxrb+7jbcpUJ9L2VJ2+9ptwjz5+A+2wq9Q32hs3PW/noPJjHtLTrtGINM9mEw76DcDg0ac/dx6j1aA==}
     peerDependencies:
       react: ^18 || ^19
       react-dom: ^18 || ^19
@@ -1972,6 +1975,7 @@ packages:
 
   '@sanity/block-tools@3.68.3':
     resolution: {integrity: sha512-XptqCO8yoj69fdao/goS69ITJatN6YD7aLOus6T5V13I62lFBdjmZS9nBJ7i1DxchKDbsUyuyw1aPcqoECsedA==}
+    deprecated: Renamed - use `@portabletext/block-tools` instead. `@sanity/block-tools` will no longer receive updates.
 
   '@sanity/browserslist-config@1.0.5':
     resolution: {integrity: sha512-so+/UtCge8t1jq509hH0otbbptRz0zM/Aa0dh5MhMD7HGT6n2igWIL2VWH/9QR9e77Jn3dJsjz23mW1WCxT+sg==}
@@ -3214,8 +3218,8 @@ packages:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
 
-  esm-env@1.2.1:
-    resolution: {integrity: sha512-U9JedYYjCnadUlXk7e1Kr+aENQhtUaoaV9+gZm1T8LC/YBAPJx3NSPIAurFOC0U5vrdSevnUJS2/wUVxGwPhng==}
+  esm-env@1.2.2:
+    resolution: {integrity: sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==}
 
   esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
@@ -4203,8 +4207,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  number-flow@0.4.2:
-    resolution: {integrity: sha512-YLN73/m8BUU4r/6mq9zqLdpFKt3LSPPRectOECheA9jtNWF4PP8EIz0+Z1giqu/x9nS86KnKwwouLXXiqnjhQQ==}
+  number-flow@0.5.3:
+    resolution: {integrity: sha512-iLKyssImNWQmJ41rza9K7P5lHRZTyishi/9FarWPLQHYY2Ydtl6eiXINEjZ1fa8dHeY0O7+YOD+Py3ZsJddYkg==}
 
   nwsapi@2.2.16:
     resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
@@ -6382,6 +6386,13 @@ snapshots:
       '@codemirror/view': 6.36.1
       '@lezer/common': 1.2.3
 
+  '@codemirror/commands@6.8.0':
+    dependencies:
+      '@codemirror/language': 6.10.8
+      '@codemirror/state': 6.5.0
+      '@codemirror/view': 6.36.1
+      '@lezer/common': 1.2.3
+
   '@codemirror/lang-css@6.3.1':
     dependencies:
       '@codemirror/autocomplete': 6.18.4
@@ -6949,10 +6960,10 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@number-flow/react@0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@number-flow/react@0.5.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      esm-env: 1.2.1
-      number-flow: 0.4.2
+      esm-env: 1.2.2
+      number-flow: 0.5.3
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
@@ -8651,7 +8662,7 @@ snapshots:
   codemirror@6.0.1:
     dependencies:
       '@codemirror/autocomplete': 6.18.4
-      '@codemirror/commands': 6.7.1
+      '@codemirror/commands': 6.8.0
       '@codemirror/language': 6.10.8
       '@codemirror/lint': 6.8.4
       '@codemirror/search': 6.5.8
@@ -9043,7 +9054,7 @@ snapshots:
 
   escape-string-regexp@1.0.5: {}
 
-  esm-env@1.2.1: {}
+  esm-env@1.2.2: {}
 
   esprima@4.0.1: {}
 
@@ -10033,9 +10044,9 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  number-flow@0.4.2:
+  number-flow@0.5.3:
     dependencies:
-      esm-env: 1.2.1
+      esm-env: 1.2.2
 
   nwsapi@2.2.16: {}
 
