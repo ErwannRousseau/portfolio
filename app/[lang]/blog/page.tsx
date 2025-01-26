@@ -56,14 +56,12 @@ export default async function Blog({
                   alt={`main image for ${title}`}
                   width={100}
                   height={70}
-                  className="rounded-md max-md:hidden"
+                  className="my-auto aspect-video max-h-[70px] rounded-md max-md:hidden"
                 />
                 <div>
                   <DateFormat date={publishedAt} />
                   <p className="mb-2 font-semibold text-lg/5">{title}</p>
-                  <p className="text-muted-foreground leading-[0.9rem]">
-                    {subtitle}
-                  </p>
+                  <p className="text-muted-foreground leading-4">{subtitle}</p>
                 </div>
               </div>
               <ArrowUpRight className="ml-2 shrink-0 self-center" />

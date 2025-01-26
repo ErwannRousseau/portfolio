@@ -1,4 +1,3 @@
-import type { UrlObject } from "node:url";
 import { Section } from "@/components/ui/section";
 import { getI18n } from "@/lib/locales/server";
 import Link from "next/link";
@@ -31,13 +30,13 @@ export default async function Connect() {
   return (
     <Section className="flex-col">
       <h2 className="font-semibold text-2xl">{t("Connect")}</h2>
-      <ul className="contact-list flex w-fit gap-6 font-medium">
+      <ul className="group flex w-fit gap-6 font-medium">
         {contacts.map((contact) => (
-          <li key={contact.label} className="transition-opacity">
-            <Link
-              href={contact.href as unknown as UrlObject}
-              target={contact?.target}
-            >
+          <li
+            key={contact.label}
+            className="transition-opacity group-hover:opacity-50 group-hover:hover:opacity-100"
+          >
+            <Link href={contact.href} target={contact?.target}>
               {contact.label}
             </Link>
           </li>

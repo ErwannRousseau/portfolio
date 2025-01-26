@@ -38,6 +38,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  --leading-4: 0.9rem;
+
   --animate-fade-out: fade-out 300ms ease;
 
   @keyframes fade-out {
@@ -49,53 +51,53 @@
 
 @layer base {
   :root {
-    --background: hsl(0, 0%, 100%);
-    --foreground: hsl(222.2, 84%, 4.9%);
+    --background: oklch(100% 0 106.37);
+    --foreground: oklch(13.71% 0.036 258.53);
 
-    --primary: hsl(222.2, 47.4%, 11.2%);
-    --primary-foreground: hsl(210, 40%, 98%);
+    --primary: oklch(20.79% 0.0399 265.73);
+    --primary-foreground: oklch(0.98 0 247.86 / 1);
 
-    --secondary: hsl(210, 40%, 96.1%);
-    --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+    --secondary: oklch(96.84% 0.0068 247.9);
+    --secondary-foreground: oklch(20.79% 0.0399 265.73);
 
-    --muted: hsl(210, 40%, 96.1%);
-    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+    --muted: oklch(96.84% 0.0068 247.9);
+    --muted-foreground: oklch(55.47% 0.0407 257.44);
 
-    --accent: hsl(210, 40%, 96.1%);
-    --accent-foreground: hsl(222.2, 47.4%, 11.2%);
+    --accent: oklch(96.84% 0.0068 247.9);
+    --accent-foreground: oklch(20.79% 0.0399 265.73);
 
-    --destructive: hsl(0, 84.2%, 60.2%);
-    --destructive-foreground: hsl(210, 40%, 98%);
+    --destructive: oklch(63.68% 0.2078 25.33);
+    --destructive-foreground: oklch(0.98 0 247.86 / 1);
 
-    --border: hsl(214.3, 31.8%, 91.4%);
-    --input: hsl(214.3, 31.8%, 91.4%);
-    --ring: hsl(222.2, 84%, 4.9%);
+    --border: oklch(92.9% 0.0126 255.53);
+    --input: oklch(92.9% 0.0126 255.53);
+    --ring: oklch(13.71% 0.036 258.53);
 
     --radius: 0.6rem;
   }
 
   .dark {
-    --background: hsl(222.2, 84%, 4.9%);
-    --foreground: hsl(210, 40%, 98%);
+    --background: oklch(13.71% 0.036 258.53);
+    --foreground: oklch(0.98 0 247.86 / 1);
 
-    --primary: hsl(210, 40%, 98%);
-    --primary-foreground: hsl(222.2, 47.4%, 11.2%);
+    --primary: oklch(0.98 0 247.86 / 1);
+    --primary-foreground: oklch(20.79% 0.0399 265.73);
 
-    --secondary: hsl(217.2, 32.6%, 17.5%);
-    --secondary-foreground: hsl(210, 40%, 98%);
+    --secondary: oklch(28% 0.0369 259.97);
+    --secondary-foreground: oklch(0.98 0 247.86 / 1);
 
-    --muted: hsl(217.2, 32.6%, 17.5%);
-    --muted-foreground: hsl(215, 20.2%, 65.1%);
+    --muted: oklch(28% 0.0369 259.97);
+    --muted-foreground: oklch(71.07% 0.0351 256.79);
 
-    --accent: hsl(217.2, 32.6%, 17.5%);
-    --accent-foreground: hsl(210, 40%, 98%);
+    --accent: oklch(28% 0.0369 259.97);
+    --accent-foreground: oklch(98.38% 0.0035 247.86);
 
-    --destructive: hsl(0, 62.8%, 30.6%);
-    --destructive-foreground: hsl(210, 40%, 98%);
+    --destructive: oklch(39.59% 0.1331 25.72);
+    --destructive-foreground: oklch(98.38% 0.0035 247.86);
 
-    --border: hsl(217.2, 32.6%, 17.5%);
-    --input: hsl(217.2, 32.6%, 17.5%);
-    --ring: hsl(212.7, 26.8%, 83.9%);
+    --border: oklch(28% 0.0369 259.97);
+    --input: oklch(28% 0.0369 259.97);
+    --ring: oklch(86.88% 0.0198 252.85);
   }
 }
 
@@ -116,39 +118,31 @@
 }
 
 /* Typography plugin */
-@layer utilities {
-  .prose {
-    --tw-prose-body: var(--primary);
-    --tw-prose-headings: var(--primary);
-    --tw-prose-bold: var(--primary);
-    --tw-prose-quote-borders: var(--color-slate-300);
-    --tw-prose-quotes: var(--muted-foreground);
-    --tw-prose-code: var(--primary);
+@utility prose {
+  --tw-prose-body: var(--primary);
+  --tw-prose-headings: var(--primary);
+  --tw-prose-bold: var(--primary);
+  --tw-prose-quote-borders: var(--color-slate-300);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-code: var(--primary);
 
-    code {
-      &::before,
-      &::after {
-        display: none;
-      }
+  code {
+    &::before,
+    &::after {
+      display: none;
     }
+    text-wrap: nowrap;
+  }
 
-    blockquote {
-      font-weight: 400;
-    }
+  blockquote {
+    font-weight: 400;
   }
 }
 
 @utility container {
   margin-inline: auto;
-  max-width: var(--container-4xl);
+  max-width: var(--container-3xl);
   min-height: 100dvh;
-}
-
-/* Contact Links */
-@media (hover: hover) {
-  .contact-list:hover li {
-    @apply opacity-50 hover:opacity-100;
-  }
 }
 
 /* Hero picture */
