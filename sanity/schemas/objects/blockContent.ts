@@ -70,6 +70,18 @@ export default defineType({
       title: "Code example",
       options: {
         withFilename: true,
+        language: "typescript",
+        languageAlternatives: [
+          { title: "Javascript", value: "javascript" },
+          { title: "Typescript", value: "typescript" },
+          { title: "TSX", value: "tsx" },
+          { title: "HTML", value: "html" },
+          { title: "CSS", value: "css" },
+          { title: "PHP", value: "php" },
+          { title: "Twig", value: "twig", mode: "html" },
+          { title: "JSON", value: "json" },
+          { title: "sh", value: "sh" },
+        ],
       },
     }),
   ],

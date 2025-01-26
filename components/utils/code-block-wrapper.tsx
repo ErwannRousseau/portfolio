@@ -43,7 +43,7 @@ export function CodeBlockWrapper({
         <div className="flex flex-row items-center justify-between gap-2 border-b px-4 py-1.5">
           <div className="flex items-center gap-2">
             {Icons[language as IconKeys]({})}
-            <figcaption>{filename}</figcaption>
+            <figcaption className="mt-0">{filename}</figcaption>
           </div>
           <CopyButton value={code} />
         </div>
