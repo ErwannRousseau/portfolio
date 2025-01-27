@@ -119,12 +119,12 @@
 
 /* Typography plugin */
 @utility prose {
-  --tw-prose-body: var(--primary);
-  --tw-prose-headings: var(--primary);
-  --tw-prose-bold: var(--primary);
+  --tw-prose-body: var(--color-primary);
+  --tw-prose-headings: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
   --tw-prose-quote-borders: var(--color-slate-300);
-  --tw-prose-quotes: var(--muted-foreground);
-  --tw-prose-code: var(--primary);
+  --tw-prose-quotes: var(--color-muted-foreground);
+  --tw-prose-code: var(--color-primary);
 
   code {
     &::before,
