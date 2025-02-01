@@ -54,9 +54,9 @@ export default async function Blog({
                 <Image
                   src={urlForImage(mainImage)?.url() || ""}
                   alt={`main image for ${title}`}
-                  width={100}
-                  height={70}
-                  className="my-auto aspect-video max-h-[70px] rounded-md max-md:hidden"
+                  width={107}
+                  height={60}
+                  className="my-auto aspect-video rounded-md max-md:hidden"
                 />
                 <div>
                   <DateFormat date={publishedAt} />
