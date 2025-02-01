@@ -54,9 +54,9 @@ export default async function Post({
           <Image
             alt={`post image ${data?.title}`}
             src={imageUrl(100) || ""}
-            className="mb-2 aspect-video rounded-md object-cover"
-            width={896}
-            height={304}
+            className="mb-2 aspect-video rounded-md"
+            width={768}
+            height={431}
             placeholder="blur"
             blurDataURL={imageUrl(50)}
           />

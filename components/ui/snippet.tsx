@@ -4,7 +4,7 @@ import { useScopedI18n } from "@/lib/locales/client";
 import { copyToClipboard, twx } from "@/lib/utils";
 import * as React from "react";
 
-const SnippetComp = twx.code`relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-geist-mono text-sm cursor-pointer active:text-pink-400`;
+const SnippetComp = twx.code`relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-geist-mono text-sm cursor-pointer active:text-pink-400 break-words`;
 
 export const Snippet = ({ children }: { children: React.ReactNode }) => {
   const [hasCopied, setHasCopied] = React.useOptimistic(false);
