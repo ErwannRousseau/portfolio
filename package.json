@@ -40,7 +40,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-twc": "^1.4.2",
-    "sanity": "^3.68.3",
+    "sanity": "^3.74.1",
     "styled-components": "^6.1.14",
     "tailwind-merge": "^2.6.0"
   },
