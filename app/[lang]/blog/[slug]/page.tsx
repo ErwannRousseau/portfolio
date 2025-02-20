@@ -1,5 +1,6 @@
-import { Section } from "@/components/ui";
+import { Section, Spacing } from "@/components/ui";
 import { LikeButton } from "@/components/ui/like-button";
+import { Comments } from "@/components/utils/comments";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
@@ -72,6 +73,8 @@ export default async function Post({
           <h1 className="pt-4 text-center">{data?.title}</h1>
           <CustomPortableText value={data?.body as PortableTextBlock[]} />
         </article>
+        <Spacing size="xs" />
+        <Comments lang={lang} />
       </Section>
     </main>
   );
