@@ -14,18 +14,19 @@
     "typegen": "sanity typegen generate"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@number-flow/react": "^0.5.5",
     "@portabletext/react": "^3.2.0",
     "@radix-ui/react-scroll-area": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
-    "@radix-ui/react-tooltip": "^1.1.6",
+    "@radix-ui/react-tooltip": "^1.1.7",
     "@sanity/code-input": "^5.1.2",
     "@sanity/color-input": "^4.0.3",
-    "@sanity/document-internationalization": "^3.3.0",
+    "@sanity/document-internationalization": "^3.3.1",
     "@sanity/image-url": "^1.1.0",
     "@sanity/language-filter": "^4.0.3",
-    "@sanity/react-loader": "^1.10.31",
-    "@sanity/ui": "^2.10.12",
+    "@sanity/react-loader": "^1.10.45",
+    "@sanity/ui": "^2.14.0",
     "@sanity/vision": "^3.68.3",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
@@ -40,22 +41,22 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-twc": "^1.4.2",
-    "sanity": "^3.68.3",
+    "sanity": "^3.76.3",
     "styled-components": "^6.1.14",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@tailwindcss/postcss": "^4.0.0",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.2",
     "postcss": "^8.4.49",
-    "shiki": "^2.1.0",
+    "shiki": "^2.4.2",
     "tailwindcss": "^4.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
