@@ -39,7 +39,7 @@ export default async function Blog({
   return (
     <main>
       <Spacing />
-      <h2 className="pl-4">{t("Blog")}</h2>
+      <h2 className="pl-4 text-xl">{t("Blog")}</h2>
       <Spacing size="xs" />
       <Section className="flex-col gap-0 px-0">
         {data ? (
