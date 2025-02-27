@@ -43,7 +43,7 @@
     "react-twc": "^1.4.2",
     "sanity": "^3.76.3",
     "styled-components": "^6.1.14",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
