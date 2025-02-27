@@ -17,7 +17,7 @@
     "@giscus/react": "^3.1.0",
     "@number-flow/react": "^0.5.5",
     "@portabletext/react": "^3.2.0",
-    "@radix-ui/react-scroll-area": "^1.2.2",
+    "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.7",
     "@sanity/code-input": "^5.1.2",
