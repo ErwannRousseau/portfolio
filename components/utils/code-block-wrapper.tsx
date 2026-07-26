@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Icons } from "@/components/ui/icons";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { MAX_NUMBER_OF_LINES } from "@/lib/constants";
 import { useScopedI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
 import * as React from "react";
@@ -13,6 +14,7 @@ interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   code: string;
   filename?: string;
   language: string;
+  numberOfLines: number;
 }
 
 export function CodeBlockWrapper({
@@ -20,6 +22,7 @@ export function CodeBlockWrapper({
   code,
   filename,
   language,
+  numberOfLines,
   ...props
 }: CodeBlockProps) {
   const t = useScopedI18n("CodeBlock");
@@ -27,14 +30,17 @@ export function CodeBlockWrapper({
 
   return (
     <figure
-      className="group relative my-4 overflow-y-hidden rounded-md border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+      className={cn(
+        "group relative mt-4 mb-8 overflow-y-hidden rounded-md border focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring",
+        numberOfLines === 1 && "my-2",
+      )}
       {...props}
     >
       {filename && (
         <div className="flex flex-row items-center justify-between gap-2 border-b px-4 py-1.5">
           <div className="flex items-center gap-2">
             {Icons[language as IconKeys]({})}
-            <figcaption>{filename}</figcaption>
+            <figcaption className="mt-0">{filename}</figcaption>
           </div>
           <CopyButton value={code} />
         </div>
@@ -43,17 +49,29 @@ export function CodeBlockWrapper({
         {!filename && (
           <CopyButton value={code} className="absolute top-2 right-4" />
         )}
-        <div className={cn(!isOpened && "max-h-[350px]")}>
+        <div
+          className={cn(
+            "w-full rounded-md [&_pre]:my-0 [&_pre]:p-6 [&_pre]:pb-12 [&_pre]:font-geist-mono [&_pre]:text-sm [&_pre]:leading-relaxed",
+            !isOpened && "max-h-[350px]",
+            numberOfLines === 1 && "[&_pre]:p-2",
+            numberOfLines <= MAX_NUMBER_OF_LINES &&
+              numberOfLines !== 1 &&
+              "[&_pre]:pb-6",
+          )}
+        >
           {children}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center rounded-b-md bg-gradient-to-b from-muted/30 to-primary/60 p-2">
-            <Button
-              variant="secondary"
-              className="h-8 text-xs"
-              onClick={() => setIsOpened(!isOpened)}
-            >
-              {isOpened ? t("collapse") : t("expand")}
-            </Button>
-          </div>
+          {numberOfLines > MAX_NUMBER_OF_LINES && (
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-linear-to-b from-transparent to-gray-100 p-2 dark:to-gray-700">
+              <Button
+                variant="link"
+                type="button"
+                onClick={() => setIsOpened(!isOpened)}
+                className="text-pink-400 text-xs hover:no-underline"
+              >
+                {isOpened ? t("collapse") : t("expand")}
+              </Button>
+            </div>
+          )}
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
