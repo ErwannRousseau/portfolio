@@ -8,7 +8,7 @@ Presentation layer for homepage sections, shared layout, primitives, providers, 
 
 - `home/`: Hero, Projects, Works, Skills, Connect.
 - `layout/`: Header, navigation, footer.
-- `ui/`: shared primitives and barrel export at `ui/index.ts`.
+- `ui/`: shared primitives.
 - `provider/`: theme provider and other context boundaries.
 - `utils/`: code blocks, portable text, locale/theme controls, SVG helper.
 

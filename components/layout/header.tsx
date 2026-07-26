@@ -1,4 +1,6 @@
-import { Icons, Spacing, buttonVariants } from "@/components/ui";
+import { buttonVariants } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
+import { Spacing } from "@/components/ui/spacing";
 import { ThemeToggle } from "@/components/utils/theme-toggle";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

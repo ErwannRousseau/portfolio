@@ -1,4 +1,5 @@
-import { Section, Spacing } from "@/components/ui";
+import { Section } from "@/components/ui/section";
+import { Spacing } from "@/components/ui/spacing";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
 import { getI18n } from "@/lib/locales/server";

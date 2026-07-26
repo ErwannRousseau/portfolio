@@ -3,7 +3,8 @@ import Hero from "@/components/home/hero";
 import Projects from "@/components/home/projects";
 import Skills from "@/components/home/skills";
 import Works from "@/components/home/works";
-import { Section, Spacing } from "@/components/ui";
+import { Section } from "@/components/ui/section";
+import { Spacing } from "@/components/ui/spacing";
 import type { Locale } from "@/i18n.config";
 import { loadHomePage } from "@/sanity/lib/store";
 
