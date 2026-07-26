@@ -1,4 +1,5 @@
-import { BadgeLink, Snippet } from "@/components/ui";
+import { BadgeLink } from "@/components/ui/badge";
+import { Snippet } from "@/components/ui/snippet";
 import type { Code } from "@/sanity.types";
 import { urlForImage } from "@/sanity/lib/image";
 import {

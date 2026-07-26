@@ -1,12 +1,9 @@
 "use client";
 
-import {
-  Button,
-  CopyButton,
-  Icons,
-  ScrollArea,
-  ScrollBar,
-} from "@/components/ui";
+import { Button } from "@/components/ui/button";
+import { CopyButton } from "@/components/ui/copy-button";
+import { Icons } from "@/components/ui/icons";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { MAX_NUMBER_OF_LINES } from "@/lib/constants";
 import { useScopedI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";

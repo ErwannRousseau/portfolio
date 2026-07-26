@@ -1,5 +1,6 @@
-import { Section, Spacing } from "@/components/ui";
 import { LikeButton } from "@/components/ui/like-button";
+import { Section } from "@/components/ui/section";
+import { Spacing } from "@/components/ui/spacing";
 import { Comments } from "@/components/utils/comments";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
@@ -40,13 +41,10 @@ export default async function Post({
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
   const { slug, lang } = await params;
-
   const { data } = await loadPostPage(slug, lang);
 
   const imageUrl = (quality: number) =>
     `${urlForImage(data?.mainImage)?.url()}&q=${quality}`;
-
-  const isLiked = data?.likedBy?.includes(await getClientIp()) ?? false;
 
   return (
     <main>
@@ -66,7 +64,7 @@ export default async function Post({
             <LikeButton
               className="mr-2"
               likes={data?.likeCount ?? 0}
-              liked={isLiked}
+              liked={data?.likedBy?.includes(await getClientIp()) ?? false}
               postId={data?._id}
             />
           </div>

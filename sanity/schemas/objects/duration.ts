@@ -1,6 +1,6 @@
 import { defineField } from "sanity";
 
-import { DurationInput } from "./DurationInput";
+import { DurationInput } from "./duration/DurationInput";
 
 export default defineField({
   type: "object",

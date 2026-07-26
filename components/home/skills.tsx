@@ -1,4 +1,4 @@
-import { Section } from "@/components/ui";
+import { Section } from "@/components/ui/section";
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
 import { cn } from "@/lib/utils";
