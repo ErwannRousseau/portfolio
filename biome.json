@@ -67,8 +67,7 @@
           "fix": "safe"
         }
       }
-    },
-    "includes": ["**", "!**/sanity.types.ts"]
+    }
   },
   "javascript": {
     "globals": ["React"]
@@ -79,6 +78,12 @@
     }
   },
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/public", "!**/.next"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/public",
+      "!**/.next",
+      "!**/sanity.types.ts"
+    ]
   }
 }

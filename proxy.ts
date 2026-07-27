@@ -1,5 +1,3 @@
-// middleware.ts
-
 import type { NextRequest } from "next/server";
 import { createI18nMiddleware } from "next-international/middleware";
 import { i18n } from "./i18n.config";
@@ -9,7 +7,7 @@ const I18nMiddleware = createI18nMiddleware({
   defaultLocale: i18n.defaultLocale,
 });
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   return I18nMiddleware(request);
 }
 

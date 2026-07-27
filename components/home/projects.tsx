@@ -2,10 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
-import type { Projects as TProjects } from "@/sanity.types";
+import type { HOME_QUERY_RESULT } from "@/sanity.types";
 
 type ProjectsProps = {
-  projects?: TProjects[] | null;
+  projects?: NonNullable<HOME_QUERY_RESULT>["projects"];
 };
 
 export default async function Projects({ projects }: ProjectsProps) {

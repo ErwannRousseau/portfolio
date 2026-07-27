@@ -26,8 +26,8 @@ export async function generateMetadata({
     title: data?.title,
     description: data?.subtitle,
     openGraph: {
-      title: data?.title,
-      description: data?.subtitle,
+      title: data?.title ?? undefined,
+      description: data?.subtitle ?? undefined,
       url: `https://erwannrousseau.dev/${lang}/blog/${slug}`,
       images: ogImage,
       type: "article",

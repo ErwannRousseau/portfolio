@@ -53,8 +53,10 @@ export function CustomPortableText({
     },
     types: {
       code: ({ value }: { value: Code }) => {
-        const { code, filename, language } = value;
-        const numberOfLines = value.code.split("\n").length;
+        const { filename } = value;
+        const code = value.code ?? "";
+        const language = value.language ?? "text";
+        const numberOfLines = code.split("\n").length;
 
         return (
           <CodeBlockWrapper

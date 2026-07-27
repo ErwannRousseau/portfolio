@@ -1,5 +1,7 @@
-import createImageUrlBuilder from "@sanity/image-url";
-import type { Image } from "sanity";
+import {
+  createImageUrlBuilder,
+  type SanityImageSource,
+} from "@sanity/image-url";
 
 import { dataset, projectId } from "../env";
 
@@ -8,14 +10,23 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || "",
 });
 
-export const urlForImage = (source: Image | undefined) => {
+type ImageSource = {
+  asset?: {
+    _ref?: string;
+  };
+};
+
+export const urlForImage = (source: ImageSource | null | undefined) => {
   if (!source?.asset?._ref) {
     return undefined;
   }
 
-  return imageBuilder.image(source).auto("format").fit("max");
+  return imageBuilder
+    .image(source as SanityImageSource)
+    .auto("format")
+    .fit("max");
 };
 
-export function urlForOpenGraphImage(image: Image | undefined) {
+export function urlForOpenGraphImage(image: ImageSource | null | undefined) {
   return urlForImage(image)?.width(1200).height(627).fit("crop").url();
 }
