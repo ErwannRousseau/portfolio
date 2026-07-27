@@ -1,9 +1,9 @@
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Spacing } from "@/components/ui/spacing";
 import { ThemeToggle } from "@/components/utils/theme-toggle";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import Nav from "./nav";
 
 export default async function Header() {

@@ -2,17 +2,17 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from "@/sanity/env";
-import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
-import { schema } from "@/sanity/schema";
-import home from "@/sanity/schemas/singletons/home";
 import { codeInput } from "@sanity/code-input";
 import { colorInput } from "@sanity/color-input";
 import { languageFilter } from "@sanity/language-filter";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+import { apiVersion, dataset, projectId } from "@/sanity/env";
+import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
+import { schema } from "@/sanity/schema";
+import home from "@/sanity/schemas/singletons/home";
 import { languages } from "./i18n.config";
 
 export default defineConfig({

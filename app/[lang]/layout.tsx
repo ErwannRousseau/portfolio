@@ -1,3 +1,9 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
+import { toPlainText } from "next-sanity";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { ThemeProvider } from "@/components/provider/theme-provider";
@@ -9,12 +15,6 @@ import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadHomePage } from "@/sanity/lib/store";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
-import type { Metadata } from "next";
-import { toPlainText } from "next-sanity";
 import "../globals.css";
 
 export async function generateMetadata(

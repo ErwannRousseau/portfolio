@@ -1,3 +1,7 @@
+import { ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { Section } from "@/components/ui/section";
 import { Spacing } from "@/components/ui/spacing";
 import { DateFormat } from "@/components/utils/date-format";
@@ -5,10 +9,6 @@ import type { Locale } from "@/i18n.config";
 import { getI18n } from "@/lib/locales/server";
 import { urlForImage } from "@/sanity/lib/image";
 import { loadBlogPage } from "@/sanity/lib/store";
-import { ArrowUpRight } from "lucide-react";
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,

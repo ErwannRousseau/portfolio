@@ -1,10 +1,10 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { DateFormat } from "@/components/utils/date-format";
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
 import { rgbColorToString } from "@/lib/utils";
 import type { Works as TWorks } from "@/sanity.types";
-import Link from "next/link";
 
 type WorksProps = {
   works?: TWorks[] | null;

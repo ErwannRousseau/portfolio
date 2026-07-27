@@ -1,8 +1,8 @@
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
 import type { Projects as TProjects } from "@/sanity.types";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 type ProjectsProps = {
   projects?: TProjects[] | null;

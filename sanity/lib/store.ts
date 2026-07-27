@@ -1,5 +1,7 @@
+import * as queryStore from "@sanity/react-loader";
 import type { Locale } from "@/i18n.config";
 import { i18n } from "@/i18n.config";
+import { client } from "@/sanity/lib/client";
 import type {
   BLOG_QUERYResult,
   HOME_QUERYResult,
@@ -7,8 +9,6 @@ import type {
   POST_QUERYResult,
   SLUGS_QUERYResult,
 } from "@/sanity.types";
-import { client } from "@/sanity/lib/client";
-import * as queryStore from "@sanity/react-loader";
 import {
   BLOG_QUERY,
   HOME_QUERY,
