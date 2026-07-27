@@ -74,3 +74,17 @@ pnpm typegen
 - Production pages depend on Sanity environment variables from `.env.example`.
 - Existing worktree changes must remain untouched unless explicitly requested.
 - Metadata currently references `erwannrousseau.com`; sitemap uses `erwannrousseau.dev`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs live in GitHub Issues for `ErwannRousseau/portfolio`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context domain docs use root `CONTEXT.md` and `docs/adr/`. See `docs/agents/domain.md`.
