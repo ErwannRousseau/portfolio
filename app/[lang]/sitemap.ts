@@ -1,5 +1,5 @@
-import { loadPostSlugs } from "@/sanity/lib/store";
 import type { MetadataRoute } from "next";
+import { loadPostSlugs } from "@/sanity/lib/store";
 
 const BASE_URL = "https://erwannrousseau.dev";
 

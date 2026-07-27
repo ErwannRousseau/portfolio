@@ -1,9 +1,9 @@
 "use client";
 
-import { useScopedI18n } from "@/lib/locales/client";
-import { cn, copyToClipboard } from "@/lib/utils";
 import { CheckIcon, Copy } from "lucide-react";
 import * as React from "react";
+import { useScopedI18n } from "@/lib/locales/client";
+import { cn, copyToClipboard } from "@/lib/utils";
 import { Button, type ButtonProps } from "./button";
 import {
   Tooltip,

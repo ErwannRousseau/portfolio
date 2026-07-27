@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import type { PortableTextBlock } from "next-sanity";
 import { LikeButton } from "@/components/ui/like-button";
 import { Section } from "@/components/ui/section";
 import { Spacing } from "@/components/ui/spacing";
@@ -8,9 +11,6 @@ import type { Locale } from "@/i18n.config";
 import { getClientIp } from "@/lib/client-ip";
 import { urlForImage, urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
-import type { Metadata } from "next";
-import type { PortableTextBlock } from "next-sanity";
-import Image from "next/image";
 
 export async function generateMetadata({
   params,

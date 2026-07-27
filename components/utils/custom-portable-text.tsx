@@ -1,15 +1,15 @@
-import { BadgeLink } from "@/components/ui/badge";
-import { Snippet } from "@/components/ui/snippet";
-import type { Code } from "@/sanity.types";
-import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
+import Link from "next/link";
 import {
   PortableText,
   type PortableTextBlock,
   type PortableTextComponents,
 } from "next-sanity";
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
+import { BadgeLink } from "@/components/ui/badge";
+import { Snippet } from "@/components/ui/snippet";
+import { urlForImage } from "@/sanity/lib/image";
+import type { Code } from "@/sanity.types";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
 import { CodeSkeleton } from "./code-skeleton";

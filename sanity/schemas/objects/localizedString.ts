@@ -1,5 +1,5 @@
-import { languages } from "@/i18n.config";
 import { defineField, defineType } from "sanity";
+import { languages } from "@/i18n.config";
 
 export default defineType({
   name: "localizedString",

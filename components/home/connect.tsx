@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Section } from "@/components/ui/section";
 import { getI18n } from "@/lib/locales/server";
-import Link from "next/link";
 
 export default async function Connect() {
   const t = await getI18n();

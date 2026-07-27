@@ -10,7 +10,7 @@ export const InlineSVG = ({ value, className }: InlineSVGProps) => {
   }
   return (
     <>
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: */}
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: value is trusted Sanity SVG */}
       <div className={className} dangerouslySetInnerHTML={{ __html: value }} />
     </>
   );
