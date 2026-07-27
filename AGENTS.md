@@ -6,7 +6,7 @@
 
 ## OVERVIEW
 
-Portfolio site built with Next.js 14 App Router, TypeScript, Tailwind CSS, next-international, and an embedded Sanity Studio.
+Portfolio site built with Next.js 16 App Router, TypeScript, Tailwind CSS, next-international, and an embedded Sanity Studio.
 
 ## STRUCTURE
 
