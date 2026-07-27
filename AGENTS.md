@@ -17,7 +17,7 @@ portfolio/
 ├── lib/          # Shared utilities, themes, and locale helpers
 ├── sanity/       # Sanity client, loaders, GROQ queries, schemas, plugins
 ├── public/       # Static icons and Subjectivity Serif fonts
-├── middleware.ts # Locale routing and route exclusions
+├── proxy.ts      # Locale routing and route exclusions
 └── sanity.config.ts
 ```
 
@@ -26,7 +26,7 @@ portfolio/
 | Task | Location | Notes |
 | --- | --- | --- |
 | Public routes | `app/[lang]/` | Locale is part of every public URL; see child guide |
-| Locale routing | `middleware.ts`, `i18n.config.ts` | Supported locales: `en`, `fr`; default: `en` |
+| Locale routing | `proxy.ts`, `i18n.config.ts` | Supported locales: `en`, `fr`; default: `en` |
 | Sanity data loading | `sanity/lib/store.ts`, `sanity/lib/queries.ts` | Central query/load boundary |
 | Studio | `app/studio/`, `sanity.config.ts` | Mounted at `/studio`, outside localized routes |
 | Shared UI | `components/ui/`, `components/layout/` | `components/AGENTS.md` |
@@ -37,7 +37,7 @@ portfolio/
 
 | Symbol | Location | Role |
 | --- | --- | --- |
-| `middleware` | `middleware.ts` | Locale negotiation and route matcher |
+| `proxy` | `proxy.ts` | Locale negotiation and route matcher |
 | `Home`, `Blog`, `Post` | `app/[lang]/**/page.tsx` | Public page entry points |
 | `loadHomePage`, `loadBlogPage`, `loadPostPage` | `sanity/lib/store.ts` | Server-side Sanity data access |
 | `schema` | `sanity/schema.ts` | Registered Sanity document/object types |
