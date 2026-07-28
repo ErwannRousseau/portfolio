@@ -4,10 +4,10 @@ import { DateFormat } from "@/components/utils/date-format";
 import { InlineSVG } from "@/components/utils/inline-svg";
 import { getI18n } from "@/lib/locales/server";
 import { rgbColorToString } from "@/lib/utils";
-import type { Works as TWorks } from "@/sanity.types";
+import type { HOME_QUERY_RESULT } from "@/sanity.types";
 
 type WorksProps = {
-  works?: TWorks[] | null;
+  works?: NonNullable<HOME_QUERY_RESULT>["works"];
 };
 
 export default async function Works({ works }: WorksProps) {

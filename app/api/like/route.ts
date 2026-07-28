@@ -20,6 +20,10 @@ export async function POST(req: NextRequest) {
 
     const { data } = await loadPostLikes(postId);
 
+    if (!data?.slug?.current) {
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    }
+
     const hasLiked = data?.likedBy?.includes(ip);
 
     if (hasLiked) {
@@ -38,7 +42,7 @@ export async function POST(req: NextRequest) {
         .commit();
     }
 
-    revalidateTag(`post-${data.slug}`);
+    revalidateTag(`post-${data.slug.current}`, { expire: 0 });
 
     return NextResponse.json(
       { message: "Like successfully updated" },

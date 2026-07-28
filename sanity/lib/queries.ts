@@ -3,47 +3,47 @@ import { groq } from "next-sanity";
 export const HOME_QUERY = groq`*[_type == "home"][0]{
     _id,
     title,
-    "subtitle" : coalesce(
-      subtitle[$lang], 
-      subtitle[$defaultLocale]
+    "subtitle" : select(
+      $lang == "fr" => coalesce(subtitle.fr, subtitle.en),
+      subtitle.en
     ),
-    "overview" : coalesce(
-      overview[$lang], 
-      overview[$defaultLocale]
+    "overview" : select(
+      $lang == "fr" => coalesce(overview.fr, overview.en),
+      overview.en
     ),
     profilePicture,
     projects[]{
       ..., 
-      "description" : coalesce(
-        description[$lang], 
-        description[$defaultLocale]
+      "description" : select(
+        $lang == "fr" => coalesce(description.fr, description.en),
+        description.en
       ),
     },
     works[]{
       ...,
       "tags": tags[]->{
-        "name" : coalesce(
-          name[$lang], 
-          name[$defaultLocale]
+        "name" : select(
+          $lang == "fr" => coalesce(name.fr, name.en),
+          name.en
         ),
         "color" : color.rgb
       },
-      "job" : coalesce(
-        job[$lang], 
-        job[$defaultLocale]
+      "job" : select(
+        $lang == "fr" => coalesce(job.fr, job.en),
+        job.en
       ),
     },
     skills
   }`;
 
 export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)] | order(publishedAt desc){
-  "title" : coalesce(
-    title[$lang], 
-    title[$defaultLocale]
+  "title" : select(
+    $lang == "fr" => coalesce(title.fr, title.en),
+    title.en
   ),
-  "subtitle": coalesce(
-    subtitle[$lang],
-    subtitle[$defaultLocale]
+  "subtitle": select(
+    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),
+    subtitle.en
   ),
   publishedAt,
   mainImage,
@@ -52,17 +52,17 @@ export const BLOG_QUERY = groq`*[_type == "post" && defined(slug)] | order(publi
 
 export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
   ...,
-  "title" : coalesce(
-    title[$lang], 
-    title[$defaultLocale]
+  "title" : select(
+    $lang == "fr" => coalesce(title.fr, title.en),
+    title.en
   ),
-  "subtitle": coalesce(
-    subtitle[$lang],
-    subtitle[$defaultLocale]
+  "subtitle": select(
+    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),
+    subtitle.en
   ),
-  "body" : coalesce(
-    body[$lang], 
-    body[$defaultLocale]
+  "body" : select(
+    $lang == "fr" => coalesce(body.fr, body.en),
+    body.en
   ),
 }`;
 

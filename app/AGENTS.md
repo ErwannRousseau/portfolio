@@ -16,11 +16,11 @@ Next.js App Router surface: localized public pages plus an embedded Sanity Studi
 ## CONVENTIONS
 
 - Public URLs require `[lang]`; use `i18n.config.ts` for locale changes.
-- `middleware.ts` handles locale routing and excludes Studio, assets, API, and robots.
+- `proxy.ts` handles locale routing and excludes Studio, assets, API, and robots.
 - Data loading belongs in `sanity/lib/store.ts`; route pages consume its loaders.
 - Keep route files thin. Put reusable presentation in `components/`.
 
 ## ANTI-PATTERNS
 
-- Do not move Studio under `[lang]`; it intentionally bypasses locale middleware.
+- Do not move Studio under `[lang]`; it intentionally bypasses the locale proxy.
 - Do not expose Sanity tokens from route components or client boundaries.

@@ -9,9 +9,17 @@ export function cn(...inputs: ClassValue[]) {
 export const twx = createTwc({ compose: cn });
 
 export function rgbColorToString(
-  color: { r: number; g: number; b: number },
+  color: { r?: number; g?: number; b?: number } | null,
   alpha: number,
 ) {
+  if (
+    color?.r === undefined ||
+    color.g === undefined ||
+    color.b === undefined
+  ) {
+    return undefined;
+  }
+
   return `rgba(${color.r} ${color.g} ${color.b}/${alpha})`;
 }
 
