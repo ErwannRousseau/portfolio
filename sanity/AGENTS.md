@@ -29,6 +29,6 @@ Sanity client, server loaders, GROQ queries, embedded Studio configuration, plug
 
 ## ANTI-PATTERNS
 
-- Never pass `SANITY_API_READ_TOKEN` to client code.
+- Never pass `SANITY_API_TOKEN` to client code.
 - Do not hand-edit generated `sanity.types.ts`; regenerate it.
 - Do not put Studio-only configuration into localized route components.

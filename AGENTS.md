@@ -23,25 +23,25 @@ portfolio/
 
 ## WHERE TO LOOK
 
-| Task | Location | Notes |
-| --- | --- | --- |
-| Public routes | `app/[lang]/` | Locale is part of every public URL; see child guide |
-| Locale routing | `proxy.ts`, `i18n.config.ts` | Supported locales: `en`, `fr`; default: `en` |
-| Sanity data loading | `sanity/lib/store.ts`, `sanity/lib/queries.ts` | Central query/load boundary |
-| Studio | `app/studio/`, `sanity.config.ts` | Mounted at `/studio`, outside localized routes |
-| Shared UI | `components/ui/`, `components/layout/` | `components/AGENTS.md` |
-| Shared helpers | `lib/`, `components/utils/` | Use `@/*` root alias |
-| CMS schema | `sanity/schemas/`, `sanity/schema.ts` | `sanity/AGENTS.md` |
+| Task                | Location                                       | Notes                                               |
+| ------------------- | ---------------------------------------------- | --------------------------------------------------- |
+| Public routes       | `app/[lang]/`                                  | Locale is part of every public URL; see child guide |
+| Locale routing      | `proxy.ts`, `i18n.config.ts`                   | Supported locales: `en`, `fr`; default: `en`        |
+| Sanity data loading | `sanity/lib/store.ts`, `sanity/lib/queries.ts` | Central query/load boundary                         |
+| Studio              | `app/studio/`, `sanity.config.ts`              | Mounted at `/studio`, outside localized routes      |
+| Shared UI           | `components/ui/`, `components/layout/`         | `components/AGENTS.md`                              |
+| Shared helpers      | `lib/`, `components/utils/`                    | Use `@/*` root alias                                |
+| CMS schema          | `sanity/schemas/`, `sanity/schema.ts`          | `sanity/AGENTS.md`                                  |
 
 ## CODE MAP
 
-| Symbol | Location | Role |
-| --- | --- | --- |
-| `proxy` | `proxy.ts` | Locale negotiation and route matcher |
-| `Home`, `Blog`, `Post` | `app/[lang]/**/page.tsx` | Public page entry points |
-| `loadHomePage`, `loadBlogPage`, `loadPostPage` | `sanity/lib/store.ts` | Server-side Sanity data access |
-| `schema` | `sanity/schema.ts` | Registered Sanity document/object types |
-| `Projects` | `components/home/projects.tsx` | Homepage CMS section |
+| Symbol                                         | Location                       | Role                                    |
+| ---------------------------------------------- | ------------------------------ | --------------------------------------- |
+| `proxy`                                        | `proxy.ts`                     | Locale negotiation and route matcher    |
+| `Home`, `Blog`, `Post`                         | `app/[lang]/**/page.tsx`       | Public page entry points                |
+| `loadHomePage`, `loadBlogPage`, `loadPostPage` | `sanity/lib/store.ts`          | Server-side Sanity data access          |
+| `schema`                                       | `sanity/schema.ts`             | Registered Sanity document/object types |
+| `Projects`                                     | `components/home/projects.tsx` | Homepage CMS section                    |
 
 ## CONVENTIONS
 
@@ -53,7 +53,7 @@ portfolio/
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
-- Never expose `SANITY_API_READ_TOKEN` to client code; keep it in server-only paths.
+- Never expose `SANITY_API_TOKEN` to client code; keep it in server-only paths.
 - Do not stage `.env`; it is untracked and contains local credentials. `.env` is not currently ignored.
 - Treat `dangerouslyAllowSVG` and raw HTML rendering as trusted-content exceptions. Do not route user-controlled HTML through them.
 - Do not add a test command assumption: no test runner or test files exist.
