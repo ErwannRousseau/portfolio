@@ -1,11 +1,11 @@
+import type { PortableTextBlock } from "next-sanity";
 import { Section } from "@/components/ui/section";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
-import type { HOME_QUERYResult } from "@/sanity.types";
 
 import { urlForImage } from "@/sanity/lib/image";
-import type { PortableTextBlock } from "next-sanity";
+import type { HOME_QUERY_RESULT } from "@/sanity.types";
 
-export default function Hero({ data }: { data: HOME_QUERYResult }) {
+export default function Hero({ data }: { data: HOME_QUERY_RESULT }) {
   const backgroundImage = urlForImage(data?.profilePicture)?.url();
 
   return (

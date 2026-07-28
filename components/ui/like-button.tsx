@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import NumberFlow from "@number-flow/react";
 import { Heart } from "lucide-react";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
 type Props = React.JSX.IntrinsicElements["button"] & {
   likes: number;

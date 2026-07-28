@@ -1,28 +1,30 @@
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
-import { ThemeProvider } from "@/components/provider/theme-provider";
-import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
-import type { Locale } from "@/i18n.config";
-import { I18nProviderClient } from "@/lib/locales/client";
-import { getI18n } from "@/lib/locales/server";
-import { cn } from "@/lib/utils";
-import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
-import { urlForOpenGraphImage } from "@/sanity/lib/image";
-import { loadHomePage } from "@/sanity/lib/store";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
+import { ThemeProvider } from "@/components/provider/theme-provider";
+import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
+import { i18n } from "@/i18n.config";
+import { I18nProviderClient } from "@/lib/locales/client";
+import { getI18n } from "@/lib/locales/server";
+import { cn } from "@/lib/utils";
+import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
+import { urlForOpenGraphImage } from "@/sanity/lib/image";
+import { loadHomePage } from "@/sanity/lib/store";
 import "../globals.css";
 
 export async function generateMetadata(
   props: Readonly<{
-    params: Promise<{ lang: Locale }>;
+    params: Promise<{ lang: string }>;
   }>,
 ): Promise<Metadata> {
-  const { lang } = await props.params;
+  const { lang: rawLang } = await props.params;
+  const lang =
+    i18n.locales.find((locale) => locale === rawLang) ?? i18n.defaultLocale;
   const t = await getI18n();
   const { data } = await loadHomePage(lang);
   const ogImage = urlForOpenGraphImage(data?.profilePicture);
@@ -46,9 +48,11 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }>) {
-  const { lang } = await params;
+  const { lang: rawLang } = await params;
+  const lang =
+    i18n.locales.find((locale) => locale === rawLang) ?? i18n.defaultLocale;
 
   return (
     <html lang={lang} suppressHydrationWarning>

@@ -1,13 +1,14 @@
-import { Section, Spacing } from "@/components/ui";
+import { ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Section } from "@/components/ui/section";
+import { Spacing } from "@/components/ui/spacing";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
 import { getI18n } from "@/lib/locales/server";
 import { urlForImage } from "@/sanity/lib/image";
 import { loadBlogPage } from "@/sanity/lib/store";
-import { ArrowUpRight } from "lucide-react";
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,7 @@ export async function generateMetadata({
     description: "",
     openGraph: {
       url: `https://erwannrousseau.dev/${lang}/blog`,
+      images: "https://erwannrousseau.dev/blog-opengraph-image.png",
       type: "website",
     },
   };
@@ -39,7 +41,7 @@ export default async function Blog({
   return (
     <main>
       <Spacing />
-      <h2 className="pl-4">{t("Blog")}</h2>
+      <h2 className="pl-4 text-xl">{t("Blog")}</h2>
       <Spacing size="xs" />
       <Section className="flex-col gap-0 px-0">
         {data ? (

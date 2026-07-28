@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 import type { Locale } from "@/i18n.config";
 import { useScopedI18n } from "@/lib/locales/client";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
-import { buttonVariants } from "../ui";
+import { buttonVariants } from "../ui/button";
 
 export default function Nav() {
   const t = useScopedI18n("Nav");

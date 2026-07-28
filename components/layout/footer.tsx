@@ -1,4 +1,4 @@
-import { Spacing } from "../ui";
+import { Spacing } from "../ui/spacing";
 import LocaleSwitcher from "../utils/locale-switcher";
 
 export default function Footer() {

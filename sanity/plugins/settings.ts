@@ -9,7 +9,7 @@ export const singletonPlugin = (types: string[]) => {
   return {
     name: "singletonPlugin",
     document: {
-      // biome-ignore lint/suspicious/noExplicitAny:
+      // biome-ignore lint/suspicious/noExplicitAny: Sanity plugin callback types are unexported.
       newDocumentOptions: (prev: any[], { creationContext }: any) => {
         if (creationContext.type === "global") {
           return prev.filter(
@@ -20,7 +20,7 @@ export const singletonPlugin = (types: string[]) => {
 
         return prev;
       },
-      // biome-ignore lint/suspicious/noExplicitAny:
+      // biome-ignore lint/suspicious/noExplicitAny: Sanity plugin callback types are unexported.
       actions: (prev: any[], { schemaType }: any) => {
         if (types.includes(schemaType)) {
           return prev.filter(({ action }) => action !== "duplicate");
@@ -39,7 +39,7 @@ export const pageStructure = (
     const singletonItems = typeDefArray.map((typeDef) => {
       return (
         S.listItem()
-          // biome-ignore lint/style/noNonNullAssertion:
+          // biome-ignore lint/style/noNonNullAssertion: Sanity document definitions require a title.
           .title(typeDef.title!)
           .icon(typeDef.icon)
           .child(

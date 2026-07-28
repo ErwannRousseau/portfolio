@@ -2,7 +2,7 @@ import { getCurrentLocale, getI18n } from "@/lib/locales/server";
 import type { Duration } from "@/sanity.types";
 
 type DateFormatProps = {
-  date: Duration | string | undefined;
+  date: Duration | string | null | undefined;
   isDuration?: boolean;
 };
 
@@ -12,6 +12,10 @@ export const DateFormat = async ({
 }: DateFormatProps) => {
   const t = await getI18n();
   const lang = await getCurrentLocale();
+
+  if (!date) {
+    return null;
+  }
 
   const options: Intl.DateTimeFormatOptions = isDuration
     ? {

@@ -12,8 +12,241 @@
  * ---------------------------------------------------------------------------------
  */
 
-import type { PortableTextBlock } from "next-sanity";
-import type { Image } from "sanity";
+export declare const internalGroqTypeReferenceTo: unique symbol;
+
+// Source: schema.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type Icon = {
+  asset?: SanityImageAssetReference;
+  media?: unknown; // Unable to locate the referenced type "media" in schema
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  _type: "image";
+};
+
+export type Duration = {
+  _type: "duration";
+  start?: string;
+  end?: string;
+  current?: boolean;
+};
+
+export type Tags = {
+  _id: string;
+  _type: "tags";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocalizedString;
+  color?: Color;
+};
+
+export type Color = {
+  _type: "color";
+  hex?: string;
+  alpha?: number;
+  hsl?: HslaColor;
+  hsv?: HsvaColor;
+  rgb?: RgbaColor;
+};
+
+export type LocalizedString = {
+  _type: "localizedString";
+  en?: string;
+  fr?: string;
+};
+
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        icon?: Icon;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }
+  | ({
+      _key: string;
+    } & Code)
+>;
+
+export type LocalizedBlockContent = {
+  _type: "localizedBlockContent";
+  en?: BlockContent;
+  fr?: BlockContent;
+};
+
+export type Post = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  slug?: Slug;
+  mainImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  publishedAt?: string;
+  body?: LocalizedBlockContent;
+  likeCount?: number;
+  likedBy?: Array<string>;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type Skills = {
+  _type: "skills";
+  name?: string;
+  icon?: string;
+  color?: string;
+};
+
+export type TagsReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "tags";
+};
+
+export type Works = {
+  _type: "works";
+  icon?: string;
+  title?: string;
+  job?: LocalizedString;
+  duration?: Duration;
+  link?: string;
+  tags?: Array<
+    {
+      _key: string;
+    } & TagsReference
+  >;
+};
+
+export type Projects = {
+  _type: "projects";
+  title?: string;
+  description?: LocalizedString;
+  link?: string;
+  icon?: string;
+};
+
+export type Home = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  subtitle?: LocalizedString;
+  profilePicture?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  overview?: LocalizedBlockContent;
+  projects?: Array<
+    {
+      _key: string;
+    } & Projects
+  >;
+  works?: Array<
+    {
+      _key: string;
+    } & Works
+  >;
+  skills?: Array<
+    {
+      _key: string;
+    } & Skills
+  >;
+};
+
+export type Code = {
+  _type: "code";
+  language?: string;
+  filename?: string;
+  code?: string;
+  highlightedLines?: Array<number>;
+};
+
+export type RgbaColor = {
+  _type: "rgbaColor";
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
+};
+
+export type HsvaColor = {
+  _type: "hsvaColor";
+  h?: number;
+  s?: number;
+  v?: number;
+  a?: number;
+};
+
+export type HslaColor = {
+  _type: "hslaColor";
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
+};
 
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
@@ -41,6 +274,18 @@ export type SanityImageDimensions = {
   aspectRatio?: number;
 };
 
+export type SanityImageMetadata = {
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  thumbHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
+};
+
 export type SanityFileAsset = {
   _id: string;
   _type: "sanity.fileAsset";
@@ -63,183 +308,11 @@ export type SanityFileAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
-
-export type Tags = {
-  _id: string;
-  _type: "tags";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name: string;
-  color: RgbaColor;
-};
-
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        icon?: {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          _type: "image";
-        };
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }
-  | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }
-  | ({
-      _key: string;
-    } & Code)
->;
-
-export type Post = {
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: LocalizedString;
-  subtitle?: LocalizedString;
-  slug: Slug;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  publishedAt?: string;
-  body?: LocalizedBlockContent;
-  likeCount: number;
-  likedBy: Array<string> | null;
-};
-
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
-export type Skills = {
-  _type: "skills";
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
   name?: string;
-  icon?: string;
-  color?: string;
-};
-
-export type Works = {
-  _type: "works";
-  icon?: string;
-  title: string;
-  job: string;
-  link?: string;
-  tags?: Array<Tags>;
-  duration: Duration;
-};
-
-export type Duration = {
-  _type: "duration";
-  start: string;
-  end?: string;
-  current?: boolean;
-};
-
-export type Projects = {
-  _type: "projects";
-  title?: string;
-  description?: string;
-  link?: string;
-  icon?: string;
-};
-
-export type Home = {
-  _id: string;
-  _type: "home";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  subtitle?: string;
-  profilePicture?: Image;
-  overview?: BlockContent | PortableTextBlock;
-  projects?: Array<
-    {
-      _key: string;
-    } & Projects
-  >;
-  works?: Array<
-    {
-      _key: string;
-    } & Works
-  >;
-  skills?: Array<
-    {
-      _key: string;
-    } & Skills
-  >;
-};
-
-export type LocalizedBlockContent = {
-  _type: "localizedBlockContent";
-  en?: BlockContent;
-  fr?: BlockContent;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
@@ -265,122 +338,153 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
 };
 
-export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
-
-export type LocalizedString = {
-  _type: "localizedString";
-  en?: string;
-  fr?: string;
-};
-
-export type Code = {
-  _type: "code";
-  language: string;
-  filename?: string;
-  code: string;
-  highlightedLines?: Array<number>;
-};
-
-export type Color = {
-  _type: "color";
-  hex?: string;
-  alpha?: number;
-  hsl?: HslaColor;
-  hsv?: HsvaColor;
-  rgb?: RgbaColor;
-};
-
-export type RgbaColor = {
-  _type: "rgbaColor";
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-};
-
-export type HsvaColor = {
-  _type: "hsvaColor";
-  h?: number;
-  s?: number;
-  v?: number;
-  a?: number;
-};
-
-export type HslaColor = {
-  _type: "hslaColor";
-  h?: number;
-  s?: number;
-  l?: number;
-  a?: number;
-};
-export declare const internalGroqTypeReferenceTo: unique symbol;
+export type AllSanitySchemaTypes =
+  | SanityImageAssetReference
+  | Icon
+  | Duration
+  | Tags
+  | Color
+  | LocalizedString
+  | BlockContent
+  | LocalizedBlockContent
+  | Post
+  | SanityImageCrop
+  | SanityImageHotspot
+  | Slug
+  | Skills
+  | TagsReference
+  | Works
+  | Projects
+  | Home
+  | Code
+  | RgbaColor
+  | HsvaColor
+  | HslaColor
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
 
 // Source: sanity/lib/queries.ts
 // Variable: HOME_QUERY
-// Query: *[_type == "home"][0]{    _id,    title,    "subtitle" : coalesce(      subtitle[$lang],       subtitle[$defaultLocale]    ),    "overview" : coalesce(      overview[$lang],       overview[$defaultLocale]    ),    profilePicture,    projects[]{      ...,       "description" : coalesce(        description[$lang],         description[$defaultLocale]      ),    },    works[]{      ...,      "tags": tags[]->{        "name" : coalesce(          name[$lang],           name[$defaultLocale]        ),        "color" : color.rgb      },      "job" : coalesce(        job[$lang],         job[$defaultLocale]      ),    },    skills  }
-export type HOME_QUERYResult = {
+// Query: *[_type == "home"][0]{    _id,    title,    "subtitle" : select(      $lang == "fr" => coalesce(subtitle.fr, subtitle.en),      subtitle.en    ),    "overview" : select(      $lang == "fr" => coalesce(overview.fr, overview.en),      overview.en    ),    profilePicture,    projects[]{      ...,       "description" : select(        $lang == "fr" => coalesce(description.fr, description.en),        description.en      ),    },    works[]{      ...,      "tags": tags[]->{        "name" : select(          $lang == "fr" => coalesce(name.fr, name.en),          name.en        ),        "color" : color.rgb      },      "job" : select(        $lang == "fr" => coalesce(job.fr, job.en),        job.en      ),    },    skills  }
+export type HOME_QUERY_RESULT = {
   _id: string;
   title: string | null;
   subtitle: string | null;
   overview: BlockContent | null;
-  profilePicture: Image;
-  projects: Array<Projects> | null;
-  works: Array<Works> | null;
-  skills: Array<Skills> | null;
+  profilePicture: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  projects: Array<{
+    _key: string;
+    _type: "projects";
+    title?: string;
+    description: string | null;
+    link?: string;
+    icon?: string;
+  }> | null;
+  works: Array<{
+    _key: string;
+    _type: "works";
+    icon?: string;
+    title?: string;
+    job: string | null;
+    duration?: Duration;
+    link?: string;
+    tags: Array<{
+      name: string | null;
+      color: RgbaColor | null;
+    }> | null;
+  }> | null;
+  skills: Array<
+    {
+      _key: string;
+    } & Skills
+  > | null;
 } | null;
 
+// Source: sanity/lib/queries.ts
 // Variable: BLOG_QUERY
-// Query: *[_type == "post" && defined(slug)]{  "title" : coalesce(    title[$lang],     title[$defaultLocale]  ),  "subtitle": coalesce(    subtitle[$lang],    subtitle[$defaultLocale]  ),  mainImage}
-export type BLOG_QUERYResult = Array<{
+// Query: *[_type == "post" && defined(slug)] | order(publishedAt desc){  "title" : select(    $lang == "fr" => coalesce(title.fr, title.en),    title.en  ),  "subtitle": select(    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),    subtitle.en  ),  publishedAt,  mainImage,  slug,}
+export type BLOG_QUERY_RESULT = Array<{
   title: string | null;
   subtitle: string | null;
-  mainImage: Image;
-  publishedAt?: string;
+  publishedAt: string | null;
+  mainImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
   slug: Slug;
 }>;
 
+// Source: sanity/lib/queries.ts
 // Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]
-export type POST_QUERYResult = {
+// Query: *[_type == "post" && slug.current == $slug][0]{  ...,  "title" : select(    $lang == "fr" => coalesce(title.fr, title.en),    title.en  ),  "subtitle": select(    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),    subtitle.en  ),  "body" : select(    $lang == "fr" => coalesce(body.fr, body.en),    body.en  ),}
+export type POST_QUERY_RESULT = {
   _id: string;
   _type: "post";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  subtitle?: string;
+  title: string | null;
+  subtitle: string | null;
   slug?: Slug;
-  mainImage: Image;
+  mainImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   publishedAt?: string;
-  body?: BlockContent;
-  likeCount: number;
-  likedBy: Array<string> | null;
+  body: BlockContent | null;
+  likeCount?: number;
+  likedBy?: Array<string>;
 } | null;
 
+// Source: sanity/lib/queries.ts
 // Variable: POST_BY_ID_QUERY
-// Query: *[_type == "post" && _id == $id]{  likeCount,  likedBy}
-export type POST_BY_ID_QUERYResult = {
-  likeCount: number;
+// Query: *[_type == "post" && _id == $id][0]{  likeCount,  likedBy,  slug}
+export type POST_BY_ID_QUERY_RESULT = {
+  likeCount: number | null;
   likedBy: Array<string> | null;
-  slug: Slug;
-};
+  slug: Slug | null;
+} | null;
 
+// Source: sanity/lib/queries.ts
 // Variable: SLUGS_QUERY
 // Query: *[_type == "post" && defined(slug)].slug.current
-export type SLUGS_QUERYResult = Array<string | null>;
+export type SLUGS_QUERY_RESULT = Array<string | null>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type == "home"][0]{\n    _id,\n    title,\n    "subtitle" : select(\n      $lang == "fr" => coalesce(subtitle.fr, subtitle.en),\n      subtitle.en\n    ),\n    "overview" : select(\n      $lang == "fr" => coalesce(overview.fr, overview.en),\n      overview.en\n    ),\n    profilePicture,\n    projects[]{\n      ..., \n      "description" : select(\n        $lang == "fr" => coalesce(description.fr, description.en),\n        description.en\n      ),\n    },\n    works[]{\n      ...,\n      "tags": tags[]->{\n        "name" : select(\n          $lang == "fr" => coalesce(name.fr, name.en),\n          name.en\n        ),\n        "color" : color.rgb\n      },\n      "job" : select(\n        $lang == "fr" => coalesce(job.fr, job.en),\n        job.en\n      ),\n    },\n    skills\n  }': HOME_QUERY_RESULT;
+    '*[_type == "post" && defined(slug)] | order(publishedAt desc){\n  "title" : select(\n    $lang == "fr" => coalesce(title.fr, title.en),\n    title.en\n  ),\n  "subtitle": select(\n    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),\n    subtitle.en\n  ),\n  publishedAt,\n  mainImage,\n  slug,\n}': BLOG_QUERY_RESULT;
+    '*[_type == "post" && slug.current == $slug][0]{\n  ...,\n  "title" : select(\n    $lang == "fr" => coalesce(title.fr, title.en),\n    title.en\n  ),\n  "subtitle": select(\n    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),\n    subtitle.en\n  ),\n  "body" : select(\n    $lang == "fr" => coalesce(body.fr, body.en),\n    body.en\n  ),\n}': POST_QUERY_RESULT;
+    '*[_type == "post" && _id == $id][0]{\n  likeCount,\n  likedBy,\n  slug\n}': POST_BY_ID_QUERY_RESULT;
+    '*[_type == "post" && defined(slug)].slug.current': SLUGS_QUERY_RESULT;
+  }
+}

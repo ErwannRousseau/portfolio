@@ -1,8 +1,8 @@
+import { revalidateTag } from "next/cache";
+import { type NextRequest, NextResponse } from "next/server";
 import { getClientIp } from "@/lib/client-ip";
 import { client } from "@/sanity/lib/client";
 import { loadPostLikes } from "@/sanity/lib/store";
-import { revalidateTag } from "next/cache";
-import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,6 +19,10 @@ export async function POST(req: NextRequest) {
     }
 
     const { data } = await loadPostLikes(postId);
+
+    if (!data?.slug?.current) {
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    }
 
     const hasLiked = data?.likedBy?.includes(ip);
 
@@ -38,7 +42,7 @@ export async function POST(req: NextRequest) {
         .commit();
     }
 
-    revalidateTag(`post-${data.slug}`);
+    revalidateTag(`post-${data.slug.current}`, { expire: 0 });
 
     return NextResponse.json(
       { message: "Like successfully updated" },

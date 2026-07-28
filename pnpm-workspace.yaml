@@ -1,0 +1,11 @@
+packages:
+  - .
+
+allowBuilds:
+  '@biomejs/biome': true
+  esbuild: true
+  sharp: true
+
+minimumReleaseAgeExclude:
+  - '@sanity/ui@3.5.0'
+  - next-sanity@13.2.2

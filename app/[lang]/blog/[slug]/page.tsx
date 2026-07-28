@@ -1,5 +1,9 @@
-import { Section, Spacing } from "@/components/ui";
+import type { Metadata } from "next";
+import Image from "next/image";
+import type { PortableTextBlock } from "next-sanity";
 import { LikeButton } from "@/components/ui/like-button";
+import { Section } from "@/components/ui/section";
+import { Spacing } from "@/components/ui/spacing";
 import { Comments } from "@/components/utils/comments";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
@@ -7,9 +11,6 @@ import type { Locale } from "@/i18n.config";
 import { getClientIp } from "@/lib/client-ip";
 import { urlForImage, urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
-import type { Metadata } from "next";
-import type { PortableTextBlock } from "next-sanity";
-import Image from "next/image";
 
 export async function generateMetadata({
   params,
@@ -25,8 +26,8 @@ export async function generateMetadata({
     title: data?.title,
     description: data?.subtitle,
     openGraph: {
-      title: data?.title,
-      description: data?.subtitle,
+      title: data?.title ?? undefined,
+      description: data?.subtitle ?? undefined,
       url: `https://erwannrousseau.dev/${lang}/blog/${slug}`,
       images: ogImage,
       type: "article",
@@ -40,13 +41,10 @@ export default async function Post({
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
   const { slug, lang } = await params;
-
   const { data } = await loadPostPage(slug, lang);
 
   const imageUrl = (quality: number) =>
     `${urlForImage(data?.mainImage)?.url()}&q=${quality}`;
-
-  const isLiked = data?.likedBy?.includes(await getClientIp()) ?? false;
 
   return (
     <main>
@@ -66,7 +64,7 @@ export default async function Post({
             <LikeButton
               className="mr-2"
               likes={data?.likeCount ?? 0}
-              liked={isLiked}
+              liked={data?.likedBy?.includes(await getClientIp()) ?? false}
               postId={data?._id}
             />
           </div>
