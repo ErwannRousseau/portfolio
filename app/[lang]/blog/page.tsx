@@ -22,7 +22,7 @@ export async function generateMetadata({
     description: "",
     openGraph: {
       url: `https://erwannrousseau.dev/${lang}/blog`,
-      images: "https://erwannrousseau.dev/api/og",
+      images: "https://erwannrousseau.dev/blog-opengraph-image.png",
       type: "website",
     },
   };
