@@ -43,22 +43,26 @@ export default async function Post({
   const { slug, lang } = await params;
   const { data } = await loadPostPage(slug, lang);
 
-  const imageUrl = (quality: number) =>
-    `${urlForImage(data?.mainImage)?.url()}&q=${quality}`;
+  const image = urlForImage(data?.mainImage);
+  const mainImageUrl = image?.width(1200).height(675).fit("crop").url();
+  const blurDataURL = image?.width(24).height(14).fit("crop").quality(20).url();
 
   return (
     <main>
       <Section className="flex-col">
         <article className="prose max-w-none">
-          <Image
-            alt={`post image ${data?.title}`}
-            src={imageUrl(100) || ""}
-            className="mb-2 aspect-video rounded-md"
-            width={768}
-            height={431}
-            placeholder="blur"
-            blurDataURL={imageUrl(50)}
-          />
+          {mainImageUrl && (
+            <Image
+              alt={data?.mainImage?.alt ?? data?.title ?? ""}
+              src={mainImageUrl}
+              className="mb-2 h-auto w-full rounded-md"
+              width={1200}
+              height={675}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+            />
+          )}
           <div className="flex justify-between">
             <DateFormat date={data?.publishedAt} />
             <LikeButton

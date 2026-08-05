@@ -23,6 +23,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.16
         version: 1.2.16(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@sanity/asset-utils':
+        specifier: 2.3.0
+        version: 2.3.0
       '@sanity/client':
         specifier: 7.25.0
         version: 7.25.0
@@ -74,9 +77,6 @@ importers:
       next-sanity:
         specifier: 13.2.2
         version: 13.2.2(@emotion/is-prop-valid@1.4.0)(@sanity/client@7.25.0)(@types/react@19.2.17)(next@16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(sanity@6.6.0(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.1.5)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.1)(yaml@2.9.0)))(@types/node@24.13.3)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(immer@10.2.0)(jiti@2.7.0)(prismjs@1.27.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.1.5)(styled-components@6.4.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@8.1.1)(typescript@5.9.3))(styled-components@6.4.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(typescript@5.9.3)
-      next-themes:
-        specifier: ^0.4.4
-        version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -4462,12 +4462,6 @@ packages:
       react-dom: ^19.2.3
       sanity: ^5.29.0 || ^6.0.0
       styled-components: ^6.1
-
-  next-themes@0.4.6:
-    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   next@16.2.12:
     resolution: {integrity: sha512-iD59eYQWmbFcEbX7v/acG5DRym9iw1DdaPoD0WTA920naWsE25wShzJW4+UvAs8MK9EC2kBfIH6vtto1H1PHGw==}
@@ -10302,11 +10296,6 @@ snapshots:
       - react-router
       - svelte
       - typescript
-
-  next-themes@0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
-    dependencies:
-      react: 19.2.8
-      react-dom: 19.2.8(react@19.2.8)
 
   next@16.2.12(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
