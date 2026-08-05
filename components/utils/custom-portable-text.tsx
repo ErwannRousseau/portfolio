@@ -79,15 +79,27 @@ export function CustomPortableText({
           return null;
         }
 
+        const isCompact =
+          value.display === "compact" ||
+          (value.display === undefined && dimensions.height > dimensions.width);
+
         return (
           <div className="my-4 grid w-full place-items-center">
             <Image
-              src={image.width(1600).url()}
+              src={image.width(isCompact ? 640 : 1600).url()}
               alt={value.alt ?? ""}
-              className="h-auto w-full rounded-md"
+              className={
+                isCompact
+                  ? "h-auto w-full max-w-xs rounded-md"
+                  : "h-auto w-full rounded-md"
+              }
               width={dimensions.width}
               height={dimensions.height}
-              sizes="(max-width: 768px) 100vw, 1200px"
+              sizes={
+                isCompact
+                  ? "(max-width: 768px) 100vw, 320px"
+                  : "(max-width: 768px) 100vw, 1200px"
+              }
               loading="lazy"
             />
           </div>
