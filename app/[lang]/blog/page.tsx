@@ -67,7 +67,7 @@ export default async function Blog({
                       width={107}
                       height={60}
                       sizes="107px"
-                      className="my-auto rounded-md max-md:hidden"
+                      className="my-auto h-[60px] w-[107px] shrink-0 rounded-md object-cover max-md:hidden"
                     />
                   )}
                   <div>

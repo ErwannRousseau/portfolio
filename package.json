@@ -11,7 +11,7 @@
     "check:fix": "biome check --fix",
     "format": "biome format --fix",
     "schema": "sanity schema extract --force",
-    "typegen": "sanity typegen generate"
+    "typegen": "pnpm schema && sanity typegen generate"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
