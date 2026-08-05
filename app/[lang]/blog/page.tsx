@@ -45,30 +45,43 @@ export default async function Blog({
       <Spacing size="xs" />
       <Section className="flex-col gap-0 px-0">
         {data ? (
-          data.map(({ title, subtitle, publishedAt, slug, mainImage }) => (
-            <Link
-              href={`/${lang}/blog/${slug.current}`}
-              className="flex justify-between rounded-md p-4 transition-colors hover:bg-accent/50"
-              key={title}
-              prefetch={true}
-            >
-              <div className="flex gap-3">
-                <Image
-                  src={urlForImage(mainImage)?.url() || ""}
-                  alt={`main image for ${title}`}
-                  width={107}
-                  height={60}
-                  className="my-auto aspect-video rounded-md max-md:hidden"
-                />
-                <div>
-                  <DateFormat date={publishedAt} />
-                  <p className="mb-2 font-semibold text-lg/5">{title}</p>
-                  <p className="text-muted-foreground leading-4">{subtitle}</p>
+          data.map(({ title, subtitle, publishedAt, slug, mainImage }) => {
+            const thumbnailUrl = urlForImage(mainImage)
+              ?.width(214)
+              .height(120)
+              .fit("crop")
+              .url();
+
+            return (
+              <Link
+                href={`/${lang}/blog/${slug.current}`}
+                className="flex justify-between rounded-md p-4 transition-colors hover:bg-accent/50"
+                key={title}
+                prefetch={true}
+              >
+                <div className="flex gap-3">
+                  {thumbnailUrl && (
+                    <Image
+                      src={thumbnailUrl}
+                      alt={mainImage?.alt ?? title ?? ""}
+                      width={107}
+                      height={60}
+                      sizes="107px"
+                      className="my-auto rounded-md max-md:hidden"
+                    />
+                  )}
+                  <div>
+                    <DateFormat date={publishedAt} />
+                    <p className="mb-2 font-semibold text-lg/5">{title}</p>
+                    <p className="text-muted-foreground leading-4">
+                      {subtitle}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <ArrowUpRight className="ml-2 shrink-0 self-center" />
-            </Link>
-          ))
+                <ArrowUpRight className="ml-2 shrink-0 self-center" />
+              </Link>
+            );
+          })
         ) : (
           <p>No posts found</p>
         )}

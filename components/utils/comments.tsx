@@ -1,8 +1,8 @@
 "use client";
 
 import Giscus from "@giscus/react";
-import { useTheme } from "next-themes";
 import type { Locale } from "@/i18n.config";
+import { useTheme } from "@/lib/theme";
 
 interface GithubCommentsProps {
   lang: Locale;

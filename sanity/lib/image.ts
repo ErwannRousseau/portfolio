@@ -1,3 +1,4 @@
+import { getImageDimensions } from "@sanity/asset-utils";
 import {
   createImageUrlBuilder,
   type SanityImageSource,
@@ -25,6 +26,14 @@ export const urlForImage = (source: ImageSource | null | undefined) => {
     .image(source as SanityImageSource)
     .auto("format")
     .fit("max");
+};
+
+export const getSanityImageDimensions = (
+  source: ImageSource | null | undefined,
+) => {
+  const reference = source?.asset?._ref;
+
+  return reference ? getImageDimensions(reference) : undefined;
 };
 
 export function urlForOpenGraphImage(image: ImageSource | null | undefined) {
