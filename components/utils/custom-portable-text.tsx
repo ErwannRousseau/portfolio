@@ -8,7 +8,7 @@ import {
 import { Suspense } from "react";
 import { BadgeLink } from "@/components/ui/badge";
 import { Snippet } from "@/components/ui/snippet";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSanityImageDimensions, urlForImage } from "@/sanity/lib/image";
 import type { Code } from "@/sanity.types";
 import CodeBlock from "./code-block";
 import { CodeBlockWrapper } from "./code-block-wrapper";
@@ -71,18 +71,28 @@ export function CustomPortableText({
           </CodeBlockWrapper>
         );
       },
-      image: ({ value }) => (
-        <div className="my-4 grid w-full place-items-center">
-          <Image
-            src={urlForImage(value)?.url() || ""}
-            alt={value.alt}
-            className="rounded-md"
-            width={500}
-            height={500}
-            loading="lazy"
-          />
-        </div>
-      ),
+      image: ({ value }) => {
+        const image = urlForImage(value);
+        const dimensions = getSanityImageDimensions(value);
+
+        if (!(image && dimensions)) {
+          return null;
+        }
+
+        return (
+          <div className="my-4 grid w-full place-items-center">
+            <Image
+              src={image.width(1600).url()}
+              alt={value.alt ?? ""}
+              className="h-auto w-full rounded-md"
+              width={dimensions.width}
+              height={dimensions.height}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              loading="lazy"
+            />
+          </div>
+        );
+      },
     },
   };
 

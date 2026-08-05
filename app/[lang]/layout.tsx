@@ -3,10 +3,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { toPlainText } from "next-sanity";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
-import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
 import { i18n } from "@/i18n.config";
 import { I18nProviderClient } from "@/lib/locales/client";
@@ -64,20 +64,20 @@ export default async function RootLayout({
           GeistMono.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <I18nProviderClient locale={lang}>
-            <Header />
-            {children}
-            <Footer />
-          </I18nProviderClient>
-          <SpeedInsights />
-          <Analytics />
-        </ThemeProvider>
+        <Script id="theme" strategy="beforeInteractive">
+          {`
+            const theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+            document.documentElement.classList.toggle("dark", theme === "dark");
+            document.documentElement.style.colorScheme = theme;
+          `}
+        </Script>
+        <I18nProviderClient locale={lang}>
+          <Header />
+          {children}
+          <Footer />
+        </I18nProviderClient>
+        <SpeedInsights />
+        <Analytics />
         <TailwindIndicator />
       </body>
     </html>

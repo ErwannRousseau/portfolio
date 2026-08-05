@@ -27,6 +27,7 @@ export function CodeBlockWrapper({
 }: CodeBlockProps) {
   const t = useScopedI18n("CodeBlock");
   const [isOpened, setIsOpened] = React.useState(false);
+  const LanguageIcon = Icons[language as IconKeys];
 
   return (
     <figure
@@ -39,7 +40,7 @@ export function CodeBlockWrapper({
       {filename && (
         <div className="flex flex-row items-center justify-between gap-2 border-b px-4 py-1.5">
           <div className="flex items-center gap-2">
-            {Icons[language as IconKeys]({})}
+            {LanguageIcon?.({})}
             <figcaption className="mt-0">{filename}</figcaption>
           </div>
           <CopyButton value={code} />
