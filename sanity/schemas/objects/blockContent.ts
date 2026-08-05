@@ -63,6 +63,20 @@ export default defineType({
           title: "Alternative Text",
           validation: (rule) => rule.required(),
         },
+        {
+          name: "display",
+          type: "string",
+          title: "Display",
+          description: "Compact keeps portrait screenshots readable.",
+          initialValue: "normal",
+          options: {
+            layout: "radio",
+            list: [
+              { title: "Normal", value: "normal" },
+              { title: "Compact", value: "compact" },
+            ],
+          },
+        },
       ],
     }),
     defineArrayMember({
