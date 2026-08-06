@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       await client
         .patch(postId)
         .inc({ likeCount: 1 })
-        .setIfMissing({ likedBy: [] })
+        .setIfMissing({ likeCount: 0, likedBy: [] })
         .append("likedBy", [ip])
         .commit();
     }
