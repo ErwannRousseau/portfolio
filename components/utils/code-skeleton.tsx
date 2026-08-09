@@ -1,3 +1,5 @@
+"use client";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { MAX_NUMBER_OF_LINES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
