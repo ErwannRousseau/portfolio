@@ -21,6 +21,10 @@ import "../globals.css";
 // See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
 export const instant = false;
 
+export function generateStaticParams() {
+  return i18n.locales.map((lang) => ({ lang }));
+}
+
 export async function generateMetadata(
   props: Readonly<{
     params: Promise<{ lang: string }>;

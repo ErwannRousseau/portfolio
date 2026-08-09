@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
+import { connection } from "next/server";
 import { loadPostSlugs } from "@/sanity/lib/store";
 
 const BASE_URL = "https://erwannrousseau.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // TODO: Cache Components adoption. Added to unblock the build: remove this connection() to re-trigger the error and review the fix options.
+  await connection();
   const { data } = await loadPostSlugs();
 
   const dynamicSitemap = data

@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  cacheComponents: true,
   experimental: {
     taint: true,
   },
