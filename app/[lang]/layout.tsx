@@ -16,6 +16,8 @@ import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadHomePage } from "@/sanity/lib/store";
 import "../globals.css";
 
+export const prefetch = "partial";
+
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
 }
