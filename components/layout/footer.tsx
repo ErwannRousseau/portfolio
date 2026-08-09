@@ -2,13 +2,13 @@ import { cacheLife } from "next/cache";
 import { Spacing } from "../ui/spacing";
 import LocaleSwitcher from "../utils/locale-switcher";
 
-async function getCurrentYear() {
-  "use cache";
-  cacheLife("max");
-  return new Date().getFullYear();
-}
-
 export default async function Footer() {
+  async function getCurrentYear() {
+    "use cache";
+    cacheLife("max");
+    return new Date().getFullYear();
+  }
+
   return (
     <>
       <Spacing size="md" />
