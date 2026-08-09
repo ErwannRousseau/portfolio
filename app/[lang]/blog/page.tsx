@@ -2,17 +2,15 @@ import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { Section } from "@/components/ui/section";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Spacing } from "@/components/ui/spacing";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
 import { getI18n } from "@/lib/locales/server";
 import { urlForImage } from "@/sanity/lib/image";
 import { loadBlogPage } from "@/sanity/lib/store";
-
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
 
 export async function generateMetadata({
   params,
@@ -32,7 +30,21 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({
+export default function Blog({
+  params,
+}: Readonly<{
+  params: Promise<{ lang: Locale }>;
+}>) {
+  return (
+    <main>
+      <Suspense fallback={<BlogFallback />}>
+        <BlogContent params={params} />
+      </Suspense>
+    </main>
+  );
+}
+
+async function BlogContent({
   params,
 }: Readonly<{
   params: Promise<{ lang: Locale }>;
@@ -43,7 +55,7 @@ export default async function Blog({
   const t = await getI18n();
 
   return (
-    <main>
+    <>
       <Spacing />
       <h2 className="pl-4 text-xl">{t("Blog")}</h2>
       <Spacing size="xs" />
@@ -90,6 +102,20 @@ export default async function Blog({
           <p>No posts found</p>
         )}
       </Section>
-    </main>
+    </>
+  );
+}
+
+function BlogFallback() {
+  return (
+    <>
+      <Spacing />
+      <Skeleton className="ml-4 h-7 w-24" />
+      <Spacing size="xs" />
+      <Section className="flex-col gap-4 px-4">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
+      </Section>
+    </>
   );
 }
