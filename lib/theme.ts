@@ -13,6 +13,12 @@ function applyTheme(theme: Theme) {
   document.documentElement.style.colorScheme = theme;
 }
 
+export function applyStoredTheme() {
+  applyTheme(
+    localStorage.getItem(THEME_STORAGE_KEY) === "dark" ? "dark" : DEFAULT_THEME,
+  );
+}
+
 function getTheme(): Theme {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }

@@ -21,6 +21,7 @@ export default function Nav() {
             className={cn(buttonVariants({ variant: "link" }), "px-0", {
               "font-semibold": pathname === `/${lang}`,
             })}
+            prefetch={true}
           >
             {t("Home")}
           </Link>
