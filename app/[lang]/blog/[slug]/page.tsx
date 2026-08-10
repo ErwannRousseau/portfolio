@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { PostContent } from "@/components/blog/post-content";
-import { PostFallback } from "@/components/blog/post-fallback";
+import { Skeleton } from "@/components/blog/skeleton";
+import { Section } from "@/components/ui/section";
 import type { Locale } from "@/i18n.config";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
@@ -36,9 +36,11 @@ export default function Post({
 }>) {
   return (
     <main>
-      <Suspense fallback={<PostFallback />}>
-        <PostContent params={params} />
-      </Suspense>
+      <Section className="flex-col">
+        <Skeleton kind="blog-post">
+          <PostContent params={params} />
+        </Skeleton>
+      </Section>
     </main>
   );
 }

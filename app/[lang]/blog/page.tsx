@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { BlogContent } from "@/components/blog/blog-content";
-import { BlogFallback } from "@/components/blog/blog-fallback";
+import { BlogHeading } from "@/components/blog/blog-heading";
+import { Skeleton } from "@/components/blog/skeleton";
 import type { Locale } from "@/i18n.config";
 
 export async function generateMetadata({
@@ -29,9 +29,10 @@ export default function Blog({
 }>) {
   return (
     <main>
-      <Suspense fallback={<BlogFallback />}>
+      <BlogHeading />
+      <Skeleton kind="blog-list">
         <BlogContent params={params} />
-      </Suspense>
+      </Skeleton>
     </main>
   );
 }

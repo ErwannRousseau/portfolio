@@ -3,7 +3,6 @@ import type { PortableTextBlock } from "next-sanity";
 import { Suspense } from "react";
 import { PostLikeButton } from "@/components/blog/post-like-button";
 import { LikeButton } from "@/components/ui/like-button";
-import { Section } from "@/components/ui/section";
 import { Spacing } from "@/components/ui/spacing";
 import { Comments } from "@/components/utils/comments";
 import { CustomPortableText } from "@/components/utils/custom-portable-text";
@@ -17,15 +16,17 @@ export async function PostContent({
 }: Readonly<{
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
+  if (process.env.NODE_ENV === "development") {
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+  }
   const { slug, lang } = await params;
   const { data } = await loadPostPage(slug, lang);
-
   const image = urlForImage(data?.mainImage);
   const mainImageUrl = image?.width(1200).height(675).fit("crop").url();
   const blurDataURL = image?.width(24).height(14).fit("crop").quality(20).url();
 
   return (
-    <Section className="flex-col">
+    <>
       <article className="prose max-w-none">
         {mainImageUrl && (
           <Image
@@ -63,6 +64,6 @@ export async function PostContent({
       </article>
       <Spacing size="xs" />
       <Comments lang={lang} />
-    </Section>
+    </>
   );
 }
