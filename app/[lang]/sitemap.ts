@@ -1,9 +1,13 @@
 import type { MetadataRoute } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { loadPostSlugs } from "@/sanity/lib/store";
 
 const BASE_URL = "https://erwannrousseau.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  "use cache";
+  cacheLife("days");
+  cacheTag("posts");
   const { data } = await loadPostSlugs();
 
   const dynamicSitemap = data

@@ -1,11 +1,14 @@
 packages:
   - .
-
 allowBuilds:
   '@biomejs/biome': true
   esbuild: true
   sharp: true
-
 minimumReleaseAgeExclude:
   - '@sanity/ui@3.5.0'
   - next-sanity@13.2.2
+overrides:
+  '@types/react': 19.2.18
+  '@types/react-dom': 19.2.4
+patchedDependencies:
+  boneyard-js@1.9.0: patches/boneyard-js@1.9.0.patch
