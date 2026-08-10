@@ -1,4 +1,5 @@
 import * as queryStore from "@sanity/react-loader";
+import { cacheLife, cacheTag } from "next/cache";
 import type { Locale } from "@/i18n.config";
 import { client } from "@/sanity/lib/client";
 import type {
@@ -20,16 +21,25 @@ queryStore.setServerClient(client);
 
 export const { loadQuery } = queryStore;
 
-export function loadHomePage(lang: Locale) {
-  return loadQuery<HOME_QUERY_RESULT>(HOME_QUERY, { lang });
+export async function loadHomePage(lang: Locale) {
+  "use cache";
+  cacheLife("days");
+  cacheTag("home");
+  return await loadQuery<HOME_QUERY_RESULT>(HOME_QUERY, { lang });
 }
 
-export function loadBlogPage(lang: Locale) {
-  return loadQuery<BLOG_QUERY_RESULT>(BLOG_QUERY, { lang });
+export async function loadBlogPage(lang: Locale) {
+  "use cache";
+  cacheLife("days");
+  cacheTag("blog");
+  return await loadQuery<BLOG_QUERY_RESULT>(BLOG_QUERY, { lang });
 }
 
-export function loadPostPage(slug: string, lang: Locale) {
-  return loadQuery<POST_QUERY_RESULT>(
+export async function loadPostPage(slug: string, lang: Locale) {
+  "use cache";
+  cacheLife("days");
+  cacheTag(`post-${slug}`);
+  return await loadQuery<POST_QUERY_RESULT>(
     POST_QUERY,
     { slug, lang },
     { tag: `post-${slug}` },
@@ -40,6 +50,9 @@ export function loadPostLikes(id: string) {
   return loadQuery<POST_BY_ID_QUERY_RESULT>(POST_BY_ID_QUERY, { id });
 }
 
-export function loadPostSlugs() {
-  return loadQuery<SLUGS_QUERY_RESULT>(SLUGS_QUERY);
+export async function loadPostSlugs() {
+  "use cache";
+  cacheLife("days");
+  cacheTag("posts");
+  return await loadQuery<SLUGS_QUERY_RESULT>(SLUGS_QUERY);
 }

@@ -1,0 +1,13 @@
+diff --git a/dist/react.js b/dist/react.js
+index 4443047a9cd4f11cd88fb86aa11d7ea9472a452a..88b25e44d2985dccf7e3548da9e5ab41cf8e1983 100644
+--- a/dist/react.js
++++ b/dist/react.js
+@@ -142,7 +142,7 @@ export function Skeleton({ loading, children, name, initialBones, color, darkCol
+     const effectiveHeight = containerHeight > 0 ? containerHeight : activeBones?.height ?? 0;
+     const capturedHeight = activeBones?.height ?? 0;
+     const scaleY = (effectiveHeight > 0 && capturedHeight > 0) ? effectiveHeight / capturedHeight : 1;
+-    return (_jsxs("div", { ref: containerRef, className: className, style: { position: 'relative' }, "aria-busy": loading || undefined, ...dataAttrs, children: [_jsx("div", { "data-boneyard-content": "true", style: showSkeleton && !transitioning ? { visibility: 'hidden' } : undefined, children: showFallback ? fallback : children }), showSkeleton && (_jsx("div", { "data-boneyard-overlay": "true", style: {
++    return (_jsxs("div", { ref: containerRef, className: className, style: { position: 'relative', minHeight: showSkeleton ? effectiveHeight : undefined }, "aria-busy": loading || undefined, ...dataAttrs, children: [_jsx("div", { "data-boneyard-content": "true", style: showSkeleton && !transitioning ? { visibility: 'hidden' } : undefined, children: showFallback ? fallback : children }), showSkeleton && (_jsx("div", { "data-boneyard-overlay": "true", style: {
+                     position: 'absolute', inset: 0, overflow: 'hidden',
+                     opacity: transitioning ? 0 : 1,
+                     transition: transitionMs > 0 ? `opacity ${transitionMs}ms ease-out` : undefined,

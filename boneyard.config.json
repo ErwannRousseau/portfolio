@@ -1,0 +1,11 @@
+{
+  "out": "./bones",
+  "wait": 800,
+  "animate": "shimmer",
+  "routes": [
+    "/en/blog",
+    "/fr/blog",
+    "/en/blog/automating-my-react-native-releases-from-my-iphone",
+    "/fr/blog/automating-my-react-native-releases-from-my-iphone"
+  ]
+}

@@ -3,19 +3,24 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { toPlainText } from "next-sanity";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
+import { AppProvider } from "@/components/provider/app-provider";
 import { TailwindIndicator } from "@/components/utils/tailwind-indicator";
 import { i18n } from "@/i18n.config";
-import { I18nProviderClient } from "@/lib/locales/client";
 import { getI18n } from "@/lib/locales/server";
 import { cn } from "@/lib/utils";
 import { SubjectivitySerif } from "@/public/font/serif/subjectivity";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadHomePage } from "@/sanity/lib/store";
 import "../globals.css";
+
+export const prefetch = "partial";
+
+export function generateStaticParams() {
+  return i18n.locales.map((lang) => ({ lang }));
+}
 
 export async function generateMetadata(
   props: Readonly<{
@@ -64,18 +69,11 @@ export default async function RootLayout({
           GeistMono.variable,
         )}
       >
-        <Script id="theme" strategy="beforeInteractive">
-          {`
-            const theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
-            document.documentElement.classList.toggle("dark", theme === "dark");
-            document.documentElement.style.colorScheme = theme;
-          `}
-        </Script>
-        <I18nProviderClient locale={lang}>
+        <AppProvider locale={lang}>
           <Header />
           {children}
           <Footer />
-        </I18nProviderClient>
+        </AppProvider>
         <SpeedInsights />
         <Analytics />
         <TailwindIndicator />
