@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import type { PortableTextBlock } from "next-sanity";
-import { LikeButton } from "@/components/ui/like-button";
+import { PostContent } from "@/components/blog/post-content";
+import { Skeleton } from "@/components/blog/skeleton";
 import { Section } from "@/components/ui/section";
-import { Spacing } from "@/components/ui/spacing";
-import { Comments } from "@/components/utils/comments";
-import { CustomPortableText } from "@/components/utils/custom-portable-text";
-import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
-import { getClientIp } from "@/lib/client-ip";
-import { urlForImage, urlForOpenGraphImage } from "@/sanity/lib/image";
+import { urlForOpenGraphImage } from "@/sanity/lib/image";
 import { loadPostPage } from "@/sanity/lib/store";
-
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
 
 export async function generateMetadata({
   params,
@@ -39,48 +29,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function Post({
+export default function Post({
   params,
 }: Readonly<{
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
-  const { slug, lang } = await params;
-  const { data } = await loadPostPage(slug, lang);
-
-  const image = urlForImage(data?.mainImage);
-  const mainImageUrl = image?.width(1200).height(675).fit("crop").url();
-  const blurDataURL = image?.width(24).height(14).fit("crop").quality(20).url();
-
   return (
     <main>
       <Section className="flex-col">
-        <article className="prose max-w-none">
-          {mainImageUrl && (
-            <Image
-              alt={data?.mainImage?.alt ?? data?.title ?? ""}
-              src={mainImageUrl}
-              className="mb-2 h-auto w-full rounded-md"
-              width={1200}
-              height={675}
-              sizes="(max-width: 768px) 100vw, 1200px"
-              placeholder="blur"
-              blurDataURL={blurDataURL}
-            />
-          )}
-          <div className="flex justify-between">
-            <DateFormat date={data?.publishedAt} />
-            <LikeButton
-              className="mr-2"
-              likes={data?.likeCount ?? 0}
-              liked={data?.likedBy?.includes(await getClientIp()) ?? false}
-              postId={data?._id}
-            />
-          </div>
-          <h1 className="pt-4 text-center">{data?.title}</h1>
-          <CustomPortableText value={data?.body as PortableTextBlock[]} />
-        </article>
-        <Spacing size="xs" />
-        <Comments lang={lang} />
+        <Skeleton kind="blog-post">
+          <PostContent params={params} />
+        </Skeleton>
       </Section>
     </main>
   );

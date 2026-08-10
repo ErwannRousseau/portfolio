@@ -7,6 +7,7 @@ type SpacingProps = {
 export function Spacing({ size = "sm" }: SpacingProps) {
   return (
     <div
+      data-no-skeleton
       className={cn({
         "h-4": size === "xs",
         "h-8 lg:h-16": size === "sm",

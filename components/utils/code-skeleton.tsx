@@ -1,4 +1,5 @@
-import { Skeleton } from "@/components/ui/skeleton";
+"use client";
+
 import { MAX_NUMBER_OF_LINES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +26,11 @@ export function CodeSkeleton({ numberOfLines }: { numberOfLines: number }) {
       className={cn("flex flex-col gap-3 p-6", numberOfLines === 1 && "p-3")}
     >
       {skeletons.map(({ key, width }) => (
-        <Skeleton key={key} className={"h-4"} style={{ width }} />
+        <div
+          key={key}
+          className="h-4 animate-pulse rounded-md bg-primary/10"
+          style={{ width }}
+        />
       ))}
     </div>
   );
