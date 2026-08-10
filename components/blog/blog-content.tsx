@@ -12,9 +12,6 @@ export async function BlogContent({
 }: Readonly<{
   params: Promise<{ lang: Locale }>;
 }>) {
-  if (process.env.NODE_ENV === "development") {
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-  }
   const { lang } = await params;
   const { data } = await loadBlogPage(lang);
 

@@ -16,9 +16,6 @@ export async function PostContent({
 }: Readonly<{
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
-  if (process.env.NODE_ENV === "development") {
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-  }
   const { slug, lang } = await params;
   const { data } = await loadPostPage(slug, lang);
   const image = urlForImage(data?.mainImage);

@@ -62,7 +62,7 @@ export function LikeButton({
       onClick={handleLike}
       disabled={isPending}
     >
-      <div className="before:-inset-2.5 relative before:absolute before:rounded-full before:transition-[background-color] group-hover:before:bg-pink-500/10">
+      <div className="relative before:absolute before:-inset-2.5 before:rounded-full before:transition-[background-color] group-hover:before:bg-pink-500/10">
         <Heart
           absoluteStrokeWidth
           className={cn(
