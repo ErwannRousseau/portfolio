@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = "http://127.0.0.1:3000";
+const port = Number.parseInt(process.env.PORT ?? "", 10) || 3000;
+const baseURL = `http://127.0.0.1:${port}`;
 
 export default defineConfig({
   testDir: "./e2e",
@@ -19,6 +20,7 @@ export default defineConfig({
     command: "pnpm build && pnpm start",
     url: baseURL,
     env: {
+      PORT: String(port),
       NEXT_PUBLIC_SANITY_DATASET: "e2e",
       NEXT_PUBLIC_SANITY_PROJECT_ID: "fssg1pp3",
     },
