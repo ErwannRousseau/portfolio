@@ -9,16 +9,16 @@ import { CustomPortableText } from "@/components/utils/custom-portable-text";
 import { DateFormat } from "@/components/utils/date-format";
 import type { Locale } from "@/i18n.config";
 import { urlForImage } from "@/sanity/lib/image";
-import { loadPostPage } from "@/sanity/lib/store";
+import type { POST_QUERY_RESULT } from "@/sanity.types";
 
-export async function PostContent({
-  params,
+export function PostContent({
+  data,
+  lang,
 }: Readonly<{
-  params: Promise<{ slug: string; lang: Locale }>;
+  data: NonNullable<POST_QUERY_RESULT>;
+  lang: Locale;
 }>) {
-  const { slug, lang } = await params;
-  const { data } = await loadPostPage(slug, lang);
-  const image = urlForImage(data?.mainImage);
+  const image = urlForImage(data.mainImage);
   const mainImageUrl = image?.width(1200).height(675).fit("crop").url();
   const blurDataURL = image?.width(24).height(14).fit("crop").quality(20).url();
 
