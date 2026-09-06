@@ -5,3 +5,46 @@ updates:
     schedule:
       interval: 'weekly'
     target-branch: 'develop'
+    groups:
+      next-react:
+        applies-to: version-updates
+        patterns:
+          - 'next'
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+        update-types:
+          - 'minor'
+          - 'patch'
+      sanity:
+        applies-to: version-updates
+        patterns:
+          - 'sanity'
+          - 'next-sanity'
+          - '@sanity/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      tailwind-postcss:
+        applies-to: version-updates
+        patterns:
+          - 'tailwind*'
+          - '@tailwindcss/*'
+          - 'postcss'
+        update-types:
+          - 'minor'
+          - 'patch'
+      quality:
+        applies-to: version-updates
+        patterns:
+          - '@biomejs/*'
+          - '@playwright/*'
+          - '@types/*'
+          - 'typescript'
+        exclude-patterns:
+          - '@types/react'
+          - '@types/react-dom'
+        update-types:
+          - 'minor'
+          - 'patch'
