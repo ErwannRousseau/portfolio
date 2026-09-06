@@ -479,8 +479,7 @@ export type POST_BY_ID_QUERY_RESULT = {
 export type SLUGS_QUERY_RESULT = Array<string | null>;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
     '*[_type == "home"][0]{\n    _id,\n    title,\n    "subtitle" : select(\n      $lang == "fr" => coalesce(subtitle.fr, subtitle.en),\n      subtitle.en\n    ),\n    "overview" : select(\n      $lang == "fr" => coalesce(overview.fr, overview.en),\n      overview.en\n    ),\n    profilePicture,\n    projects[]{\n      ..., \n      "description" : select(\n        $lang == "fr" => coalesce(description.fr, description.en),\n        description.en\n      ),\n    },\n    works[]{\n      ...,\n      "tags": tags[]->{\n        "name" : select(\n          $lang == "fr" => coalesce(name.fr, name.en),\n          name.en\n        ),\n        "color" : color.rgb\n      },\n      "job" : select(\n        $lang == "fr" => coalesce(job.fr, job.en),\n        job.en\n      ),\n    },\n    skills\n  }': HOME_QUERY_RESULT;
     '*[_type == "post" && defined(slug)] | order(publishedAt desc){\n  "title" : select(\n    $lang == "fr" => coalesce(title.fr, title.en),\n    title.en\n  ),\n  "subtitle": select(\n    $lang == "fr" => coalesce(subtitle.fr, subtitle.en),\n    subtitle.en\n  ),\n  publishedAt,\n  mainImage,\n  slug,\n}': BLOG_QUERY_RESULT;
@@ -488,4 +487,8 @@ declare module "@sanity/client" {
     '*[_type == "post" && _id == $id][0]{\n  likeCount,\n  likedBy,\n  slug\n}': POST_BY_ID_QUERY_RESULT;
     '*[_type == "post" && defined(slug)].slug.current': SLUGS_QUERY_RESULT;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }
