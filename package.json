@@ -14,7 +14,8 @@
     "format": "biome format --fix",
     "bones:build": "boneyard-js build http://localhost:3000",
     "schema": "sanity schema extract --force",
-    "typegen": "pnpm schema && sanity typegen generate"
+    "typegen": "pnpm schema && sanity typegen generate",
+    "typegen:check": "pnpm typegen && git diff --exit-code -- sanity.types.ts"
   },
   "dependencies": {
     "@giscus/react": "^3.1.0",
