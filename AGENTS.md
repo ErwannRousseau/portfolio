@@ -60,7 +60,8 @@ portfolio/
   not currently ignored.
 - Treat `dangerouslyAllowSVG` and raw HTML rendering as trusted-content
   exceptions. Do not route user-controlled HTML through them.
-- Do not add a test command assumption: no test runner or test files exist.
+- Keep test commands explicit in `package.json`; browser smoke tests run with
+  `pnpm test:e2e`.
 
 ## COMMANDS
 
@@ -69,6 +70,7 @@ pnpm dev
 pnpm check       # Biome check and TypeScript validation
 pnpm build
 pnpm start
+pnpm test:e2e
 pnpm schema
 pnpm typegen
 ```

@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test:e2e": "playwright test",
     "lint": "biome check",
     "typecheck": "tsc --noEmit",
     "check": "pnpm lint && pnpm typecheck",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.7",
+    "@playwright/test": "1.62.1",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/negotiator": "^0.6.3",
