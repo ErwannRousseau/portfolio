@@ -1,12 +1,11 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-07-26
-**Commit:** 5829dac
-**Branch:** develop
+**Generated:** 2026-07-26 **Commit:** 5829dac **Branch:** develop
 
 ## OVERVIEW
 
-Portfolio site built with Next.js 16 App Router, TypeScript, Tailwind CSS, next-international, and an embedded Sanity Studio.
+Portfolio site built with Next.js 16 App Router, TypeScript, Tailwind CSS,
+next-international, and an embedded Sanity Studio.
 
 ## STRUCTURE
 
@@ -45,17 +44,22 @@ portfolio/
 
 ## CONVENTIONS
 
-- Use pnpm 11.17.0. Imports are organized by Biome; 2 spaces, LF, 80 columns.
-- TypeScript is strict, no emit, bundler resolution; `@/*` maps to the repository root.
-- Server components are the default. Add client boundaries only where browser state/effects require them.
+- Use pnpm, Imports are organized by Biome; 2 spaces, LF, 80 columns.
+- TypeScript is strict, no emit, bundler resolution; `@/*` maps to the
+  repository root.
+- Server components are the default. Add client boundaries only where browser
+  state/effects require them.
 - Sanity Studio is part of this Next app, not a separate package.
-- Generated `sanity.types.ts` is ignored by Biome; regenerate with `pnpm typegen` when schema output changes.
+- Generated `sanity.types.ts` is ignored by Biome; regenerate with
+  `pnpm typegen` when schema output changes.
 
 ## ANTI-PATTERNS (THIS PROJECT)
 
 - Never expose `SANITY_API_TOKEN` to client code; keep it in server-only paths.
-- Do not stage `.env`; it is untracked and contains local credentials. `.env` is not currently ignored.
-- Treat `dangerouslyAllowSVG` and raw HTML rendering as trusted-content exceptions. Do not route user-controlled HTML through them.
+- Do not stage `.env`; it is untracked and contains local credentials. `.env` is
+  not currently ignored.
+- Treat `dangerouslyAllowSVG` and raw HTML rendering as trusted-content
+  exceptions. Do not route user-controlled HTML through them.
 - Do not add a test command assumption: no test runner or test files exist.
 
 ## COMMANDS
@@ -73,18 +77,22 @@ pnpm typegen
 
 - Production pages depend on Sanity environment variables from `.env.example`.
 - Existing worktree changes must remain untouched unless explicitly requested.
-- Metadata currently references `erwannrousseau.com`; sitemap uses `erwannrousseau.dev`.
+- Metadata currently references `erwannrousseau.com`; sitemap uses
+  `erwannrousseau.dev`.
 
 ## Agent skills
 
 ### Issue tracker
 
-Issues and PRDs live in GitHub Issues for `ErwannRousseau/portfolio`. See `docs/agents/issue-tracker.md`.
+Issues and PRDs live in GitHub Issues for `ErwannRousseau/portfolio`. See
+`docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
-Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
-Single-context domain docs use root `CONTEXT.md` and `docs/adr/`. See `docs/agents/domain.md`.
+Single-context domain docs use root `CONTEXT.md` and `docs/adr/`. See
+`docs/agents/domain.md`.
