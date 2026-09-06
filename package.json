@@ -30,7 +30,7 @@
     "@sanity/color-input": "^6.0.20",
     "@sanity/image-url": "^2.1.1",
     "@sanity/language-filter": "^5.0.13",
-    "@sanity/react-loader": "^2.1.2",
+    "@sanity/react-loader": "^2.2.2",
     "@sanity/ui": "^3.5.0",
     "@sanity/vision": "^6.6.0",
     "@vercel/analytics": "^2.0.1",
