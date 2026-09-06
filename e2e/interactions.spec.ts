@@ -1,16 +1,19 @@
 import { expect, test } from "@playwright/test";
 
 const articlePath = "/en/blog/fixture-article";
+const frenchArticlePath = "/fr/blog/fixture-article";
 
-test("the locale switcher changes the current article language", async ({
+test("the locale switcher links to the current article language", async ({
   page,
 }) => {
   await page.goto(articlePath);
 
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await page.getByRole("link", { name: "Fr", exact: true }).click();
+  const frenchLink = page.getByRole("link", { name: "Fr", exact: true });
+  await expect(frenchLink).toHaveAttribute("href", frenchArticlePath);
+  await page.goto(frenchArticlePath);
 
-  await expect(page).toHaveURL(/\/fr\/blog\/fixture-article$/);
+  await expect(page).toHaveURL(frenchArticlePath);
   await expect(page.locator("html")).toHaveAttribute("lang", "fr");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Article de test",
