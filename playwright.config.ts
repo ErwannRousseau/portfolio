@@ -20,8 +20,7 @@ export default defineConfig({
     url: baseURL,
     env: {
       NEXT_PUBLIC_SANITY_DATASET: "e2e",
-      NEXT_PUBLIC_SANITY_PROJECT_ID: "e2e",
-      SANITY_E2E_FIXTURES: "true",
+      NEXT_PUBLIC_SANITY_PROJECT_ID: "fssg1pp3",
     },
     reuseExistingServer: false,
     timeout: 120_000,
