@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { PostContent } from "@/components/blog/post-content";
 import { Skeleton } from "@/components/blog/skeleton";
 import { Section } from "@/components/ui/section";
@@ -29,16 +30,23 @@ export async function generateMetadata({
   };
 }
 
-export default function Post({
+export default async function Post({
   params,
 }: Readonly<{
   params: Promise<{ slug: string; lang: Locale }>;
 }>) {
+  const { slug, lang } = await params;
+  const { data } = await loadPostPage(slug, lang);
+
+  if (!data) {
+    notFound();
+  }
+
   return (
     <main>
       <Section className="flex-col">
         <Skeleton kind="blog-post">
-          <PostContent params={params} />
+          <PostContent data={data} lang={lang} />
         </Skeleton>
       </Section>
     </main>
