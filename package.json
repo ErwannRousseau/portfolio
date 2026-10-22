@@ -29,7 +29,7 @@
     "@sanity/code-input": "^7.3.3",
     "@sanity/color-input": "^6.0.20",
     "@sanity/image-url": "^2.1.1",
-    "@sanity/language-filter": "^5.0.13",
+    "@sanity/language-filter": "^5.0.18",
     "@sanity/react-loader": "^2.2.2",
     "@sanity/ui": "^3.5.0",
     "@sanity/vision": "^6.6.0",
