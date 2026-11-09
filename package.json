@@ -48,20 +48,20 @@
     "react-twc": "^1.4.2",
     "sanity": "^6.12.0",
     "styled-components": "^6.1.15",
-    "tailwind-merge": "^3.0.2"
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.7",
     "@playwright/test": "1.62.1",
-    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.3.4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^24.13.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.32",
     "shiki": "^4.3.1",
-    "tailwindcss": "^4.0.0",
+    "tailwindcss": "^4.3.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^7.0.2"
   },
